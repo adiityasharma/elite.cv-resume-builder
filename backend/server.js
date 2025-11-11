@@ -5,6 +5,7 @@ import { connectDB } from "./config/db.js";
 import { ApiResponse } from "./utils/ApiResponse.js";
 import userRoutes from "./routes/user.routes.js"
 import cookieParser from "cookie-parser";
+import resumeRoutes from "./routes/resume.routes.js"
 
 
 const app = express();
@@ -26,6 +27,8 @@ app.use(cookieParser())
 // user routes
 app.use("/api/v1/users", userRoutes)
 
+// resume routes
+app.use("/api/v1/resumes", resumeRoutes)
 
 
 // error handler
