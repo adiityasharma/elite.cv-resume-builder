@@ -16,7 +16,12 @@ export const userSchema = new Schema({
     type: String,
     required: true
   },
-
+  refreshToken: {
+    type: String
+  },
+  accessToken: {
+    type: String
+  }
 }, { timestamps: true })
 
 

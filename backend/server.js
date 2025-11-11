@@ -18,10 +18,12 @@ app.use(cors(
 //middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
 
 
 // user routes
 import userRoutes from "./routes/user.routes.js"
+import cookieParser from "cookie-parser";
 
 app.use("/api/v1/users", userRoutes)
 

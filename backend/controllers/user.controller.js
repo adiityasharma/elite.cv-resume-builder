@@ -21,6 +21,8 @@ export const registerUser = asyncHandler(async (req, res) => {
     throw new ApiError(400, "User already exists")
   }
 
+
+
   const user = await User.create({
     name,
     email,
@@ -31,3 +33,5 @@ export const registerUser = asyncHandler(async (req, res) => {
     new ApiResponse(201, "User created successfully", user)
   )
 })
+
+
