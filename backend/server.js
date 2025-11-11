@@ -3,6 +3,8 @@ import cors from "cors"
 import "dotenv/config"
 import { connectDB } from "./config/db.js";
 import { ApiResponse } from "./utils/ApiResponse.js";
+import userRoutes from "./routes/user.routes.js"
+import cookieParser from "cookie-parser";
 
 
 const app = express();
@@ -22,9 +24,6 @@ app.use(cookieParser())
 
 
 // user routes
-import userRoutes from "./routes/user.routes.js"
-import cookieParser from "cookie-parser";
-
 app.use("/api/v1/users", userRoutes)
 
 
