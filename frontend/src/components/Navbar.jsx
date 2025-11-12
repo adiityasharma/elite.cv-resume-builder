@@ -6,7 +6,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed w-full h-18 shadow flex items-center justify-between px-15 bg-white/30 backdrop-blur-">
+    <nav className="fixed w-full h-18 shadow flex items-center justify-between px-15 bg-white/40 backdrop-blur z-100">
       <div>
         <Link to="/">
           <img src="/elitecv.svg" alt="" className="w-40" />
