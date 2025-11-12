@@ -66,3 +66,25 @@ export const features = [
       "Export your resume in multiple formats and share it instantly with recruiters or job platforms.",
   },
 ]
+
+export const reviews = [
+  {
+    name: "Mark Johnson",
+    role: "Marketing Manager",
+    review: "This builder saved me so much time. The AI suggestions were spot on, and I landed two interviews within a week of applying!",
+    image: "https://images.pexels.com/photos/15441821/pexels-photo-15441821.jpeg",
+  },
+  {
+    name: "Emily Park",
+    role: "Recent Graduate",
+    review: "I'm not a designer, but my resume looks incredible. I loved how easy it was to switch templates and customize everything.",
+    image: "https://images.pexels.com/photos/22663781/pexels-photo-22663781.jpeg",
+  },
+  {
+    name: "Sarah Adams",
+    role: "Software Engineer",
+    review: "The best resume builder I've used. Simple, fast, and the final result was extremely professional. Highly recommend!",
+    image: "https://images.pexels.com/photos/34352267/pexels-photo-34352267.jpeg",
+  },
+
+]

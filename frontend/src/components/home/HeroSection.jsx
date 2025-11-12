@@ -8,7 +8,7 @@ const HeroSection = () => {
           <p>Your Story. Your Style. Your Resume.</p>
         </div>
         <div>
-          <h1 className="text-7xl font-bold w-110 bg-gradient-to-tl from-indigo-400 via-violet-600 to-cyan-400 bg-clip-text text-transparent leading-17">
+          <h1 className="text-7xl font-bold w-110 bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 bg-clip-text text-transparent leading-17">
             Build a Professional Resume in Minutes.
           </h1>
         </div>
@@ -18,7 +18,7 @@ const HeroSection = () => {
             results.
           </h1>
         </div>
-        <button className="cursor-pointer px-4 py-2 rounded-lg bg-gradient-to-tl from-indigo-400 via-violet-600 to-cyan-400 hover:from-cyan-400 hover:via-violet-600 hover:to-indigo-400 transition-colors duration-400 ease-in-out text-white font-semibold mt-4 shadow-xl">
+        <button className="cursor-pointer px-4 py-2 rounded-lg bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 hover:from-cyan-400 hover:via-violet-600 hover:to-indigo-400 transition-colors duration-400 ease-in-out text-white font-semibold mt-4 shadow-xl  ">
           Get Started for Free
         </button>
         <p className="text-[12px] text-neutral-500 mt-1 font-medium">

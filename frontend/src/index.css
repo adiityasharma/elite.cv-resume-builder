@@ -1,2 +1,10 @@
 @import "tailwindcss";
 
+.background {
+  /* background: linear-gradient(to bottom left, #ffe4e6, #ccfbf1); */
+
+  background: radial-gradient(at 60% 98%, #dfe2fe 0px, transparent 50%),
+    radial-gradient(at 69% 93%, #b1cbfa 0px, transparent 50%),
+    radial-gradient(at 47% 37%, #8e98f5 0px, transparent 50%),
+    radial-gradient(at 84% 82%, #7874f2 0px, transparent 50%), #dfe2fe;
+}

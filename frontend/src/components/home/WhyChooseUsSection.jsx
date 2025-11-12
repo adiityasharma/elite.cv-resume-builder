@@ -1,10 +1,9 @@
-import React from "react";
-import { features } from "../constants";
+import { features } from "../../constants";
 
 const WhyChooseUsSection = () => {
   return (
     <div className="w-full ">
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-20">
         <div className="container mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
@@ -20,7 +19,7 @@ const WhyChooseUsSection = () => {
             {features.map((item, index) => (
               <div
                 key={index}
-                className="w-full flex items-center justify-center border-3 border-neutral-100 p-10 rounded-xl bg-neutral-50 hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105"
+                className="w-full flex items-center justify-center p-10 rounded-xl bg-white/20 backdrop-blur-2xl hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105"
               >
                 <div className="flex flex-col items-center justify-center">
                   <div className="w-16 h-16 flex items-center justify-center">
