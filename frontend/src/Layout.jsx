@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 function Layout() {
@@ -12,15 +13,8 @@ function Layout() {
         <Outlet />
       </main>
 
-      <footer
-        style={{
-          textAlign: "center",
-          padding: "10px",
-          marginTop: "20px",
-          borderTop: "1px solid #ddd",
-        }}
-      >
-        © {new Date().getFullYear()} My App
+      <footer      >
+        <Footer/>
       </footer>
     </div>
   );

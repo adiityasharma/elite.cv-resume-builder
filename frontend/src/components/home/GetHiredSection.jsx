@@ -2,7 +2,7 @@ import React from "react";
 
 const GetHiredSection = () => {
   return (
-    <div className="w-full h-[500px] flex flex-col items-center justify-center py-10">
+    <div className="w-full h-[700px] flex flex-col items-center justify-center py-10">
       <div className="flex items-center flex-col gap-4">
         <h1 className="font-bold text-5xl tracking-tighter">
           Get Hired in 3 Easy Steps

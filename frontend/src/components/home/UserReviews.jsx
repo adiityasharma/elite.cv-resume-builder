@@ -3,8 +3,8 @@ import { reviews } from "../../constants";
 
 const UserReviews = () => {
   return (
-    <div className="w-full h-[600px] flex flex-col justify-center gap-10 ">
-      <div className="text-lg font-medium">
+    <div className="w-full h-[700px] flex flex-col justify-center gap-10 ">
+      <div className="text-lg text-neutral-700 font-medium">
         <p className=""> Trusted by Thousands of Job Seekers</p>
         <p className="">
           Don't just take our word for it. Here's what our users have to say.
