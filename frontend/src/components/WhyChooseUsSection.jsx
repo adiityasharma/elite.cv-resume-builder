@@ -20,7 +20,7 @@ const WhyChooseUsSection = () => {
             {features.map((item, index) => (
               <div
                 key={index}
-                className="w-full flex items-center justify-center border-3 border-neutral-100 p-10 rounded-xl bg-neutral-50 hover:shadow-xl transition-all duration-300 ease-in-out"
+                className="w-full flex items-center justify-center border-3 border-neutral-100 p-10 rounded-xl bg-neutral-50 hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105"
               >
                 <div className="flex flex-col items-center justify-center">
                   <div className="w-16 h-16 flex items-center justify-center">

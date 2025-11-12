@@ -2,7 +2,7 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <div className="w-full h-[80vh] flex justify-center gap-10 pt-5">
+    <div className="w-full h-[650px] flex justify-center gap-10 pt-5">
       <div className="w-[50%] h-full flex items-start flex-col justify-center select-none">
         <div className="px-5 py-1 text-[13px] rounded-full bg-[#008efa25] text-[#0053fa] font-semibold mb-2">
           <p>Your Story. Your Style. Your Resume.</p>
