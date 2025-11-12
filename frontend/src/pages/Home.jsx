@@ -4,6 +4,7 @@ import WhyChooseUsSection from "../components/home/WhyChooseUsSection";
 import GetHiredSection from "../components/home/GetHiredSection";
 import ResumeShowcase from "../components/home/ResumeShowcase";
 import UserReviews from "../components/home/UserReviews";
+import DreamJobSection from "../components/home/DreamJobSection";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <GetHiredSection />
       <ResumeShowcase />
       <UserReviews />
+      <DreamJobSection />
     </main>
   );
 };

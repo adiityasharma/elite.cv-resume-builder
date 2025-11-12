@@ -13,7 +13,7 @@ const GetHiredSection = () => {
       </div>
       <div className="w-5xl  grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
         <div className="w-full flex flex-col justify-center items-center p-5 gap-3 ">
-          <div className="w-15 h-15 rounded-full bg-[#00A7FA] flex items-center justify-center text-4xl font-bold text-white">
+          <div className="w-15 h-15 rounded-full bg-[#00A7FA] flex items-center justify-center text-4xl font-bold text-white  bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 hover:from-cyan-400 hover:via-violet-600 hover:to-indigo-400 transition-colors duration-400 ease-in-out">
             1
           </div>
           <h1 className="text-2xl font-semibold ">Choose a Template</h1>
@@ -22,7 +22,7 @@ const GetHiredSection = () => {
           </p>
         </div>
         <div className="w-full flex flex-col justify-center items-center p-5 gap-3 ">
-          <div className="w-15 h-15 rounded-full bg-[#00A7FA] flex items-center justify-center text-4xl font-bold text-white">
+          <div className="w-15 h-15 rounded-full bg-[#00A7FA] flex items-center justify-center text-4xl font-bold text-white bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 hover:from-cyan-400 hover:via-violet-600 hover:to-indigo-400 transition-colors duration-400 ease-in-out">
             2
           </div>
           <h1 className="text-2xl font-semibold ">Fill in Your Details</h1>
@@ -31,7 +31,7 @@ const GetHiredSection = () => {
           </p>
         </div>
         <div className="w-full flex flex-col justify-center items-center p-5 gap-3 ">
-          <div className="w-15 h-15 rounded-full bg-[#00A7FA] flex items-center justify-center text-4xl font-bold text-white">
+          <div className="w-15 h-15 rounded-full bg-[#00A7FA] flex items-center justify-center text-4xl font-bold text-white bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 hover:from-cyan-400 hover:via-violet-600 hover:to-indigo-400 transition-colors duration-400 ease-in-out ">
             3
           </div>
           <h1 className="text-2xl font-semibold ">Download & Apply</h1>
