@@ -88,3 +88,38 @@ export const reviews = [
   },
 
 ]
+
+export const skillsSuggestions = [
+  {
+    id: 1,
+    name: "Multitasking Abilities",
+  },
+  {
+    id: 2,
+    name: "Planning",
+  },
+  {
+    id: 3,
+    name: "Maintenance & repair",
+  },
+  {
+    id: 4,
+    name: "Leadership",
+  },
+  {
+    id: 5,
+    name: "Friendly, positive attitude",
+  },
+  {
+    id: 6,
+    name: "Conflict resolution",
+  },
+  {
+    id: 7,
+    name: "Verbal communication",
+  },
+  {
+    id: 8,
+    name: "Cultural awareness",
+  },
+]

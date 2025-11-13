@@ -13,7 +13,7 @@ function Layout() {
         <Outlet />
       </main>
 
-      <footer      >
+      <footer className="pt-10">
         <Footer/>
       </footer>
     </div>
