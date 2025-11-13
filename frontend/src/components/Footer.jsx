@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="w-full h-90 flex flex-col bg-white/30 backdrop-blur-2xl items-center justify-center px-15 py-10">
+    <div className="w-full h-70 flex flex-col bg-white/30 backdrop-blur-2xl items-center justify-center px-15 py-8">
       <div className="w-full h-full grid grid-cols-4 gap-10">
         <div className="w-full h-full ">
           <img className="w-50" src="/elitecv.svg" alt="" />

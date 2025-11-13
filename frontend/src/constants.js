@@ -123,3 +123,50 @@ export const skillsSuggestions = [
     name: "Cultural awareness",
   },
 ]
+
+export const otherFieldsForAdditionalDetails = [
+  {
+    id: 101,
+    name: "Personal Details"
+  },
+  {
+    id: 102,
+    name: "Websites, Portfolios, Profiles"
+  },
+  {
+    id: 103,
+    name: "Certifications"
+  },
+  {
+    id: 104,
+    name: "Languages"
+  },
+  {
+    id: 105,
+    name: "Accomplishments"
+  },
+  {
+    id: 106,
+    name: "Additional Information"
+  },
+  {
+    id: 107,
+    name: "Affiliations"
+  },
+  {
+    id: 108,
+    name: "Software"
+  },
+  {
+    id: 109,
+    name: "References"
+  },
+  {
+    id: 110,
+    name: "Volunteering"
+  },
+  {
+    id: 111,
+    name: "Interests"
+  },
+]

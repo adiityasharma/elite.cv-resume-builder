@@ -1,12 +1,28 @@
 @import "tailwindcss";
 
-.background {
-  /* background: linear-gradient(to bottom left, #ffe4e6, #ccfbf1); */
 
-  background: radial-gradient(at 60% 98%, #dfe2fe 0px, transparent 50%),
-    radial-gradient(at 69% 93%, #b1cbfa 0px, transparent 50%),
-    radial-gradient(at 47% 37%, #8e98f5 0px, transparent 50%),
-    radial-gradient(at 84% 82%, #7874f2 0px, transparent 50%), #dfe2fe;
+.background {
+  /* position: absolute; */
+  inset: calc(var(--spacing) * 0);
+  z-index: -10;
+  background-image: linear-gradient(
+      to right,
+      rgba(229, 231, 235, 0.8) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(229, 231, 235, 0.8) 1px, transparent 1px),
+    radial-gradient(
+      circle 500px at 0% 20%,
+      rgba(139, 92, 246, 0.3),
+      transparent
+    ),
+    radial-gradient(
+      circle 500px at 100% 0%,
+      rgba(59, 130, 246, 0.3),
+      transparent
+    );
+
+  background-size: 48px 48px, 48px 48px, 100% 100%, 100% 100%;
 }
 
 /* Customize the entire scrollbar */

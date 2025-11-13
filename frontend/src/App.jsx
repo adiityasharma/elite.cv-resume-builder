@@ -10,6 +10,7 @@ import SectionLayout from "./pages/SectionLayout";
 import ExperiencInfo from "./components/resume/ExperiencInfo";
 import SkillsInfo from "./components/resume/SkillsInfo";
 import Summary from "./components/resume/Summary";
+import AddSection from "./components/resume/AddSection";
 // import ResumeEditPage from "./pages/ResumeEditPage";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="experience" element={<ExperiencInfo />} />
             <Route path="skills" element={<SkillsInfo />} />
             <Route path="summary" element={<Summary />} />
+            <Route path="add-section" element={<AddSection />} />
           </Route>
         </Route>
       </Routes>
