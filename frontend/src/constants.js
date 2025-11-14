@@ -170,3 +170,57 @@ export const otherFieldsForAdditionalDetails = [
     name: "Interests"
   },
 ]
+
+export const colorPalettes = [
+  {
+    "palette_name": "Sunset Glow",
+    "colors": [
+      { "name": "Coral", "hex": "#FF6F61" },
+      { "name": "Sunset Orange", "hex": "#FF8C42" },
+      { "name": "Golden Yellow", "hex": "#FFC857" },
+      { "name": "Soft Pink", "hex": "#F7B2BD" },
+      { "name": "Deep Plum", "hex": "#5C2751" }
+    ]
+  },
+  {
+    "palette_name": "Ocean Breeze",
+    "colors": [
+      { "name": "Seafoam Green", "hex": "#9FE2BF" },
+      { "name": "Aqua Blue", "hex": "#00B5D8" },
+      { "name": "Deep Ocean", "hex": "#005377" },
+      { "name": "Sand", "hex": "#EED9C4" },
+      { "name": "Coral Reef", "hex": "#FF7660" }
+    ]
+  },
+  {
+    "palette_name": "Forest Harmony",
+    "colors": [
+      { "name": "Evergreen", "hex": "#2E4600" },
+      { "name": "Moss Green", "hex": "#718355" },
+      { "name": "Earth Brown", "hex": "#6F4E37" },
+      { "name": "Pine Needle", "hex": "#31572C" },
+      { "name": "Fog Gray", "hex": "#DDE2E4" }
+    ]
+  },
+  {
+    "palette_name": "Retro Pop",
+    "colors": [
+      { "name": "Mustard Yellow", "hex": "#FFB400" },
+      { "name": "Mint Green", "hex": "#98FF98" },
+      { "name": "Bubblegum Pink", "hex": "#FF77AA" },
+      { "name": "Teal", "hex": "#008080" },
+      { "name": "Brick Red", "hex": "#C04C36" }
+    ]
+  },
+  {
+    "palette_name": "Minimal Neutrals",
+    "colors": [
+      { "name": "Soft White", "hex": "#F8F9FA" },
+      { "name": "Light Gray", "hex": "#D3D3D3" },
+      { "name": "Warm Taupe", "hex": "#C6BAA7" },
+      { "name": "Cool Charcoal", "hex": "#444444" },
+      { "name": "Deep Black", "hex": "#000000" }
+    ]
+  }
+]
+
