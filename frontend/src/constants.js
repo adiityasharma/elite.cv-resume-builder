@@ -224,3 +224,57 @@ export const colorPalettes = [
   }
 ]
 
+export const sampleData = {
+  name: "Asha Verma",
+  title: "Frontend Engineer",
+  location: "Bengaluru, India",
+  email: "asha.verma@example.com",
+  phone: "+91 98XXXXXXXX",
+  website: "ashaverma.dev",
+  linkedin: "linkedin.com/in/ashaverma",
+  github: "github.com/ashaverma",
+  summary:
+    "Frontend engineer with 6+ years building accessible, high-performance React applications. Passionate about UX, responsive design and maintainable code.",
+  skills: [
+    "React", "TypeScript", "Tailwind CSS", "CSS-in-JS", "HTML5", "Accessibility (a11y)",
+    "Testing (Jest, RTL)", "Performance Optimization"
+  ],
+  experience: [
+    {
+      company: "BrightApps Pvt. Ltd.",
+      role: "Senior Frontend Engineer",
+      start: "May 2022",
+      end: "Present",
+      bullets: [
+        "Led migration from class components to React hooks + TypeScript.",
+        "Improved Lighthouse performance score from 48 -> 92 for primary product.",
+        "Mentored 4 engineers; introduced component-driven design with Storybook."
+      ],
+    },
+    {
+      company: "PixelWorks",
+      role: "Frontend Engineer",
+      start: "Jan 2019",
+      end: "Apr 2022",
+      bullets: [
+        "Implemented reusable UI library used across 6 products.",
+        "Improved form accessibility and reduced validation errors by 30%."
+      ],
+    },
+  ],
+  education: [
+    {
+      school: "Indian Institute of Technology",
+      degree: "B.Tech, Computer Science",
+      start: "2014",
+      end: "2018",
+    },
+  ],
+  projects: [
+    {
+      name: "Resume Builder",
+      desc: "A tiny React app to generate printable resumes, PDF export with print CSS.",
+      link: "https://github.com/ashaverma/resume-builder",
+    },
+  ],
+};
