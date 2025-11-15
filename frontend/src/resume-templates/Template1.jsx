@@ -4,10 +4,10 @@ const Template1 = () => {
   return (
     <div
       // ref={ref}
-      className="w-full min-h-[841px] flex items-center justify-center overflow-hidden"
+      className="w-full h-full flex items-center justify-center overflow-hidden"
     >
       <article
-        className="w-full min-h-[841px] shadow-xl overflow-hidden"
+        className="w-full h-full shadow-xl overflow-hidden"
         style={{ outline: "1px solid #e5e7eb" }}
       >
         {/* Layout */}
