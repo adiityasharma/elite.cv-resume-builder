@@ -4,12 +4,12 @@ import { X } from "lucide-react";
 
 const AllTemplatePreview = () => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className=" flex flex-col gap-4">
       <div className=" flex items-center justify-between font-semibold">
         <h1 className="text-2xl ">Templates</h1>
         <X className="text-blue-400 cursor-pointer hover:text-blue-600 " />
       </div>
-      
+
       <div className="h-px w-full bg-neutral-300 "></div>
 
       <div className="w-full  ">

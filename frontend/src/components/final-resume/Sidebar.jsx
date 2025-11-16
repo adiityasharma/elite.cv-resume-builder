@@ -1,5 +1,5 @@
 import React from "react";
-import { BookText, PaintBucket, FilePlusCorner } from "lucide-react";
+import { BookText, PaintBucket, FilePlusCorner, SquarePen } from "lucide-react";
 
 const sidebarItems = [
   {
@@ -14,8 +14,8 @@ const sidebarItems = [
   },
   {
     id: 3,
-    icon: FilePlusCorner,
-    name: "Add Section",
+    icon: SquarePen,
+    name: "Edit",
   },
 ];
 
@@ -26,12 +26,12 @@ const Sidebar = () => {
         {sidebarItems.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col items-center gap-1 hover:bg-neutral-50/50 py-3 rounded-xl transition-all duration-300"
+            className="font-semibold cursor-pointer flex flex-col items-center gap-1 bg-white border-2 border-neutral-200 hover:border-blue-400 p-2 rounded-md transition-all duration-300"
           >
-            <div className="w-10 rounded-lg flex items-center justify-center text-white aspect-square bg-blue-500 ">
-              <item.icon />
+            <div className="w-8 rounded-lg flex items-center justify-center text-white aspect-square bg-blue-500 ">
+              <item.icon size={20} />
             </div>
-            <h1 className="text-center text-neutral-800 text-xs">
+            <h1 className="text-center text-neutral-800 text-[11px] leading-tight">
               {item.name}
             </h1>
           </div>
