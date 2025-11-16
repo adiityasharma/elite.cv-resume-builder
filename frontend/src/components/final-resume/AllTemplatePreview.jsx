@@ -13,7 +13,7 @@ const AllTemplatePreview = () => {
       <div className="h-px w-full bg-neutral-300 "></div>
 
       <div className="w-full  ">
-        <div className="grid grid-cols-2 gap-5 w-full mt-4">
+        <div className="px-5 grid grid-cols-2 gap-5 w-full mt-4 ">
           {ResumeTemplates.map((resume) => (
             <div
               key={resume.id}

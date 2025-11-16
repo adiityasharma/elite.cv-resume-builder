@@ -8,7 +8,7 @@ const ResumePreviewSection = () => {
   const Temp = ResumeTemplates[4].component;
 
   return (
-    <div className="min-w-[900px] flex flex-col items-center gap-5 rounded-lg overflow-hidden border-2 border-neutral-200 bg-white shadow-lg pb-10">
+    <div className="w-full flex flex-col items-center gap-5 rounded-lg overflow-hidden border-2 border-neutral-200 bg-white shadow-lg pb-10">
       <div className="px-5 w-full h-[50px] bg-white shadow flex items-center justify-between">
         <div className="flex items-center gap-4">
           <h1>untitled</h1>

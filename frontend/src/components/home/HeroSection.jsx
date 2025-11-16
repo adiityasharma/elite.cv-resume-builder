@@ -1,6 +1,9 @@
 import React from "react";
+import { ResumeTemplates } from "../../resume-templates";
 
 const HeroSection = () => {
+  const Temp = ResumeTemplates;
+
   return (
     <div className="w-full h-[650px] flex justify-center gap-10 pt-5">
       <div className="w-[50%] h-full flex items-start flex-col justify-center select-none">
@@ -26,11 +29,23 @@ const HeroSection = () => {
         </p>
       </div>
       <div className="w-[50%] h-full relative flex items-center justify-center">
-        <div className="absolute  -rotate-4 hover:rotate-0 scale-90 hover:scale-105 -left-4 transition-all duration-500 bg-white shadow-xl w-[360px] h-[500px] rounded-xl p-6 hover:p-4 overflow-hidden cursor-pointer">
-          <div className="w-full h-full bg-blue-400 rounded-xl shadow-xl"></div>
+        <div className="absolute  -rotate-4 hover:rotate-0 scale-90 hover:scale-105 -left-4 transition-all duration-500 bg-white shadow-xl w-[360px] h-[500px] rounded-xl p-6 hover:p-3 overflow-hidden cursor-pointer">
+          <div className="w-full h-full  rounded-xl shadow-xl overflow-hidden">
+            <img
+              src={Temp[2].image}
+              alt=""
+              className="object-center w-full h-full"
+            />
+          </div>
         </div>
-        <div className="absolute rotate-4 hover:rotate-0 scale-90 hover:scale-105 -right-4 transition-all duration-500 bg-white shadow-xl w-[360px] h-[500px] rounded-xl p-6 hover:p-4 overflow-hidden cursor-pointer">
-          <div className="w-full h-full bg-blue-400 rounded-xl shadow-xl"></div>
+        <div className="absolute rotate-4 hover:rotate-0 scale-90 hover:scale-105 -right-4 transition-all duration-500 bg-white shadow-xl w-[360px] h-[500px] rounded-xl p-6 hover:p-3 overflow-hidden cursor-pointer ">
+          <div className="w-full h-full rounded-xl shadow-xl overflow-hidden select-none">
+            <img
+              src={Temp[3].image}
+              alt=""
+              className="object-center w-full h-full"
+            />
+          </div>
         </div>
       </div>
     </div>
