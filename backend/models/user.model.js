@@ -21,6 +21,15 @@ export const userSchema = new Schema({
   },
   accessToken: {
     type: String
+  },
+  isEmailVerified: {
+    type: Boolean
+  },
+  verificationCode: {
+    type: String
+  },
+  verificationCodeExpiry: {
+    type: Date
   }
 }, { timestamps: true })
 

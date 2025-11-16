@@ -4,6 +4,8 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { generateJWT } from "../utils/generateJWT.js";
 import jwt from "jsonwebtoken"
+import { sendMail } from "../utils/sendMail.js";
+import { verificationCodeGenerater } from "../utils/verificationCodeGenerater.js";
 
 export const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
@@ -18,20 +20,37 @@ export const registerUser = asyncHandler(async (req, res) => {
 
   const existingUser = await User.findOne({ email });
 
-  if (existingUser) {
+  if (existingUser && existingUser.isEmailVerified) {
     throw new ApiError(400, "User already exists")
+  };
+
+  if (existingUser && !existingUser.isEmailVerified) {
+    throw new ApiError(400, "Login and verify your email.")
   }
 
-
+  const code = verificationCodeGenerater()
+  const verificationCodeExpiry = Date.now() + (1000 * 60 * 10)
 
   const user = await User.create({
     name,
     email,
-    password
-  })
+    password,
+    verificationCode: code,
+    verificationCodeExpiry
+  });
+
+  try {
+    await sendMail({ code, sendTo: email, subject: "Your verification Code" })
+  } catch (error) {
+    throw new ApiError(400, "Error while sending email.")
+  }
 
   res.status(201).json(
-    new ApiResponse(201, "User created successfully", user)
+    new ApiResponse(201, "verification code has been sent to your email address", {
+      name: user.name,
+      email: user.email,
+      _id: user._id
+    })
   )
 })
 
@@ -127,7 +146,7 @@ export const logoutUser = asyncHandler(async (req, res) => {
 
 export const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id).select("-password -refreshToken")
-  if(!user) {
+  if (!user) {
     throw new ApiError(404, "User not found")
   }
   return res.status(200).json(new ApiResponse(200, "User profile", user))
