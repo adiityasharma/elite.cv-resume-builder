@@ -2,10 +2,13 @@ import React, { useRef } from "react";
 import { ResumeTemplates } from "../../resume-templates";
 import { Pencil } from "lucide-react";
 import { generatePDF } from "../../utils/generatePDF";
+import { useSelector, useDispatch } from "react-redux";
 
 const ResumePreviewSection = () => {
   const resumeRef = useRef();
   const Temp = ResumeTemplates[4].component;
+
+  const data = useSelector((state) => state.resumeData);
 
   return (
     <div className="w-full flex flex-col items-center gap-5 rounded-lg overflow-hidden border-2 border-neutral-200 bg-white shadow-lg pb-10">
@@ -28,7 +31,7 @@ const ResumePreviewSection = () => {
         ref={resumeRef}
         className=" w-[594px] min-h-[842px] border border-[#dcdcdc] overflow-hidden"
       >
-        <Temp />
+        <Temp data={data} />
       </div>
     </div>
   );

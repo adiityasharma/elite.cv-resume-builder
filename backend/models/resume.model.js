@@ -12,6 +12,7 @@ const resumeSchema = new Schema({
     required: true,
     default: "Untitled Resume",
   },
+  jobRole: { type: String },
   summary: {
     type: String
   },
@@ -27,9 +28,7 @@ const resumeSchema = new Schema({
     lastName: { type: String },
     email: { type: String, required: true },
     phone: { type: String },
-    city: { type: String },
-    country: { type: String },
-    pinCode: { type: String },
+    address: { type: String },
     linkedin: { type: String },
     github: { type: String },
     website: { type: String },

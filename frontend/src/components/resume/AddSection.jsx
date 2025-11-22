@@ -55,7 +55,12 @@ const AddSection = () => {
         </div>
       </div>
       {/*  TODO: change accourding to url */}
-      <Button styles="absolute bottom-0 right-0" onClick={() => navigate("/resume/serction/custom")}>Next</Button>
+      <Button
+        styles="absolute bottom-0 right-0"
+        onClick={() => navigate("/resume/sections/final-resume")}
+      >
+        Next
+      </Button>
     </div>
   );
 };

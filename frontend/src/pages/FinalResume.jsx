@@ -13,7 +13,9 @@ const FinalResume = () => {
           selectedField={selectedField}
           setSelectedField={setSelectedField}
         />
+        {/* {isOpenSidebar && ( */}
         <TemplateBar selectedField={selectedField} />
+        {/* )} */}
       </div>
       <div className="flex-1 ">
         <ResumePreviewSection />

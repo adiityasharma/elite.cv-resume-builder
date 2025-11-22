@@ -3,11 +3,16 @@ import Input from "../common/Input";
 import Select from "../common/Select";
 import Option from "../common/Option";
 import EditSection from "../common/EditSection";
-import { useState } from "react";
+import { useReducer, useState } from "react";
+
+
+
 
 const EditResume = () => {
   const [inputValue, setInputValue] = useState("");
   const [skills, setSkills] = useState([]);
+
+  const [state, dispatch] = useReducer()
 
   const addSkillHandle = () => {
     if (inputValue) {
@@ -32,7 +37,7 @@ const EditResume = () => {
     <div className="flex flex-col gap-4 ">
       <div className=" flex items-center justify-between font-semibold">
         <h1 className="text-xl ">Edit & Add Sections</h1>
-        <X className="text-blue-400 cursor-pointer hover:text-blue-600 " />
+        {/* <X className="text-blue-400 cursor-pointer hover:text-blue-600 " /> */}
       </div>
 
       <div className="h-px w-full bg-neutral-500 "></div>

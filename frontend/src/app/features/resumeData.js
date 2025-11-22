@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   title: "Untitled",
+  avatar: "",
+  jobRole: "",
   personalInfo: {},
   education: [],
   experience: [],
@@ -19,8 +21,9 @@ export const resumeDataSlice = createSlice({
   name: "resumeData",
   initialState,
   reducers: {
-    personal_info: (state, action) => {
-      state.personalInfo = {...state}
-    }
+    
   }
-}) 
+})
+
+export const {  } = resumeDataSlice.actions;
+export default resumeDataSlice.reducer;

@@ -1,5 +1,11 @@
-import React, { useState } from "react";
-import { BookText, PaintBucket, FilePlusCorner, SquarePen } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import {
+  BookText,
+  PaintBucket,
+  FilePlusCorner,
+  SquarePen,
+  Flag,
+} from "lucide-react";
 
 const sidebarItems = [
   {
@@ -20,12 +26,21 @@ const sidebarItems = [
 ];
 
 const Sidebar = ({ selectedField, setSelectedField }) => {
+  
+  const sidebarHandler = (id) => {
+    if (selectedField === id) {
+      setSelectedField(null);
+    } else {
+      setSelectedField(id);
+    }
+  };
+
   return (
     <div className="w-18 flex justify-center h-full">
       <div className="flex flex-col gap-4">
         {sidebarItems.map((item) => (
           <div
-            onClick={() => setSelectedField(item.id)}
+            onClick={() => sidebarHandler(item.id)}
             key={item.id}
             style={
               selectedField === item.id
