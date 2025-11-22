@@ -12,6 +12,9 @@ const resumeSchema = new Schema({
     required: true,
     default: "Untitled Resume",
   },
+  summary: {
+    type: String
+  },
 
   template: {
     type: String,
@@ -24,7 +27,9 @@ const resumeSchema = new Schema({
     lastName: { type: String },
     email: { type: String, required: true },
     phone: { type: String },
-    address: { type: String },
+    city: { type: String },
+    country: { type: String },
+    pinCode: { type: String },
     linkedin: { type: String },
     github: { type: String },
     website: { type: String },
@@ -36,9 +41,10 @@ const resumeSchema = new Schema({
     {
       school: { type: String, required: true },
       degree: { type: String, required: true },
+      location: { type: String },
       fieldOfStudy: { type: String },
-      startDate: { type: Date },
-      endDate: { type: Date },
+      month: { type: String },
+      year: { type: String },
       grade: { type: String },
       description: { type: String },
     },
@@ -51,8 +57,8 @@ const resumeSchema = new Schema({
       location: { type: String },
       startDate: { type: Date },
       endDate: { type: Date },
-      isCurrent: { type: Boolean, default: false },
-      achievements: [{ type: String }],
+      isCurrentWorking: { type: Boolean, default: false },
+      description: [{ type: String }],
     },
   ],
 
@@ -72,7 +78,7 @@ const resumeSchema = new Schema({
       level: {
         type: String,
         enum: ["beginner", "intermediate", "advanced", "expert"],
-        default: "beginner",
+        default: "expert",
       },
     },
   ],

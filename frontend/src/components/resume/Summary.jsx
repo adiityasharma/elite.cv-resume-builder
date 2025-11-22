@@ -2,9 +2,25 @@ import React from "react";
 import GoBackBtn from "../common/GoBackBtn";
 import Button from "../common/Button";
 import { useNavigate } from "react-router-dom";
+import { useReducer } from "react";
+
+const initialstate = {
+  summary: "",
+};
+
+const ruducer = (state, action) => {
+  switch (action.type) {
+    case "summary":
+      return { ...state, [action.type]: action.value };
+    default:
+      return state;
+  }
+};
 
 const Summary = () => {
   const navigate = useNavigate();
+
+  const [state, dispatch] = useReducer(ruducer, initialstate);
 
   return (
     <div className="w-full py-15 relative">
@@ -27,6 +43,7 @@ const Summary = () => {
           placeholder="Write your summary here."
           name=""
           id=""
+          onChange={(e) => dispatch({ type: "summary", value: e.target.value })}
         />
       </div>
       <Button

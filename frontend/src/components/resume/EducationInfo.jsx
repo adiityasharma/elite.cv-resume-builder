@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import Input from "../common/Input";
 import Select from "../common/Select";
 import Option from "../common/Option";
@@ -7,8 +7,45 @@ import { ArrowLeft } from "lucide-react";
 import Button from "../common/Button";
 import GoBackBtn from "../common/GoBackBtn";
 
+const initialstate = {
+  school: "",
+  location: "",
+  degree: "",
+  fieldOfStudy: "",
+  month: "",
+  year: "",
+  grade: "",
+  description: "",
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "school":
+      return { ...state, [action.type]: action.value };
+    case "location":
+      return { ...state, [action.type]: action.value };
+    case "degree":
+      return { ...state, [action.type]: action.value };
+    case "fieldOfStudy":
+      return { ...state, [action.type]: action.value };
+    case "month":
+      return { ...state, [action.type]: action.value };
+    case "year":
+      return { ...state, [action.type]: action.value };
+    case "grade":
+      return { ...state, [action.type]: action.value };
+    case "description":
+      return { ...state, [action.type]: action.value };
+    default:
+      return state;
+  }
+};
+
 const EducationInfo = () => {
   const navigate = useNavigate();
+
+  const [state, dispatch] = useReducer(reducer, initialstate);
+  console.log(state)
 
   return (
     <div className="w-full py-15 relative">
@@ -28,25 +65,35 @@ const EducationInfo = () => {
           type="text"
           label="School Name *"
           styles="py-3 w-full"
+          onChange={(e) => dispatch({ type: "school", value: e.target.value })}
         />
         <Input
           placeholder="New Delhi, India"
           type="text"
           label="School Location"
           styles="py-3 w-full"
+          onChange={(e) =>
+            dispatch({ type: "location", value: e.target.value })
+          }
         />
         <Input
           placeholder="Degree"
           type="text"
           label="Degree"
           styles="py-3 w-full"
+          onChange={(e) => dispatch({ type: "degree", value: e.target.value })}
         />
         <div>
           <label htmlFor="" className="font-semibold text-sm">
             Graduation Date (or expected Graduation Date)
           </label>
           <div className="w-full flex justify-between gap-4">
-            <Select styles="w-full">
+            <Select
+              onChange={(e) =>
+                dispatch({ type: "month", value: e.target.value })
+              }
+              styles="w-full"
+            >
               <Option value="January" label="January" />
               <Option value="February" label="February" />
               <Option value="March" label="March" />
@@ -60,7 +107,14 @@ const EducationInfo = () => {
               <Option value="November" label="November" />
               <Option value="December" label="December" />
             </Select>
-            <Input placeholder="2025" type="text" styles="py-3 w-full" />
+            <Input
+              onChange={(e) =>
+                dispatch({ type: "year", value: e.target.value })
+              }
+              placeholder="2025"
+              type="text"
+              styles="py-3 w-full"
+            />
           </div>
         </div>
         <Input
@@ -68,6 +122,9 @@ const EducationInfo = () => {
           type="text"
           label="Field of Study"
           styles="py-3 w-full"
+          onChange={(e) =>
+            dispatch({ type: "fieldOfStudy", value: e.target.value })
+          }
         />
       </div>
 

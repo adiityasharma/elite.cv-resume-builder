@@ -4,19 +4,37 @@ import { Trash } from "lucide-react";
 import { skillsSuggestions } from "../../constants";
 import Button from "../common/Button";
 import { useNavigate } from "react-router-dom";
+import { useReducer } from "react";
+import { useEffect } from "react";
+
+const initialstate = {
+  name: "",
+  level: "",
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "name":
+      return { ...state, [action.type]: action.value };
+    case "level":
+      return { ...state, [action.type]: action.value };
+    default:
+      return state;
+  }
+};
 
 const SkillsInfo = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
   const [skills, setSkills] = useState([]);
 
-  const addSkillHandle = ({ value, id }) => {
-    if (value || inputValue) {
-      setSkills([
-        ...skills,
-        { id: id || Date.now(), name: value || inputValue },
-      ]);
+  const [state, dispatch] = useReducer();
+
+  const addSkillHandle = ({ id }) => {
+    if (inputValue) {
+      setSkills([...skills, { id: Date.now(), name: inputValue }]);
       setInputValue("");
+      dispatch({ type: "name", value: initialstate });
     }
   };
 
