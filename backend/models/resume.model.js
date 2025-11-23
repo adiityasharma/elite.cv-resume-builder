@@ -32,12 +32,12 @@ const resumeSchema = new Schema({
     linkedin: { type: String },
     github: { type: String },
     website: { type: String },
-    summary: { type: String },
     profileImage: { type: String }, // optional: base64 or URL
   },
 
   education: [
     {
+      id: String,
       school: { type: String, required: true },
       degree: { type: String, required: true },
       location: { type: String },
@@ -65,7 +65,7 @@ const resumeSchema = new Schema({
     {
       name: { type: String, required: true },
       description: { type: String },
-      technologies: [{ type: String }],
+      technologies: { type: String },
       link: { type: String },
       github: { type: String },
     },
@@ -82,12 +82,11 @@ const resumeSchema = new Schema({
     },
   ],
 
-  certifications: [
+  certificates: [
     {
       title: { type: String, required: true },
       issuer: { type: String },
       date: { type: Date },
-      credentialId: { type: String },
       link: { type: String },
     },
   ],
@@ -97,8 +96,8 @@ const resumeSchema = new Schema({
       name: { type: String, required: true },
       proficiency: {
         type: String,
-        enum: ["basic", "conversational", "fluent", "native"],
-        default: "basic",
+        enum: ["Beginner", "Elementary", "Intermediate", "Upper-Intermediate", "Advanced"],
+        default: "Advanced",
       },
     },
   ],

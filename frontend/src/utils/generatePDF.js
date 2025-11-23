@@ -9,7 +9,7 @@ export const generatePDF = async (element, fileName) => {
   const pdf = new jsPDF({
     orientation: "portrait",
     unit: "px",
-    format: [595, 842],
+    format: "a4",
   });
 
   const canvas = await html2canvas(element, {

@@ -116,7 +116,7 @@ export default function Template5({ data }) {
               {data?.personalInfo?.address && (
                 <div>
                   <strong style={{ color: colors.primaryText }}>
-                    Location:
+                    Address:
                   </strong>{" "}
                   <span>{data?.personalInfo?.address}</span>
                 </div>
@@ -136,7 +136,7 @@ export default function Template5({ data }) {
               {data?.skills.length > 0 &&
                 data.skills.map((s) => (
                   <span
-                    key={s}
+                    key={s.id}
                     className="text-xs px-2 py-1 rounded-full"
                     style={{
                       backgroundColor: colors.chipBg,
@@ -144,7 +144,7 @@ export default function Template5({ data }) {
                       border: `1px solid ${colors.mutedBorder}`,
                     }}
                   >
-                    {s}
+                    {s.name}
                   </span>
                 ))}
             </div>
@@ -161,8 +161,8 @@ export default function Template5({ data }) {
             <div style={{ color: colors.secondaryText }}>
               {data?.languages.length > 0 &&
                 data.languages.map((l) => (
-                  <div key={l} className="mb-1">
-                    {l}
+                  <div key={l.id} className="mb-1">
+                    {l.name}
                   </div>
                 ))}
             </div>
@@ -177,8 +177,8 @@ export default function Template5({ data }) {
               >
                 Education
               </h4>
-              {data.education.map((d) => (
-                <div key={d.degree} style={{ color: colors.secondaryText }}>
+              {data.education.map((d, index) => (
+                <div key={index} style={{ color: colors.secondaryText }}>
                   <div style={{ color: colors.primaryText, fontWeight: 600 }}>
                     {d.degree} — {d.school}
                   </div>
@@ -223,65 +223,67 @@ export default function Template5({ data }) {
 
           {/* Experience */}
           {data?.experience.length > 0 && (
-            <section>
-              <h3
-                className="text-sm uppercase tracking-wide mb-3"
-                style={{ color: colors.accentDark, fontWeight: 700 }}
-              >
-                Experience
-              </h3>
+            <>
+              <section>
+                <h3
+                  className="text-sm uppercase tracking-wide mb-3"
+                  style={{ color: colors.accentDark, fontWeight: 700 }}
+                >
+                  Experience
+                </h3>
 
-              <div className="space-y-4">
-                {/* Job item */}
+                <div className="space-y-4">
+                  {/* Job item */}
 
-                {data.experience.map((exp) => (
-                  <article key={exp.company}>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <div
-                          className="font-semibold"
-                          style={{ color: colors.primaryText }}
-                        >
-                          {exp?.position}
+                  {data.experience.map((exp) => (
+                    <article key={exp.id}>
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <div
+                            className="font-semibold"
+                            style={{ color: colors.primaryText }}
+                          >
+                            {exp?.position}
+                          </div>
+                          <div
+                            className="text-xs"
+                            style={{ color: colors.secondaryText }}
+                          >
+                            {exp?.company} — {exp?.startDate} —{" "}
+                            {exp?.endDate || "Present"}
+                          </div>
                         </div>
+
                         <div
                           className="text-xs"
                           style={{ color: colors.secondaryText }}
                         >
-                          {exp?.company} — {exp?.startDate} —{" "}
-                          {exp?.endDate || "Present"}
+                          {exp?.location}
                         </div>
                       </div>
 
-                      <div
-                        className="text-xs"
+                      <p
+                        className="mt-2 list-disc ml-5 text-sm"
                         style={{ color: colors.secondaryText }}
                       >
-                        {exp?.location}
-                      </div>
-                    </div>
-
-                    <p
-                      className="mt-2 list-disc ml-5 text-sm"
-                      style={{ color: colors.secondaryText }}
-                    >
-                      {exp?.description}
-                    </p>
-                  </article>
-                ))}
-              </div>
-            </section>
+                        {exp?.description}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+              <div
+                className="my-4"
+                style={{
+                  height: 1,
+                  backgroundColor: colors.mutedBorder,
+                  width: "100%",
+                }}
+              />
+            </>
           )}
 
           {/* Divider */}
-          <div
-            className="my-4"
-            style={{
-              height: 1,
-              backgroundColor: colors.mutedBorder,
-              width: "100%",
-            }}
-          />
 
           {/* Projects / Achievements */}
           {data?.projects?.length > 0 && (
@@ -304,7 +306,7 @@ export default function Template5({ data }) {
                       <span
                         style={{ color: colors.primaryText, fontWeight: 400 }}
                       >
-                        {p?.tech.length > 0 && p.tech.map((tech) => ({ tech }))}
+                        {p?.technologies}
                       </span>
                     </div>
                     <div>{p.description}</div>
@@ -325,19 +327,20 @@ export default function Template5({ data }) {
           />
 
           {/* Education / Footer quick items */}
-          <section className="mt-auto">
+          <section className="">
             <div className="flex justify-between items-center">
-              {data?.certifications?.length > 0 && (
+              {data?.certificates?.length > 0 && (
                 <div>
                   <h4 style={{ color: colors.primaryText, fontWeight: 700 }}>
-                    Certifications
+                    Certificates
                   </h4>
-                  {data.certification.map((certificate) => (
+                  {data.certificates.map((certificate) => (
                     <div
+                      key={certificate.id}
                       className="text-sm"
                       style={{ color: colors.secondaryText }}
                     >
-                      {certificate.name} — {certificate.issuer}
+                      {certificate.title} — {certificate.issuer}
                     </div>
                   ))}
                 </div>

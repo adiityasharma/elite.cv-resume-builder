@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { ResumeTemplates } from "../../resume-templates";
-import { Pencil } from "lucide-react";
+import { Minus, Pencil, Plus } from "lucide-react";
 import { generatePDF } from "../../utils/generatePDF";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -21,15 +21,15 @@ const ResumePreviewSection = () => {
         </div>
         <button
           className="px-4 py-1 rounded-md cursor-pointer hover:bg-blue-600 bg-blue-500 text-white font-semibold"
-          onClick={() => generatePDF(resumeRef.current, "aditya")}
+          onClick={() => generatePDF(resumeRef.current, "untitled")}
         >
-          Print
+          Download as PDF
         </button>
       </div>
 
       <div
         ref={resumeRef}
-        className=" w-[594px] min-h-[842px] border border-[#dcdcdc] overflow-hidden"
+        className="w-[595px] min-h-[842px] border border-[#dcdcdc] overflow-hidden"
       >
         <Temp data={data} />
       </div>
@@ -38,3 +38,4 @@ const ResumePreviewSection = () => {
 };
 
 export default ResumePreviewSection;
+// 
