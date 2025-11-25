@@ -12,7 +12,6 @@ const resumeSchema = new Schema({
     required: true,
     default: "Untitled Resume",
   },
-  jobRole: { type: String },
   summary: {
     type: String
   },
@@ -56,7 +55,6 @@ const resumeSchema = new Schema({
       location: { type: String },
       startDate: { type: Date },
       endDate: { type: Date },
-      isCurrentWorking: { type: Boolean, default: false },
       description: [{ type: String }],
     },
   ],
@@ -73,12 +71,8 @@ const resumeSchema = new Schema({
 
   skills: [
     {
+      id: { type: String },
       name: { type: String, required: true },
-      level: {
-        type: String,
-        enum: ["beginner", "intermediate", "advanced", "expert"],
-        default: "expert",
-      },
     },
   ],
 

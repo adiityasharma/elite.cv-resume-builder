@@ -6,46 +6,18 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Button from "../common/Button";
 import GoBackBtn from "../common/GoBackBtn";
-
-const initialstate = {
-  school: "",
-  location: "",
-  degree: "",
-  fieldOfStudy: "",
-  month: "",
-  year: "",
-  grade: "",
-  description: "",
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "school":
-      return { ...state, [action.type]: action.value };
-    case "location":
-      return { ...state, [action.type]: action.value };
-    case "degree":
-      return { ...state, [action.type]: action.value };
-    case "fieldOfStudy":
-      return { ...state, [action.type]: action.value };
-    case "month":
-      return { ...state, [action.type]: action.value };
-    case "year":
-      return { ...state, [action.type]: action.value };
-    case "grade":
-      return { ...state, [action.type]: action.value };
-    case "description":
-      return { ...state, [action.type]: action.value };
-    default:
-      return state;
-  }
-};
+import { educationInitialState, educationReducer } from "../../utils/reducers";
+import { addEducation } from "../../app/features/resumeData";
 
 const EducationInfo = () => {
   const navigate = useNavigate();
 
-  const [state, dispatch] = useReducer(reducer, initialstate);
-  console.log(state)
+  const [state, dispatch] = useReducer(educationReducer, educationInitialState);
+
+  const clickHandler = () => {
+    dispatch(addEducation(state));
+  };
+  console.log(state);
 
   return (
     <div className="w-full py-15 relative">
@@ -126,6 +98,16 @@ const EducationInfo = () => {
             dispatch({ type: "fieldOfStudy", value: e.target.value })
           }
         />
+        <Input
+          placeholder="Grade"
+          type="text"
+          label="Grade"
+          styles="py-3 w-full"
+          onChange={(e) => dispatch({ type: "grade", value: e.target.value })}
+        />
+        <Button onClick={clickHandler} styles="w-fit">
+          Save
+        </Button>
       </div>
 
       <Button

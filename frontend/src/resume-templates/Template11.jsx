@@ -1,79 +1,71 @@
-export default function Template5({ data }) {
+export default function Template6({ data }) {
   const color = {
     bg: "#FFFFFF",
-    primary: "#1F2937",
-    secondary: "#4B5563",
-    accent: "#2563EB",
-    border: "#E5E7EB",
-    chip: "#F3F4F6",
+    primary: "#0F172A",
+    secondary: "#475569",
+    accent: "#3B82F6",
+    border: "#CBD5E1",
+    chip: "#F1F5F9",
   };
 
   return (
     <div
-      className="w-[595px] h-[842px] mx-auto p-0"
+      className="w-[595px] h-[842px] mx-auto"
       style={{
         backgroundColor: color.bg,
         fontFamily:
           "Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial",
       }}
     >
-      {/* HEADER CARD */}
-      <div className="p-8 border-b" style={{ borderColor: color.border }}>
+      {/* HEADER */}
+      <div className="px-8 py-4 border-b" style={{ borderColor: color.border }}>
         <h1
           className="text-3xl font-bold tracking-tight"
           style={{ color: color.primary }}
         >
           {data?.personalInfo?.firstName} {data?.personalInfo?.lastName}
         </h1>
-
         {data?.personalInfo?.title && (
           <p className="text-sm mt-1" style={{ color: color.secondary }}>
             {data.personalInfo.title}
           </p>
         )}
 
+        {/* CONTACT BAR */}
         <div
-          className="flex flex-wrap gap-4 text-xs mt-4"
-          style={{ color: color.secondary }}
+          className="flex flex-wrap gap-x-4 gap-y-1 text-xs pt-2"
+          style={{ borderColor: color.border, color: color.secondary }}
         >
           {data?.personalInfo?.email && <span>{data.personalInfo.email}</span>}
           {data?.personalInfo?.phone && <span>{data.personalInfo.phone}</span>}
           {data?.personalInfo?.website && (
-            <span>
-              <a href={data.personalInfo.website}>
-                {data.personalInfo.website}
-              </a>
-            </span>
+            <a href={data.personalInfo.website}>{data.personalInfo.website}</a>
           )}
           {data?.personalInfo?.linkedin && (
-            <span>
-              <a href={data.personalInfo.linkedin}>
-                {data.personalInfo.linkedin}
-              </a>
-            </span>
+            <a href={data.personalInfo.linkedin}>
+              {data.personalInfo.linkedin}
+            </a>
           )}
           {data?.personalInfo?.github && (
-            <span>
-              <a href={data.personalInfo.github}>{data.personalInfo.github}</a>
-            </span>
+            <a href={data.personalInfo.github}>{data.personalInfo.github}</a>
           )}
         </div>
       </div>
 
-      {/* MAIN CONTENT BODY */}
-      <div className="grid grid-cols-3 gap-0">
+      {/* MAIN TWO-COLUMN CONTENT */}
+      <div className="flex justify-between h-[calc(842px-150px)]">
         {/* LEFT COLUMN */}
-        <div
-          className="col-span-1 p-6 border-r"
-          style={{ borderColor: color.border }}
-        >
-          {/* PROFILE */}
-          <section className="mb-6">
+        <div className="w-[40%] pl-8 pr-6 py-6 space-y-5">
+          {/* SUMMARY */}
+          <section
+            className="relative pl-4 border-l-4"
+            style={{ borderColor: color.accent }}
+          >
             <h3
-              className="text-xs uppercase font-semibold tracking-wide mb-2"
+              className="text-xs uppercase font-bold tracking-wide mb-2"
               style={{ color: color.primary }}
             >
-              Profile
+              Summary
             </h3>
             <p
               className="text-xs leading-relaxed"
@@ -84,9 +76,12 @@ export default function Template5({ data }) {
           </section>
 
           {/* SKILLS */}
-          <section className="mb-6">
+          <section
+            className="relative pl-4 border-l-4"
+            style={{ borderColor: color.accent }}
+          >
             <h3
-              className="text-xs uppercase font-semibold tracking-wide mb-2"
+              className="text-xs uppercase font-bold tracking-wide mb-2"
               style={{ color: color.primary }}
             >
               Skills
@@ -95,10 +90,8 @@ export default function Template5({ data }) {
               {data?.skills.map((skill) => (
                 <span
                   key={skill.id}
-                  className="px-2 py-1 text-[10px] rounded border"
+                  className="px-2 py-[2px] text-[10px] rounded"
                   style={{
-                    borderColor: color.border,
-                    backgroundColor: color.chip,
                     color: color.primary,
                   }}
                 >
@@ -108,37 +101,20 @@ export default function Template5({ data }) {
             </div>
           </section>
 
-          {/* LANGUAGES */}
-          <section className="mb-8">
-            <h3
-              className="text-xs uppercase font-semibold tracking-wide mb-2"
-              style={{ color: color.primary }}
-            >
-              Languages
-            </h3>
-            <ul
-              className="text-xs space-y-1"
-              style={{ color: color.secondary }}
-            >
-              {data?.languages.map((lang) => (
-                <li key={lang.id}>
-                  {lang.name} — {lang.level}
-                </li>
-              ))}
-            </ul>
-          </section>
-
           {/* EDUCATION */}
-          <section>
+          <section
+            className="relative pl-4 border-l-4"
+            style={{ borderColor: color.accent }}
+          >
             <h3
-              className="text-xs uppercase font-semibold tracking-wide mb-2"
+              className="text-xs uppercase font-bold tracking-wide mb-2"
               style={{ color: color.primary }}
             >
               Education
             </h3>
 
             <div
-              className="space-y-3 text-xs"
+              className="text-xs space-y-3"
               style={{ color: color.secondary }}
             >
               {data?.education.map((edu) => (
@@ -154,41 +130,68 @@ export default function Template5({ data }) {
               ))}
             </div>
           </section>
+
+          {/* LANGUAGES */}
+          <section
+            className="relative pl-4 border-l-4"
+            style={{ borderColor: color.accent }}
+          >
+            <h3
+              className="text-xs uppercase font-bold tracking-wide mb-2"
+              style={{ color: color.primary }}
+            >
+              Languages
+            </h3>
+            <ul
+              className="text-xs space-y-1"
+              style={{ color: color.secondary }}
+            >
+              {data?.languages.map((lang) => (
+                <li key={lang.id}>
+                  {lang.name} — {lang.level}
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="col-span-2 p-8 space-y-10">
+        <div className="w-[60%] pr-8 pl-6 py-6 space-y-5">
           {/* EXPERIENCE */}
-          <section>
+          <section
+            className="relative pl-4 border-l-4"
+            style={{ borderColor: color.primary }}
+          >
             <h2
-              className="text-sm uppercase font-bold tracking-wide mb-4"
+              className="text-sm uppercase font-bold tracking-wide mb-2"
               style={{ color: color.primary }}
             >
               Experience
             </h2>
 
-            <div className="space-y-6">
+            <div className="space-y-3">
               {data?.experience.map((job) => (
                 <div key={job.id}>
                   <h3
-                    className="font-semibold text-base"
+                    className="font-semibold"
                     style={{ color: color.primary }}
                   >
                     {job.position}
                   </h3>
 
-                  <div
-                    className="flex justify-between text-xs"
+                  <p className="text-xs" style={{ color: color.secondary }}>
+                    {job.company} — {job.startDate}–{job.endDate}
+                  </p>
+
+                  <p
+                    className="text-[10px] mt-1"
                     style={{ color: color.secondary }}
                   >
-                    <div>
-                      {job.company} — {job.startDate}–{job.endDate}
-                    </div>
-                    <div>{job.location}</div>
-                  </div>
+                    {job.location}
+                  </p>
 
                   <ul
-                    className="list-disc ml-5 mt-2 text-xs"
+                    className="list-disc ml-5 mt-1 text-xs"
                     style={{ color: color.secondary }}
                   >
                     {job.description}
@@ -199,15 +202,18 @@ export default function Template5({ data }) {
           </section>
 
           {/* PROJECTS */}
-          <section>
+          <section
+            className="relative pl-4 border-l-4"
+            style={{ borderColor: color.primary }}
+          >
             <h2
-              className="text-sm uppercase font-bold tracking-wide mb-3"
+              className="text-sm uppercase font-bold tracking-wide mb-1"
               style={{ color: color.primary }}
             >
               Projects
             </h2>
 
-            <div className="space-y-4">
+            <div className="space-y-2">
               {data?.projects.map((project) => (
                 <div key={project.id}>
                   <h4
@@ -216,7 +222,6 @@ export default function Template5({ data }) {
                   >
                     {project.name}
                   </h4>
-
                   <p
                     className="text-xs mt-1"
                     style={{ color: color.secondary }}
@@ -230,18 +235,17 @@ export default function Template5({ data }) {
 
           {/* CERTIFICATIONS */}
           <section
-            className="pt-4 border-t"
-            style={{ borderColor: color.border }}
+            className="relative pl-4 border-l-4"
+            style={{ borderColor: color.primary }}
           >
             <h2
-              className="text-sm uppercase font-bold tracking-wide mb-2"
+              className="text-sm uppercase font-bold tracking-wide mb-1"
               style={{ color: color.primary }}
             >
               Certifications
             </h2>
-
             <ul
-              className="text-xs space-y-1"
+              className="text-xs space-y-0"
               style={{ color: color.secondary }}
             >
               {data?.certificates?.map((cert) => (

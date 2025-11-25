@@ -1,3 +1,39 @@
+// personal information
+export const personalInfoInitialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  address: "",
+  linkedin: "",
+  github: "",
+  website: "",
+};
+
+export const personalInfoReducer = (state, action) => {
+  switch (action.type) {
+    case "firstName":
+      return { ...state, [action.type]: action.value };
+    case "lastName":
+      return { ...state, [action.type]: action.value };
+    case "email":
+      return { ...state, [action.type]: action.value };
+    case "phone":
+      return { ...state, [action.type]: action.value };
+    case "address":
+      return { ...state, [action.type]: action.value };
+    case "linkedin":
+      return { ...state, [action.type]: action.value };
+    case "github":
+      return { ...state, [action.type]: action.value };
+    case "website":
+      return { ...state, [action.type]: action.value };
+    default:
+      return state;
+  }
+};
+
+
 // education initial state
 export const educationInitialState = {
   school: "",

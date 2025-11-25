@@ -5,48 +5,26 @@ import { skillsSuggestions } from "../../constants";
 import Button from "../common/Button";
 import { useNavigate } from "react-router-dom";
 import { useReducer } from "react";
-import { useEffect } from "react";
-
-const initialstate = {
-  name: "",
-  level: "",
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "name":
-      return { ...state, [action.type]: action.value };
-    case "level":
-      return { ...state, [action.type]: action.value };
-    default:
-      return state;
-  }
-};
+import { useDispatch, useSelector } from "react-redux";
+import { addSkill, deleteSkill } from "../../app/features/resumeData";
 
 const SkillsInfo = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { skills } = useSelector((state) => state.resumeData);
+
   const [inputValue, setInputValue] = useState("");
-  const [skills, setSkills] = useState([]);
 
-  const [state, dispatch] = useReducer();
-
-  const addSkillHandle = ({ id }) => {
+  const addSkillHandle = () => {
     if (inputValue) {
-      setSkills([...skills, { id: Date.now(), name: inputValue }]);
+      dispatch(addSkill({ name: inputValue }));
       setInputValue("");
-      dispatch({ type: "name", value: initialstate });
     }
   };
 
   const enterToSave = (e) => {
     if (e.key === "Enter") {
       addSkillHandle();
-    }
-  };
-
-  const removeSkill = (id) => {
-    if (id) {
-      setSkills(skills.filter((skill) => skill.id !== id));
     }
   };
 
@@ -88,10 +66,8 @@ const SkillsInfo = () => {
             {skillsSuggestions.map((skill) => (
               <button
                 key={skill.id}
-                className="text-sm bg-white/50 text-blue-600 cursor-pointer px-4 py-1 rounded-full active:scale-95"
-                onClick={() =>
-                  addSkillHandle({ value: skill.name, id: skill.id })
-                }
+                className="text-[12px] bg-white shadow text-blue-600 cursor-pointer px-3 py-1 rounded-full active:scale-95 border border-neutral-100"
+                onClick={() => setInputValue(skill.name)}
               >
                 {skill.name} +
               </button>
@@ -105,19 +81,17 @@ const SkillsInfo = () => {
           <h1 className="text-lg font-medium">Skills:</h1>
           <div className="mt-2 ml-10">
             <ul className="list-disc grid grid-cols-2 w-xl gap-x-2">
-              {skills &&
-                skills.length > 0 &&
-                skills.map((skill, index) => (
-                  <li key={skill.id} className="relative uppercase group ">
-                    {skill.name}
-                    <button
-                      onClick={() => removeSkill(skill.id)}
-                      className="hidden absolute top-0 right-5 text-blue-500 group-hover:block cursor-pointer"
-                    >
-                      <Trash size={18} />
-                    </button>
-                  </li>
-                ))}
+              {skills.map((skill) => (
+                <li key={skill.id} className="relative group ">
+                  {skill.name}
+                  <button
+                    onClick={() => dispatch(deleteSkill({ id: skill.id }))}
+                    className="hidden absolute top-0 right-5 text-blue-500 group-hover:block cursor-pointer"
+                  >
+                    <Trash size={18} />
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

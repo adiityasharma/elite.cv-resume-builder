@@ -2,54 +2,20 @@ import React, { useReducer } from "react";
 import Input from "../common/Input";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../common/Button";
-
-const initialstate = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  phone: "",
-  city: "",
-  country: "",
-  pinCode: "",
-  linkedin: "",
-  github: "",
-  website: "",
-  summary: "",
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "firstName":
-      return { ...state, [action.type]: action.value };
-    case "lastName":
-      return { ...state, [action.type]: action.value };
-    case "email":
-      return { ...state, [action.type]: action.value };
-    case "phone":
-      return { ...state, [action.type]: action.value };
-    case "city":
-      return { ...state, [action.type]: action.value };
-    case "country":
-      return { ...state, [action.type]: action.value };
-    case "pinCode":
-      return { ...state, [action.type]: action.value };
-    case "linkedin":
-      return { ...state, [action.type]: action.value };
-    case "github":
-      return { ...state, [action.type]: action.value };
-    case "website":
-      return { ...state, [action.type]: action.value };
-    case "summary":
-      return { ...state, [action.type]: action.value };
-    default:
-      return state;
-  }
-};
+import { useDispatch, useSelector } from "react-redux";
+import { updatePersonalInfo } from "../../app/features/resumeData";
 
 const PersonalInfoPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { personalInfo } = useSelector((state) => state.resumeData);
 
-  const [state, dispatch] = useReducer(reducer, initialstate);
+  console.log(personalInfo);
+
+  const clickHandler = () => {
+    // dispatch(updatePersonalInfo(personalInfoState));
+    navigate("/resume/sections/education");
+  };
 
   return (
     <div className="w-full py-15 relative">
@@ -70,8 +36,9 @@ const PersonalInfoPage = () => {
           type="text"
           label="First Name *"
           styles="py-3 w-full"
+          value={personalInfo.firstName}
           onChange={(e) =>
-            dispatch({ type: "firstName", value: e.target.value })
+            dispatch(updatePersonalInfo({ firstName: e.target.value }))
           }
         />
         <Input
@@ -79,74 +46,72 @@ const PersonalInfoPage = () => {
           type="text"
           label="Last Name"
           styles="py-3 w-full"
+          value={personalInfo.lastName}
           onChange={(e) =>
-            dispatch({ type: "lastName", value: e.target.value })
+            dispatch(updatePersonalInfo({ lastName: e.target.value }))
           }
         />
         <Input
-          placeholder="City"
+          placeholder="Address"
           type="text"
-          label="City"
+          label="Address"
           styles="py-3 w-full"
-          onChange={(e) => dispatch({ type: "city", value: e.target.value })}
+          value={personalInfo.address}
+          onChange={(e) =>
+            dispatch(updatePersonalInfo({ address: e.target.value }))
+          }
         />
-        <div className="flex justify-between">
-          <Input
-            placeholder="Country"
-            type="text"
-            label="Country"
-            styles="py-3 w-full"
-            onChange={(e) =>
-              dispatch({ type: "country", value: e.target.value })
-            }
-          />
-          <Input
-            placeholder="Pin Code"
-            type="text"
-            label="Pin Code"
-            styles="py-3 w-full"
-            onChange={(e) =>
-              dispatch({ type: "pinCode", value: e.target.value })
-            }
-          />
-        </div>
-
         <Input
           placeholder="Phone No"
           type="text"
           label="Phone"
           styles="py-3 w-full"
-          onChange={(e) => dispatch({ type: "phone", value: e.target.value })}
+          value={personalInfo.phone}
+          onChange={(e) =>
+            dispatch(updatePersonalInfo({ phone: e.target.value }))
+          }
+        />
+        <Input
+          placeholder="Linkedin"
+          type="text"
+          label="Linkedin"
+          styles="py-3 w-full"
+          value={personalInfo.linkedin}
+          onChange={(e) => updatePersonalInfo({ linkedin: e.target.value })}
         />
         <Input
           placeholder="Email"
           type="email"
           label="Email *"
           styles="py-3 w-full"
-          onChange={(e) => dispatch({ type: "email", value: e.target.value })}
+          value={personalInfo.email}
+          onChange={(e) =>
+            dispatch(updatePersonalInfo({ email: e.target.value }))
+          }
+        />
+        <Input
+          placeholder="Github"
+          type="text"
+          label="Github"
+          styles="py-3 w-full"
+          value={personalInfo.github}
+          onChange={(e) =>
+            dispatch(updatePersonalInfo({ github: e.target.value }))
+          }
+        />
+        <Input
+          placeholder="Website"
+          type="text"
+          label="Website"
+          styles="py-3 w-full"
+          value={personalInfo.website}
+          onChange={(e) =>
+            dispatch(updatePersonalInfo({ website: e.target.value }))
+          }
         />
       </div>
 
-      <div>
-        <h1 className="font-semibold text-xl mt-5">
-          Add additional information to your resume (optional)
-        </h1>
-        <div className="mt-3 flex gap-3 items-center">
-          <button className="cursor-pointer bg-white/70 rounded-full border-3 border-[#0068fa] py-1 px-4 text-[#0068fa] font-bold">
-            LinkedIn +
-          </button>
-          <button className="cursor-pointer bg-white/70 rounded-full border-3 border-[#0068fa] py-1 px-4 text-[#0068fa] font-bold">
-            Website +
-          </button>
-          <button className="cursor-pointer bg-white/70 rounded-full border-3 border-[#0068fa] py-1 px-4 text-[#0068fa] font-bold">
-            Driving License +
-          </button>
-        </div>
-      </div>
-      <Button
-        onClick={() => navigate("/resume/sections/education")}
-        styles="absolute bottom-0 right-0 "
-      >
+      <Button onClick={clickHandler} styles="absolute bottom-0 right-0 ">
         Next: Education
       </Button>
     </div>

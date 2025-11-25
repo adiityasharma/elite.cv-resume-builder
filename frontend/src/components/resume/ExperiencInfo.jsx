@@ -1,70 +1,27 @@
-import React from "react";
 import Input from "../common/Input";
-import Select from "../common/Select";
-import Option from "../common/Option";
 import GoBackBtn from "../common/GoBackBtn";
 import Button from "../common/Button";
 import { useNavigate } from "react-router-dom";
 import { useReducer } from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-
-const initialstate = {
-  company: "",
-  position: "",
-  location: "",
-  description: "",
-  startDate: "",
-  endDate: "",
-  isCurrentWorking: "",
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "company":
-      return { ...state, [action.type]: action.value };
-    case "position":
-      return { ...state, [action.type]: action.value };
-    case "location":
-      return { ...state, [action.type]: action.value };
-    case "description":
-      return { ...state, [action.type]: action.value };
-    case "endDate":
-      return { ...state, [action.type]: action.value };
-    case "startDate":
-      return { ...state, [action.type]: action.value };
-    case "isCurrentWorking":
-      return { ...state, [action.type]: action.value };
-    default:
-      return state;
-  }
-};
+import {
+  experienceInitialState,
+  experienceReducer,
+} from "../../utils/reducers";
+import { useDispatch } from "react-redux";
+import { addExperience } from "../../app/features/resumeData";
 
 const ExperiencInfo = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [state, dispatch] = useReducer(reducer, initialstate);
+  const [state, experienceDispatch] = useReducer(
+    experienceReducer,
+    experienceInitialState
+  );
 
-  const [startDate, setStartDate] = useState({ month: "", year: "" });
-  const [endDate, setEndDate] = useState({ month: "", year: "" });
-
-  const updateDates = () => {
-    if (startDate) {
-      dispatch({
-        type: "startDate",
-        value: `${startDate.month} ${startDate.year}`,
-      });
-    }
-    if (endDate) {
-      dispatch({
-        type: "endDate",
-        value: `${startDate.month} ${startDate.year}`,
-      });
-    }
+  const clickHandler = () => {
+    dispatch(addExperience(state));
   };
-
-  useEffect(updateDates, [startDate, endDate]);
-
 
   return (
     <div className="w-full py-15 relative">
@@ -88,7 +45,7 @@ const ExperiencInfo = () => {
           label="Title *"
           styles="py-3 w-full"
           onChange={(e) =>
-            dispatch({ type: "position", value: e.target.value })
+            experienceDispatch({ type: "position", value: e.target.value })
           }
         />
         <Input
@@ -96,105 +53,53 @@ const ExperiencInfo = () => {
           type="text"
           label="Employer"
           styles="py-3 w-full"
-          onChange={(e) => dispatch({ type: "company", value: e.target.value })}
-        />
-        <Input
-          placeholder="Description"
-          type="text"
-          label="Description"
-          styles="py-3 w-full "
           onChange={(e) =>
-            dispatch({ type: "description", value: e.target.value })
+            experienceDispatch({ type: "company", value: e.target.value })
           }
         />
+
         <Input
           placeholder="New Delhi, India"
           type="text"
           label="Location"
           styles="py-3 w-full "
           onChange={(e) =>
-            dispatch({ type: "location", value: e.target.value })
+            experienceDispatch({ type: "location", value: e.target.value })
           }
         />
-        <div>
-          <label htmlFor="">Start Date</label>
-          <div className="w-full flex justify-between gap-4">
-            <Select
-              onChange={(e) => {
-                setStartDate({ ...startDate, ["month"]: e.target.value });
-              }}
-              styles="w-full"
-            >
-              <Option value="January" label="January" />
-              <Option value="February" label="February" />
-              <Option value="March" label="March" />
-              <Option value="April" label="April" />
-              <Option value="May" label="May" />
-              <Option value="June" label="June" />
-              <Option value="July" label="July" />
-              <Option value="August" label="August" />
-              <Option value="September" label="September" />
-              <Option value="October" label="October" />
-              <Option value="November" label="November" />
-              <Option value="December" label="December" />
-            </Select>
-            <Input
-              onChange={(e) => {
-                setStartDate({ ...startDate, ["year"]: e.target.value });
-              }}
-              type="text"
-              styles="py-3 w-full"
-              placeholder="Year"
-            />
-          </div>
-        </div>
 
-        <div>
-          <label htmlFor="endDate">End Date</label>
-          <div className="w-full flex justify-between gap-4">
-            <Select
-              onChange={(e) => {
-                setEndDate({ ...startDate, ["month"]: e.target.value });
-              }}
-              styles="w-full"
-            >
-              <Option value="January" label="January" />
-              <Option value="February" label="February" />
-              <Option value="March" label="March" />
-              <Option value="April" label="April" />
-              <Option value="May" label="May" />
-              <Option value="June" label="June" />
-              <Option value="July" label="July" />
-              <Option value="August" label="August" />
-              <Option value="September" label="September" />
-              <Option value="October" label="October" />
-              <Option value="November" label="November" />
-              <Option value="December" label="December" />
-            </Select>
-            <Input
-              onChange={(e) => {
-                setEndDate({ ...startDate, ["year"]: e.target.value });
-              }}
-              type="text"
-              styles="py-3 w-full"
-              placeholder="Year"
-            />
-          </div>
-        </div>
-        <div className="flex items-center w-fit gap-2">
-          <input
-            onChange={(e) =>
-              dispatch({ type: "isCurrentWorking", value: e.target.checked })
-            }
-            className="accent-blue-400 appearance-none w-5 h-5 border-2 border-gray-400 rounded-md checked:bg-blue-500 checked:border-blue-500 "
-            type="checkbox"
-            name="currentlyWorking"
-            id="currentlyWorking"
-          />
-          <label htmlFor="currentlyWorking">Currently Working</label>
-        </div>
+        <Input
+          label="Start Date"
+          styles="w-full "
+          placeholder="Jul 2025"
+          onChange={(e) =>
+            experienceDispatch({ type: "startDate", value: e.target.value })
+          }
+        />
+        <Input
+          label="Last Date"
+          styles="w-full "
+          placeholder="Present - if currently working"
+          onChange={(e) =>
+            experienceDispatch({ type: "endDate", value: e.target.value })
+          }
+        />
       </div>
-
+      <div className="flex flex-col mt-2 gap-1 ">
+        <label htmlFor="" className="font-semibold">
+          Description
+        </label>
+        <textarea
+          placeholder="Type here..."
+          className="p-2 w-[440px] text-sm border border-neutral-500 rounded bg-white outline-none min-h-20"
+          onChange={(e) =>
+            experienceDispatch({ type: "description", value: e.target.value })
+          }
+        />
+      </div>
+      <Button onClick={clickHandler} styles="w-fit mt-2">
+        Save
+      </Button>
       <Button
         onClick={() => navigate("/resume/sections/skills")}
         styles="absolute bottom-3 right-0"

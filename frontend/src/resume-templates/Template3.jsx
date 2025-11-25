@@ -1,345 +1,218 @@
-import React from "react";
-
-/**
- * ResumeTemplate
- * - Tailwind-based React component sized to w-[595px] h-[842px]
- * - Uses hex colors (no built-in Tailwind color names)
- * - Accepts an optional `data` prop to populate fields; falls back to placeholder content
- *
- * Usage:
- * <ResumeTemplate data={myResumeData} />
- *
- * Note: this component uses Tailwind utility classes (including arbitrary sizing and color brackets).
- * Ensure your Tailwind config allows arbitrary value support (default Tailwind v2.2+/v3+ does).
- */
-
-export default function Template3({ data = {} }) {
-  const d = {
-    name: data.name ?? "Alex Morgan",
-    title: data.title ?? "Product Designer",
-    location: data.location ?? "San Francisco, CA",
-    email: data.email ?? "alex.morgan@example.com",
-    phone: data.phone ?? "(555) 123-4567",
-    website: data.website ?? "alexmorgan.design",
-    linkedin: data.linkedin ?? "linkedin.com/in/alexmorgan",
-    summary:
-      data.summary ??
-      "Design-driven product designer with 6+ years building delightful, accessible interfaces and systems. Focused on user research, cross-functional collaboration, and scalable design systems.",
-    skills: data.skills ?? [
-      "Product Design",
-      "UI/UX",
-      "Figma",
-      "Design Systems",
-      "Accessibility (WCAG)",
-      "Prototyping",
-    ],
-    experience: data.experience ?? [
-      {
-        company: "Aurora Labs",
-        role: "Senior Product Designer",
-        period: "2022 — Present",
-        bullets: [
-          "Led redesign of onboarding flow, increasing activation by 28%.",
-          "Built component library and tokens that reduced dev time by 18%.",
-        ],
-      },
-      {
-        company: "Brightlane",
-        role: "Product Designer",
-        period: "2019 — 2022",
-        bullets: [
-          "Owned end-to-end feature design for mobile and web.",
-          "Conducted mixed-methods research to prioritize roadmap.",
-        ],
-      },
-    ],
-    education: data.education ?? [
-      {
-        school: "State University",
-        degree: "B.A. Interaction Design",
-        period: "2015 — 2019",
-      },
-    ],
+export default function Template4({ data }) {
+  const color = {
+    bg: "#FDFDFD",
+    sidebar: "#111827",
+    primary: "#111827",
+    secondary: "#374151",
+    accent: "#2563EB",
+    border: "#D1D5DB",
+    chip: "#E5E7EB",
   };
 
   return (
     <div
-      className="w-[595px] h-[842px] "
+      className="w-[595px] h-[842px] mx-auto flex"
       style={{
-        // backgroundColor: "#FFFFFF", // page background (white)
-        // fontFamily:
-        //   "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
+        backgroundColor: color.bg,
+        fontFamily:
+          "Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial",
       }}
     >
-      {/* Outer padding / card */}
-      <div className="w-full h-full p-6 box-border">
-        <div
-          className="w-full h-full rounded-sm overflow-hidden border"
-          style={{ borderColor: "#E6E8EE" }}
-        >
-          <div className="flex w-full h-full">
-            {/* LEFT SIDEBAR */}
-            <aside
-              className="w-[190px] px-5 py-6 flex-shrink-0"
-              style={{ backgroundColor: "#F6F8FB" }}
-            >
-              {/* Avatar */}
-              <div className="flex items-center justify-center">
-                <div
-                  className="w-20 h-20 rounded-full flex items-center justify-center text-xl font-semibold"
-                  style={{ backgroundColor: "#DDE6FF", color: "#0F172A" }}
-                >
-                  {d.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .slice(0, 2)
-                    .join("")}
-                </div>
-              </div>
+      {/* SIDEBAR */}
+      <div
+        className="w-[210px] h-full p-6 text-white flex flex-col space-y-6"
+        style={{ backgroundColor: color.sidebar }}
+      >
+        {/* NAME / TITLE */}
+        <div>
+          <h1 className="text-xl font-bold">
+            {data?.personalInfo?.firstName} {data?.personalInfo?.lastName}
+          </h1>
+          {data?.personalInfo?.title && (
+            <p className="text-xs mt-1 opacity-80">{data.personalInfo.title}</p>
+          )}
+        </div>
 
-              {/* Name & Title (repeat small in sidebar) */}
-              <div className="mt-4 text-center">
-                <div
-                  className="text-[16px] font-semibold"
-                  style={{ color: "#0F172A" }}
-                >
-                  {d.name}
-                </div>
-                <div className="text-[12px] mt-1" style={{ color: "#374151" }}>
-                  {d.title}
-                </div>
-              </div>
+        {/* CONTACT */}
+        <div>
+          <h3 className="text-[10px] uppercase font-semibold tracking-wide opacity-80">
+            Contact
+          </h3>
+          <ul className="text-xs mt-2 space-y-1 opacity-90">
+            <li>{data?.personalInfo?.email}</li>
+            <li>{data?.personalInfo?.phone}</li>
+            <li>
+              <a href={data?.personalInfo?.website}>
+                {data?.personalInfo?.website}
+              </a>
+            </li>
+            <li>
+              <a href={data?.personalInfo?.linkedin}>
+                {data?.personalInfo?.linkedin}
+              </a>
+            </li>
+            <li>
+              <a href={data?.personalInfo?.github}>
+                {data?.personalInfo?.github}
+              </a>
+            </li>
+            <li>{data?.personalInfo?.address}</li>
+          </ul>
+        </div>
 
-              {/* Contact */}
-              <div className="mt-6">
-                <div
-                  className="text-[11px] font-semibold mb-3"
-                  style={{ color: "#0F172A" }}
-                >
-                  Contact
-                </div>
-                <div
-                  className="text-[11px] leading-5"
-                  style={{ color: "#374151" }}
-                >
-                  <div>{d.email}</div>
-                  <div>{d.phone}</div>
-                  <div>{d.location}</div>
-                </div>
-              </div>
+        {/* SKILLS */}
+        <div>
+          <h3 className="text-[10px] uppercase font-semibold tracking-wide opacity-80">
+            Skills
+          </h3>
+          <div className="flex flex-wrap gap-1 mt-2">
+            {data?.skills.map((skill) => (
+              <span
+                key={skill.id}
+                className="px-2 py-[2px] text-[9px] rounded"
+                style={{
+                  color: "white",
+                }}
+              >
+                {skill.name}
+              </span>
+            ))}
+          </div>
+        </div>
 
-              {/* Links */}
-              <div className="mt-4">
-                <div
-                  className="text-[11px] font-semibold mb-3"
-                  style={{ color: "#0F172A" }}
-                >
-                  Links
-                </div>
-                <div
-                  className="text-[11px] leading-5 break-all"
-                  style={{ color: "#2563EB" }}
-                >
-                  <div>{d.website}</div>
-                  <div>{d.linkedin}</div>
-                </div>
-              </div>
+        {/* LANGUAGES */}
+        <div>
+          <h3 className="text-[10px] uppercase font-semibold tracking-wide opacity-80">
+            Languages
+          </h3>
+          <ul className="text-xs mt-2 space-y-1 opacity-90">
+            {data?.languages.map((lang) => (
+              <li key={lang.id}>
+                {lang.name} — {lang.level}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-              {/* Skills */}
-              <div className="mt-6">
-                <div
-                  className="text-[11px] font-semibold mb-3"
-                  style={{ color: "#0F172A" }}
-                >
-                  Skills
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {d.skills.map((s, i) => (
-                    <span
-                      key={i}
-                      className="text-[11px] px-2 py-1 rounded"
-                      style={{
-                        backgroundColor: "#FFFFFF",
-                        border: "1px solid #E6E8EE",
-                        color: "#0F172A",
-                      }}
+        {/* EDUCATION */}
+        <div className="mt-auto">
+          <h3 className="text-[10px] uppercase font-semibold tracking-wide opacity-80">
+            Education
+          </h3>
+          <div className="mt-2 space-y-3 text-xs opacity-90">
+            {data?.education.map((edu) => (
+              <div key={edu.id}>
+                <p className="font-semibold text-white">{edu.degree}</p>
+                <p>{edu.school}</p>
+                <p>
+                  {edu.month} {edu.year}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* MAIN CONTENT */}
+      <div className="flex-1 p-8 space-y-10">
+        {/* PROFILE */}
+        <section>
+          <h2
+            className="text-sm uppercase font-bold tracking-wide mb-2"
+            style={{ color: color.primary }}
+          >
+            Profile Summary
+          </h2>
+          <p
+            className="text-xs leading-relaxed"
+            style={{ color: color.secondary }}
+          >
+            {data?.summary}
+          </p>
+        </section>
+
+        {/* EXPERIENCE */}
+        <section>
+          <h2
+            className="text-sm uppercase font-bold tracking-wide mb-4"
+            style={{ color: color.primary }}
+          >
+            Professional Experience
+          </h2>
+
+          <div className="space-y-6">
+            {data?.experience.map((job) => (
+              <div key={job.id}>
+                <div className="flex justify-between">
+                  <div>
+                    <h3
+                      className="font-semibold text-base"
+                      style={{ color: color.primary }}
                     >
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Divider */}
-              <div
-                className="mt-6 h-[1px]"
-                style={{ backgroundColor: "#E6E8EE" }}
-              />
-
-              {/* Small footer / allow quick note */}
-              <div className="mt-4 text-[10px]" style={{ color: "#6B7280" }}>
-                Portfolio and case studies available on request.
-              </div>
-            </aside>
-
-            {/* RIGHT MAIN */}
-            <main className="flex-1 px-8 py-6">
-              {/* Header: Name + Title */}
-              <header className="flex items-start justify-between">
-                <div>
-                  <h1
-                    className="text-[22px] font-extrabold leading-tight"
-                    style={{ color: "#0B1220" }}
-                  >
-                    {d.name}
-                  </h1>
-                  <p
-                    className="mt-1 text-[13px] font-medium"
-                    style={{ color: "#0F172A" }}
-                  >
-                    {d.title}
+                      {job.position}
+                    </h3>
+                    <p className="text-xs" style={{ color: color.secondary }}>
+                      {job.company} — {job.startDate} – {job.endDate || "Present"}
+                    </p>
+                  </div>
+                  <p className="text-xs" style={{ color: color.secondary }}>
+                    {job.location}
                   </p>
                 </div>
 
-                {/* Quick summary stats or date */}
-                <div className="text-right">
-                  <div className="text-[11px]" style={{ color: "#6B7280" }}>
-                    {new Date().getFullYear()}
-                  </div>
-                </div>
-              </header>
-
-              {/* Summary */}
-              <section className="mt-4">
-                <h2
-                  className="text-[12px] font-semibold mb-2"
-                  style={{ color: "#0F172A" }}
+                <ul
+                  className="list-disc ml-5 mt-2 text-xs"
+                  style={{ color: color.secondary }}
                 >
-                  Summary
-                </h2>
-                <p
-                  className="text-[12px] leading-6"
-                  style={{ color: "#374151" }}
-                >
-                  {d.summary}
-                </p>
-              </section>
-
-              {/* Experience */}
-              <section className="mt-6">
-                <div className="flex items-center justify-between">
-                  <h2
-                    className="text-[12px] font-semibold"
-                    style={{ color: "#0F172A" }}
-                  >
-                    Experience
-                  </h2>
-                </div>
-
-                <div className="mt-3 space-y-4">
-                  {d.experience.map((exp, idx) => (
-                    <article key={idx} className="flex">
-                      <div
-                        className="w-[110px] text-[11px] text-right pr-4"
-                        style={{ color: "#6B7280" }}
-                      >
-                        {exp.period}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-baseline justify-between">
-                          <h3
-                            className="text-[13px] font-semibold"
-                            style={{ color: "#0B1220" }}
-                          >
-                            {exp.role}
-                          </h3>
-                          <div
-                            className="ml-4 text-[11px]"
-                            style={{ color: "#374151" }}
-                          >
-                            {exp.company}
-                          </div>
-                        </div>
-                        <ul
-                          className="mt-2 list-disc list-inside text-[12px] leading-6"
-                          style={{ color: "#374151" }}
-                        >
-                          {exp.bullets.map((b, i) => (
-                            <li key={i}>{b}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </section>
-
-              {/* Education */}
-              <section className="mt-6">
-                <h2
-                  className="text-[12px] font-semibold"
-                  style={{ color: "#0F172A" }}
-                >
-                  Education
-                </h2>
-                <div className="mt-3 space-y-3">
-                  {d.education.map((edu, i) => (
-                    <div key={i} className="flex items-start">
-                      <div
-                        className="w-[110px] text-[11px] text-right pr-4"
-                        style={{ color: "#6B7280" }}
-                      >
-                        {edu.period}
-                      </div>
-                      <div className="flex-1">
-                        <div
-                          className="text-[13px] font-semibold"
-                          style={{ color: "#0B1220" }}
-                        >
-                          {edu.school}
-                        </div>
-                        <div
-                          className="text-[12px]"
-                          style={{ color: "#374151" }}
-                        >
-                          {edu.degree}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* Footer: small notes / languages */}
-              <footer className="mt-8">
-                <div className="flex gap-6">
-                  <div>
-                    <div
-                      className="text-[11px] font-semibold"
-                      style={{ color: "#0F172A" }}
-                    >
-                      Languages
-                    </div>
-                    <div className="text-[11px]" style={{ color: "#374151" }}>
-                      English (Native), Spanish (Professional)
-                    </div>
-                  </div>
-                  <div>
-                    <div
-                      className="text-[11px] font-semibold"
-                      style={{ color: "#0F172A" }}
-                    >
-                      Tools
-                    </div>
-                    <div className="text-[11px]" style={{ color: "#374151" }}>
-                      Figma · React · Notion · Miro
-                    </div>
-                  </div>
-                </div>
-              </footer>
-            </main>
+                  {job.description}
+                </ul>
+              </div>
+            ))}
           </div>
-        </div>
+        </section>
+
+        {/* PROJECTS */}
+        <section>
+          <h2
+            className="text-sm uppercase font-bold tracking-wide mb-3"
+            style={{ color: color.primary }}
+          >
+            Projects
+          </h2>
+
+          <div className="space-y-3">
+            {data?.projects.map((project) => (
+              <div key={project.id}>
+                <h4
+                  className="font-semibold text-sm"
+                  style={{ color: color.primary }}
+                >
+                  {project.name}
+                </h4>
+                <p className="text-xs" style={{ color: color.secondary }}>
+                  {project.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CERTIFICATIONS */}
+        <section>
+          <h2
+            className="text-sm uppercase font-bold tracking-wide mb-2"
+            style={{ color: color.primary }}
+          >
+            Certifications
+          </h2>
+          <ul className="text-xs space-y-1" style={{ color: color.secondary }}>
+            {data?.certificates?.map((cert) => (
+              <li key={cert.id}>
+                {cert.title} — {cert.issuer}
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </div>
   );

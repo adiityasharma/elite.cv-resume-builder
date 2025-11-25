@@ -65,6 +65,7 @@ const EditResume = () => {
   } = useSelector((state) => state.resumeData);
   const dispatch = useDispatch();
 
+
   const addSkillHandle = () => {
     if (inputValue) {
       dispatch(addSkill({ name: inputValue }));

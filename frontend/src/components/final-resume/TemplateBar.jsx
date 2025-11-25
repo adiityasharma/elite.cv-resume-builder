@@ -18,10 +18,9 @@ const TemplateBar = ({ selectedField }) => {
   return (
     <>
       {selectedField && (
-        <div className="w-[400px] bg-white/50 border border-neutral-300 backdrop-blur-xl flex flex-col rounded-lg shadow px-5 py-5">
-          <Field />
-        </div>
+        <div className="w-[400px] bg-white/50 border border-neutral-300 backdrop-blur-xl flex flex-col rounded-lg shadow px-5 py-5"></div>
       )}
+      
     </>
   );
 };

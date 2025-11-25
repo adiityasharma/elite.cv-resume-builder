@@ -1,7 +1,4 @@
-// ResumeTemplate2.jsx
-import React from "react";
-
-export default function Template2() {
+export default function Template2({ data }) {
   const color = {
     bg: "#FFFFFF",
     sidebar: "#F4F6F8",
@@ -11,6 +8,8 @@ export default function Template2() {
     border: "#E5E7EB",
     chip: "#F3F4F6",
   };
+
+  console.log(data);
 
   return (
     <div
@@ -30,8 +29,10 @@ export default function Template2() {
         }}
       >
         <div className="text-left">
-          <h1 className="text-2xl font-bold tracking-tight">Johnathan Doe</h1>
-          <p className="text-sm opacity-90">Product Designer</p>
+          <h1 className="text-2xl font-bold tracking-tight">
+            {data?.personalInfo?.firstName} {data?.personalInfo?.lastName}
+          </h1>
+          {/* <p className="text-sm opacity-90">Product Designer</p> */}
         </div>
       </div>
 
@@ -51,8 +52,7 @@ export default function Template2() {
               Profile
             </h3>
             <p className="text-xs" style={{ color: color.secondary }}>
-              Designer with strong background in UX research, strategy, and
-              design systems. Focused on scalable product experiences.
+              {data?.summary}
             </p>
           </section>
 
@@ -65,13 +65,21 @@ export default function Template2() {
               Contact
             </h3>
             <div
-              className="text-xs leading-relaxed"
+              className="text-xs leading-relaxed truncate flex flex-col"
               style={{ color: color.secondary }}
             >
-              <div>Email: john@example.com</div>
-              <div>Phone: +1 (555) 333-1200</div>
-              <div>Website: johndoe.design</div>
-              <div>Location: New York, USA</div>
+              <div>{data?.personalInfo?.email}</div>
+              <div>{data?.personalInfo?.phone}</div>
+              <a href={data?.personalInfo?.website}>
+                {data?.personalInfo?.website}
+              </a>
+              <a href={data?.personalInfo?.linkedin}>
+                {data?.personalInfo?.linkedin}
+              </a>
+              <a href={data?.personalInfo?.github}>
+                {data?.personalInfo?.github}
+              </a>
+              <div>{data?.personalInfo?.address}</div>
             </div>
           </section>
 
@@ -83,27 +91,20 @@ export default function Template2() {
             >
               Skills
             </h3>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "UX Research",
-                "Wireframing",
-                "Prototyping",
-                "Figma",
-                "Design Systems",
-                "User Testing",
-              ].map((skill) => (
-                <span
-                  key={skill}
-                  className="text-[10px] px-2 py-1 rounded-full"
-                  style={{
-                    backgroundColor: color.chip,
-                    border: `1px solid ${color.border}`,
-                    color: color.primary,
-                  }}
-                >
-                  {skill}
-                </span>
-              ))}
+            <div className="flex flex-wrap gap-x-2 gap-y-1">
+              {data?.skills.length > 0 &&
+                data.skills.map((skill) => (
+                  <span
+                    key={skill.id}
+                    className="text-[10px] "
+                    style={{
+                      backgroundColor: color.chip,
+                      color: color.primary,
+                    }}
+                  >
+                    {skill.name}
+                  </span>
+                ))}
             </div>
           </section>
 
@@ -116,9 +117,12 @@ export default function Template2() {
               Languages
             </h3>
             <ul className="text-xs" style={{ color: color.secondary }}>
-              <li>English — Native</li>
-              <li>German — Intermediate</li>
-              <li>Japanese — Basic</li>
+              {data?.languages.length > 0 &&
+                data.languages.map((lang) => (
+                  <li key={lang.id}>
+                    {lang.name} — {lang.level}
+                  </li>
+                ))}
             </ul>
           </section>
 
@@ -134,11 +138,17 @@ export default function Template2() {
               className="text-xs leading-tight"
               style={{ color: color.secondary }}
             >
-              <div className="font-semibold" style={{ color: color.primary }}>
-                B.A. — Visual Design
-              </div>
-              <div>Rhode Island School of Design</div>
-              <div>2012 — 2016</div>
+              {data?.education.map((edu) => (
+                <div key={edu.id}>
+                  <p className="font-semibold" style={{ color: color.primary }}>
+                    {edu.degree}
+                  </p>
+                  <p>{edu.school}</p>
+                  <span>
+                    {edu.month} {edu.year}
+                  </span>
+                </div>
+              ))}
             </div>
           </section>
         </div>
@@ -155,63 +165,34 @@ export default function Template2() {
             </h2>
 
             <div className="space-y-5">
-              {/* Job 1 */}
-              <div>
-                <div className="flex justify-between">
-                  <div>
-                    <h3
-                      className="font-semibold text-base"
-                      style={{ color: color.primary }}
-                    >
-                      Senior Product Designer
-                    </h3>
+              {data?.experience.map((exp) => (
+                <div key={exp.id}>
+                  <div className="flex justify-between">
+                    <div>
+                      <h3
+                        className="font-semibold text-base"
+                        style={{ color: color.primary }}
+                      >
+                        {exp.position}
+                      </h3>
+                      <p className="text-xs" style={{ color: color.secondary }}>
+                        {exp.company} — {exp.startDate} –{" "}
+                        {exp.endDate || "Present"}
+                      </p>
+                    </div>
                     <p className="text-xs" style={{ color: color.secondary }}>
-                      Google — 2020–Present
+                      {exp.location}
                     </p>
                   </div>
-                  <p className="text-xs" style={{ color: color.secondary }}>
-                    New York, USA
-                  </p>
+
+                  <ul
+                    className=" ml-5 mt-2 text-sm"
+                    style={{ color: color.secondary }}
+                  >
+                    {exp.description}
+                  </ul>
                 </div>
-
-                <ul
-                  className="list-disc ml-5 mt-2 text-sm"
-                  style={{ color: color.secondary }}
-                >
-                  <li>Led UX for enterprise dashboards used by 2M+ users.</li>
-                  <li>
-                    Redesigned research workflow, reducing task time by 34%.
-                  </li>
-                </ul>
-              </div>
-
-              {/* Job 2 */}
-              <div>
-                <div className="flex justify-between">
-                  <div>
-                    <h3
-                      className="font-semibold text-base"
-                      style={{ color: color.primary }}
-                    >
-                      UX Designer
-                    </h3>
-                    <p className="text-xs" style={{ color: color.secondary }}>
-                      Dropbox — 2017–2020
-                    </p>
-                  </div>
-                  <p className="text-xs" style={{ color: color.secondary }}>
-                    Remote
-                  </p>
-                </div>
-
-                <ul
-                  className="list-disc ml-5 mt-2 text-sm"
-                  style={{ color: color.secondary }}
-                >
-                  <li>Improved file-sharing flows +15% conversion.</li>
-                  <li>Worked closely with PMs to align product roadmap.</li>
-                </ul>
-              </div>
+              ))}
             </div>
           </section>
 
@@ -224,35 +205,26 @@ export default function Template2() {
           {/* Section: Projects */}
           <section>
             <h2
-              className="text-sm uppercase font-bold mb-4 tracking-wide"
+              className="text-sm uppercase font-bold mb-2 tracking-wide"
               style={{ color: color.primary }}
             >
               Selected Projects
             </h2>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <h4
-                  className="font-semibold text-sm"
-                  style={{ color: color.primary }}
-                >
-                  FlowKit App
-                </h4>
-                <p className="text-xs" style={{ color: color.secondary }}>
-                  Workflow app improving team coordination.
-                </p>
-              </div>
-              <div>
-                <h4
-                  className="font-semibold text-sm"
-                  style={{ color: color.primary }}
-                >
-                  Dashboard UX Revamp
-                </h4>
-                <p className="text-xs" style={{ color: color.secondary }}>
-                  UI restructuring for better data visibility.
-                </p>
-              </div>
+            <div className="flex flex-col gap-2">
+              {data?.projects.map((project) => (
+                <div key={project.id}>
+                  <h4
+                    className="font-semibold text-sm"
+                    style={{ color: color.primary }}
+                  >
+                    <a href={project.link}>{project.name}</a>
+                  </h4>
+                  <p className="text-xs" style={{ color: color.secondary }}>
+                    {project.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
 
@@ -268,11 +240,15 @@ export default function Template2() {
               className="text-sm uppercase font-bold tracking-wide mb-2"
               style={{ color: color.primary }}
             >
-              Certifications
+              certificates
             </h2>
-            <p className="text-xs" style={{ color: color.secondary }}>
-              Google UX Professional Certificate — 2021
-            </p>
+            <div className="text-xs" style={{ color: color.secondary }}>
+              {data?.certificates?.map((cert) => (
+                <div key={cert.id}>
+                  {cert.title} — {cert.issuer}
+                </div>
+              ))}
+            </div>
           </section>
         </div>
       </div>

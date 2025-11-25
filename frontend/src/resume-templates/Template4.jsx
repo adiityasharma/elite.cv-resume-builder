@@ -1,4 +1,4 @@
-export default function Template4() {
+export default function Template4({ data }) {
   return (
     <div
       className="w-[595px] h-[842px] mx-auto my-8 overflow-hidden"
@@ -15,35 +15,6 @@ export default function Template4() {
           style={{ borderColor: "#E6E6E6" }}
         >
           <div className="flex flex-col items-start">
-            {/* Photo circle */}
-            <div
-              className="w-[120px] h-[120px] rounded-full overflow-hidden mb-4"
-              style={{ backgroundColor: "#F3F4F6" }}
-            >
-              {/* placeholder image area */}
-              <svg
-                width="120"
-                height="120"
-                viewBox="0 0 120 120"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="block"
-              >
-                <rect width="120" height="120" rx="60" fill="#E9EEF2" />
-                <text
-                  x="50%"
-                  y="52%"
-                  dominantBaseline="middle"
-                  textAnchor="middle"
-                  fontSize="28"
-                  fill="#B7C0C7"
-                  fontFamily="Arial, sans-serif"
-                >
-                  JD
-                </text>
-              </svg>
-            </div>
-
             {/* Contact */}
             <h3
               className="text-[13px] font-semibold mb-2"

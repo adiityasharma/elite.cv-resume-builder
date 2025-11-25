@@ -2,25 +2,13 @@ import React from "react";
 import GoBackBtn from "../common/GoBackBtn";
 import Button from "../common/Button";
 import { useNavigate } from "react-router-dom";
-import { useReducer } from "react";
-
-const initialstate = {
-  summary: "",
-};
-
-const ruducer = (state, action) => {
-  switch (action.type) {
-    case "summary":
-      return { ...state, [action.type]: action.value };
-    default:
-      return state;
-  }
-};
+import { addSummary } from "../../app/features/resumeData";
+import { useDispatch, useSelector } from "react-redux";
 
 const Summary = () => {
   const navigate = useNavigate();
-
-  const [state, dispatch] = useReducer(ruducer, initialstate);
+  const dispatch = useDispatch();
+  const { summary } = useSelector((state) => state.resumeData);
 
   return (
     <div className="w-full py-15 relative">
@@ -41,9 +29,10 @@ const Summary = () => {
         <textarea
           className="w-[500px] h-[200px] border-2 mt-5 border-neutral-300 outline-none rounded-sm p-4 bg-white"
           placeholder="Write your summary here."
+          value={summary}
           name=""
           id=""
-          onChange={(e) => dispatch({ type: "summary", value: e.target.value })}
+          onChange={(e) => dispatch(addSummary(e.target.value))}
         />
       </div>
       <Button
