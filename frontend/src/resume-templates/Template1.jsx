@@ -1,7 +1,7 @@
-export default function Template1({ data }) {
+export default function Template1({ data, fontColor, fontSize }) {
   const color = {
     bg: "#FFFFFF",
-    primary: "#0A0F1C",
+    primary: fontColor,
     secondary: "#4B5563",
     accent: "#3B82F6",
     border: "#E5E7EB",
@@ -13,9 +13,6 @@ export default function Template1({ data }) {
       className="w-[595px] h-[842px] mx-auto p-5"
       style={{
         backgroundColor: color.bg,
-        fontFamily:
-          "Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial",
-        fontSize: "12px",
       }}
     >
       {/* HEADER */}
@@ -26,7 +23,7 @@ export default function Template1({ data }) {
         <div>
           <h1
             className="text-xl font-bold tracking-tight"
-            style={{ color: color.primary }}
+            style={{ color: color.primary, fontSize: fontSize.title }}
           >
             {data.personalInfo.firstName} {data.personalInfo.lastName}
           </h1>
@@ -43,7 +40,7 @@ export default function Template1({ data }) {
 
         <div
           className="flex flex-col text-[12px] items-end leading-tight"
-          style={{ color: color.secondary }}
+          style={{ color: color.secondary, fontSize: fontSize.text }}
         >
           <span>{data.personalInfo.email}</span>
           <span>{data.personalInfo.phone}</span>
@@ -65,13 +62,13 @@ export default function Template1({ data }) {
           <section>
             <h3
               className="font-semibold text-[10px] uppercase tracking-wider mb-1"
-              style={{ color: color.primary }}
+              style={{ color: color.primary, fontSize: fontSize.heading }}
             >
               Profile
             </h3>
             <p
               className="text-[10px] leading-snug"
-              style={{ color: color.secondary }}
+              style={{ color: color.secondary, fontSize: fontSize.text }}
             >
               {data.summary}
             </p>
@@ -81,18 +78,18 @@ export default function Template1({ data }) {
           <section>
             <h3
               className="font-semibold text-[10px] uppercase tracking-wider mb-1"
-              style={{ color: color.primary }}
+              style={{ color: color.primary, fontSize: fontSize.heading }}
             >
               Skills
             </h3>
-            <div className="flex flex-wrap gap-[4px]">
+            <div className="flex flex-wrap gap-1">
               {data.skills.map((skill) => (
                 <span
                   key={skill.id}
-                  className="px-1 py-[1px] rounded text-[9px]"
+                  className=""
                   style={{
-                    backgroundColor: color.chip,
-                    color: color.primary,
+                    color: color.secondary,
+                    fontSize: fontSize.text,
                   }}
                 >
                   {skill.name}
@@ -105,13 +102,13 @@ export default function Template1({ data }) {
           <section>
             <h3
               className="font-semibold text-[10px] uppercase tracking-wider mb-1"
-              style={{ color: color.primary }}
+              style={{ color: color.primary, fontSize: fontSize.heading }}
             >
               Languages
             </h3>
             <ul
-              className="text-[10px] leading-tight"
-              style={{ color: color.secondary }}
+              className="leading-tight"
+              style={{ color: color.secondary, fontSize: fontSize.text }}
             >
               {data.languages.map((lang) => (
                 <li key={lang.id}>
@@ -125,13 +122,13 @@ export default function Template1({ data }) {
           <section>
             <h3
               className="font-semibold text-[10px] uppercase tracking-wider mb-1"
-              style={{ color: color.primary }}
+              style={{ color: color.primary, fontSize: fontSize.heading }}
             >
               Education
             </h3>
             <div
-              className="space-y-2 text-[10px]"
-              style={{ color: color.secondary }}
+              className="space-y-2 "
+              style={{ color: color.secondary, fontSize: fontSize.text }}
             >
               {data.education.map((edu) => (
                 <div key={edu.id}>
@@ -154,7 +151,7 @@ export default function Template1({ data }) {
           <section>
             <h3
               className="font-semibold text-[10px] uppercase tracking-wider mb-1"
-              style={{ color: color.primary }}
+              style={{ color: color.primary, fontSize: fontSize.heading }}
             >
               Experience
             </h3>
@@ -165,32 +162,42 @@ export default function Template1({ data }) {
                   <div className="flex justify-between">
                     <div>
                       <p
-                        className="font-semibold text-[11px]"
-                        style={{ color: color.primary }}
+                        className="font-medium "
+                        style={{
+                          color: color.primary,
+                          fontSize: fontSize.subHeading,
+                        }}
                       >
-                        {job.title}
+                        {job.position}
                       </p>
                       <p
-                        className="text-[9px] italic"
-                        style={{ color: color.secondary }}
+                        className=" italic"
+                        style={{
+                          color: color.secondary,
+                          fontSize: fontSize.text,
+                        }}
                       >
-                        {job.company} — {job.start}–{job.end}
+                        {job.company} — {job.startDate} –{" "}
+                        {job.endDate || "Present"}
                       </p>
                     </div>
                     <p
-                      className="text-[9px]"
-                      style={{ color: color.secondary }}
+                      className=""
+                      style={{
+                        color: color.secondary,
+                        fontSize: fontSize.text,
+                      }}
                     >
                       {job.location}
                     </p>
                   </div>
 
-                  <ul
-                    className="list-disc ml-4 mt-1 text-[10px] leading-snug"
-                    style={{ color: color.secondary }}
+                  <p
+                    className="ml-4 mt-1 leading-snug"
+                    style={{ color: color.secondary, fontSize: fontSize.text }}
                   >
                     {job.description}
-                  </ul>
+                  </p>
                 </div>
               ))}
             </div>
@@ -200,21 +207,27 @@ export default function Template1({ data }) {
           <section>
             <h3
               className="font-semibold text-[10px] uppercase tracking-wider mb-1"
-              style={{ color: color.primary }}
+              style={{ color: color.primary, fontSize: fontSize.heading }}
             >
-              Selected Projects
+              Projects
             </h3>
 
             <div className="space-y-2">
               {data.projects.map((project) => (
                 <div key={project.id}>
                   <p
-                    className="font-semibold text-[10px]"
-                    style={{ color: color.primary }}
+                    className="font-medium"
+                    style={{
+                      color: color.primary,
+                      fontSize: fontSize.subHeading,
+                    }}
                   >
-                    {project.title}
+                    {project.name}
                   </p>
-                  <p className="text-[9px]" style={{ color: color.secondary }}>
+                  <p
+                    className=""
+                    style={{ color: color.secondary, fontSize: fontSize.text }}
+                  >
                     {project.description}
                   </p>
                 </div>
@@ -226,14 +239,17 @@ export default function Template1({ data }) {
           <section>
             <h3
               className="font-semibold text-[10px] uppercase tracking-wider mb-1"
-              style={{ color: color.primary }}
+              style={{ color: color.primary, fontSize: fontSize.heading }}
             >
-              Certifications
+              Certificates
             </h3>
-            <ul className="text-[10px]" style={{ color: color.secondary }}>
+            <ul
+              className=""
+              style={{ color: color.secondary, fontSize: fontSize.text }}
+            >
               {data.certificates.map((cert) => (
                 <li key={cert.id}>
-                  {cert.title} — {cert.year}
+                  {cert.title} — {cert.issuer}
                 </li>
               ))}
             </ul>

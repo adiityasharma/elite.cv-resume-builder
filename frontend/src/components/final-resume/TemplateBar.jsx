@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { ChevronDown, X } from "lucide-react";
-import { colorPalettes } from "../../constants";
-import { ResumeTemplates } from "../../resume-templates";
+// import React, { useEffect, useState } from "react";
+// import { ChevronDown, X } from "lucide-react";
+// import { colorPalettes } from "../../constants";
+// import { ResumeTemplates } from "../../resume-templates";
 import AllTemplatePreview from "./AllTemplatePreview";
 import DesignAndFormating from "./DesignAndFormating";
 import EditResume from "./EditResume";

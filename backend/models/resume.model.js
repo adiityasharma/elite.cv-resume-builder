@@ -101,25 +101,18 @@ const resumeSchema = new Schema({
   customSections: [
     {
       title: { type: String },
-      content: { type: String }, // raw HTML or text
+      content: { type: String },
     },
   ],
 
   design: {
     color: { type: String, default: "#000000" },
-    font: { type: String, default: "Arial" },
-    layout: { type: String, enum: ["one-column", "two-column"], default: "one-column" },
+    font: { type: String, default: "'Roboto Variable', sans-serif" },
+    fontWeight: { type: String, default: "400" },
+    fontSize: { type: String, default: "medium" },
+    template: { type: String, default: "TP1" },
   },
 
-  settings: {
-    visibility: {
-      type: String,
-      enum: ["private", "public"],
-      default: "private",
-    },
-    lastEdited: { type: Date, default: Date.now },
-    downloadable: { type: Boolean, default: true },
-  },
 },
   {
     timestamps: true,

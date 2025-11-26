@@ -94,8 +94,11 @@ export const resumeDataSlice = createSlice({
         state.certificates = state.certificates.filter(item => item.id !== id)
       }
     },
+    updateDesign: (state, action) => {
+      state.design = { ...state.design, ...action.payload }
+    },
   }
 })
 
-export const { updatePersonalInfo, deleteEducation, addEducation, addExperience, deleteExperience, addSkill, deleteSkill, addSummary, addLanguage, deleteLanguage, addProject, deleteProject, addCertificates, deleteCertificates } = resumeDataSlice.actions;
+export const { updatePersonalInfo, deleteEducation, addEducation, addExperience, deleteExperience, addSkill, deleteSkill, addSummary, addLanguage, deleteLanguage, addProject, deleteProject, addCertificates, deleteCertificates, updateDesign } = resumeDataSlice.actions;
 export default resumeDataSlice.reducer;

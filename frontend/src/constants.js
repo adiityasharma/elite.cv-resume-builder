@@ -171,58 +171,6 @@ export const otherFieldsForAdditionalDetails = [
   },
 ]
 
-export const colorPalettes = [
-  {
-    "palette_name": "Sunset Glow",
-    "colors": [
-      { "name": "Coral", "hex": "#FF6F61" },
-      { "name": "Sunset Orange", "hex": "#FF8C42" },
-      { "name": "Golden Yellow", "hex": "#FFC857" },
-      { "name": "Soft Pink", "hex": "#F7B2BD" },
-      { "name": "Deep Plum", "hex": "#5C2751" }
-    ]
-  },
-  {
-    "palette_name": "Ocean Breeze",
-    "colors": [
-      { "name": "Seafoam Green", "hex": "#9FE2BF" },
-      { "name": "Aqua Blue", "hex": "#00B5D8" },
-      { "name": "Deep Ocean", "hex": "#005377" },
-      { "name": "Sand", "hex": "#EED9C4" },
-      { "name": "Coral Reef", "hex": "#FF7660" }
-    ]
-  },
-  {
-    "palette_name": "Forest Harmony",
-    "colors": [
-      { "name": "Evergreen", "hex": "#2E4600" },
-      { "name": "Moss Green", "hex": "#718355" },
-      { "name": "Earth Brown", "hex": "#6F4E37" },
-      { "name": "Pine Needle", "hex": "#31572C" },
-      { "name": "Fog Gray", "hex": "#DDE2E4" }
-    ]
-  },
-  {
-    "palette_name": "Retro Pop",
-    "colors": [
-      { "name": "Mustard Yellow", "hex": "#FFB400" },
-      { "name": "Mint Green", "hex": "#98FF98" },
-      { "name": "Bubblegum Pink", "hex": "#FF77AA" },
-      { "name": "Teal", "hex": "#008080" },
-      { "name": "Brick Red", "hex": "#C04C36" }
-    ]
-  },
-  {
-    "palette_name": "Minimal Neutrals",
-    "colors": [
-      { "name": "Soft White", "hex": "#F8F9FA" },
-      { "name": "Light Gray", "hex": "#D3D3D3" },
-      { "name": "Warm Taupe", "hex": "#C6BAA7" },
-      { "name": "Cool Charcoal", "hex": "#444444" },
-      { "name": "Deep Black", "hex": "#000000" }
-    ]
-  }
-]
 
 export const sampleData = {
   name: "Asha Verma",
@@ -278,3 +226,104 @@ export const sampleData = {
     },
   ],
 };
+
+export const colors = [
+  { name: "black", hex: "#000" },
+  { name: "Coral", hex: "#FF6F61" },
+  { name: "Sunset Orange", hex: "#FF8C42" },
+  { name: "Golden Yellow", hex: "#FFC857" },
+  { name: "Soft Pink", hex: "#F7B2BD" },
+  { name: "Deep Plum", hex: "#5C2751" },
+  { name: "Seafoam Green", hex: "#9FE2BF" },
+  { name: "Aqua Blue", hex: "#00B5D8" },
+  { name: "Deep Ocean", hex: "#005377" },
+  { name: "Sand", hex: "#EED9C4" },
+  { name: "Coral Reef", hex: "#FF7660" },
+];
+
+export const fontSizes = [
+  {
+    name: "small",
+    title: "20px",
+    heading: "13px",
+    subHeading: "12px",
+    text: "10px",
+  },
+  {
+    name: "medium",
+    title: "24px",
+    heading: "15px",
+    subHeading: "13px",
+    text: "11px",
+  },
+  {
+    name: "large",
+    title: "28px",
+    heading: "18px",
+    subHeading: "15px",
+    text: "13px",
+  }
+]
+
+
+// all fonts
+import '@fontsource/fira-mono/400.css';
+import '@fontsource/fira-mono/500.css';
+import '@fontsource/fira-mono/700.css';
+// Supports weights 100-900
+import '@fontsource-variable/roboto';
+// Supports weights 300-800
+import '@fontsource-variable/open-sans';
+
+import '@fontsource/lato/400.css';
+import '@fontsource/lato/700.css';
+import '@fontsource/lato/900.css';
+
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/poppins/800.css';
+import '@fontsource/poppins/900.css';
+
+// Supports weights 100-900
+import '@fontsource-variable/montserrat';
+
+export const resumeFonts = [
+  {
+    id: 1,
+    name: "Fira Mono",
+    font: "'Fira Mono', monospace",
+    weights: ["400", "500", "700"]
+  },
+  {
+    id: 2,
+    name: "Roboto",
+    font: "'Roboto Variable', sans-serif",
+    weights: ["100", "300", "400", "500", "700", "900"]
+  },
+  {
+    id: 3,
+    name: "Open Sans",
+    font: "'Open Sans', sans-serif",
+    weights: ["400", "500", "600", "700", "800"]
+  },
+  {
+    id: 4,
+    name: "Lato",
+    font: "'Lato', sans-serif",
+    weights: ["400", "700", "900"]
+  },
+  {
+    id: 5,
+    name: "Poppins",
+    font: "'Poppins', sans-serif",
+    weights: ["400", "500", "600", "700", "800", "900"]
+  },
+  {
+    id: 6,
+    name: "Montserrat",
+    font: "'Montserrat', sans-serif",
+    weights: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  },
+];

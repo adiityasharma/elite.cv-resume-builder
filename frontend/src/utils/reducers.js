@@ -1,3 +1,4 @@
+
 // personal information
 export const personalInfoInitialState = {
   firstName: "",
@@ -137,6 +138,32 @@ export const certificateReducer = (state, action) => {
     case "date":
       return { ...state, [action.type]: action.value };
     case "link":
+      return { ...state, [action.type]: action.value };
+
+    default:
+      return state;
+  }
+};
+
+export const designInitialState = {
+  color: "",
+  font: "",
+  fontWeight: "",
+  fontSize: "",
+  template: ""
+};
+
+export const designReducer = (state, action) => {
+  switch (action.type) {
+    case "color":
+      return { ...state, [action.type]: action.value };
+    case "font":
+      return { ...state, [action.type]: action.value };
+    case "fontWeight":
+      return { ...state, [action.type]: action.value };
+    case "fontSize":
+      return { ...state, [action.type]: action.value };
+    case "template":
       return { ...state, [action.type]: action.value };
 
     default:
