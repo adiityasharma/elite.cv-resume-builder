@@ -5,7 +5,7 @@ const EditSection = ({ children, title = "untitled" }) => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="flex flex-col gap-4 w-full py-3 px-4 shadow border border-neutral-200 bg-neutral-50 rounded-lg ">
+    <div className="flex flex-col gap-4 w-full py-3 px-4 shadow border border-neutral-200 bg-white rounded-lg ">
       <div
         onClick={() => setShow(!show)}
         className="flex items-center justify-between cursor-pointer "

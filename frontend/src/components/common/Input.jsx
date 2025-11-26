@@ -10,7 +10,7 @@ const Input = ({ placeholder, type, onChange, value, styles, label }) => {
       )}
       <input
         id={label}
-        className={`border mt-1 border-neutral-500 outline-none rounded-sm px-3 py-2 bg-white ${styles}`}
+        className={`border-2 mt-1 border-neutral-200 rounded-sm px-3 py-2 bg-white focus-within:bg-blue-50  focus-within:outline-2 focus-within:outline-blue-600 ${styles}`}
         type={type}
         placeholder={placeholder}
         onChange={onChange}

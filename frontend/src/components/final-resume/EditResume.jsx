@@ -65,7 +65,6 @@ const EditResume = () => {
   } = useSelector((state) => state.resumeData);
   const dispatch = useDispatch();
 
-
   const addSkillHandle = () => {
     if (inputValue) {
       dispatch(addSkill({ name: inputValue }));
@@ -87,15 +86,8 @@ const EditResume = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 ">
-      <div className=" flex items-center justify-between font-semibold">
-        <h1 className="text-xl ">Edit & Add Sections</h1>
-        {/* <X className="text-blue-400 cursor-pointer hover:text-blue-600 " /> */}
-      </div>
-
-      <div className="h-px w-full bg-neutral-500 "></div>
-
-      <div className="flex flex-col gap-2 w-full max-h-[800px] overflow-y-auto customScrollbar py-2">
+    <div className="flex h-full flex-col gap-4 ">
+      <div className="flex flex-col gap-2 w-full max-h-[800px] overflow-y-auto customScrollbar py-2 ">
         {/* personal details */}
         <EditSection title="Personal Details">
           <div className="flex flex-col ">
@@ -183,51 +175,24 @@ const EditResume = () => {
 
         {/*education details */}
         <EditSection title="Education">
-          {education?.length > 0 &&
-            education.map((item) => (
-              <div
-                key={item.id}
-                className="relative group flex flex-col border p-2 rounded border-neutral-300 text-neutral-600 mb-2 overflow-hidden text-[12px]"
-              >
-                <button
-                  onClick={() => dispatch(deleteEducation({ id: item.id }))}
-                  className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-8 items-center justify-center"
+          <div className="flex flex-wrap items-center gap-x-2">
+            {education?.length > 0 &&
+              education.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="w-fit relative group flex flex-col border-2 p-2 rounded hover:border-red-500 border-blue-500  mb-2 overflow-hidden text-sm"
                 >
-                  {" "}
-                  <Trash2 />{" "}
-                </button>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold">School:</p>{" "}
-                  <p className="truncate">{item.school}</p>
+                  <div className="w-fit">{item.degree}</div>
+                  <button
+                    onClick={() => dispatch(deleteEducation({ id: item.id }))}
+                    className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
+                  >
+                    {" "}
+                    <Trash2 />{" "}
+                  </button>
                 </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold">Location:</p>{" "}
-                  <p className="truncate">{item.location}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold">School:</p>{" "}
-                  <p className="truncate">{item.school}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold">Degree:</p>{" "}
-                  <p className="truncate">{item.degree}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold">Graduated:</p>{" "}
-                  <p className="truncate">
-                    {item.month} {item.year}
-                  </p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Grade:</p>{" "}
-                  <p className="truncate">{item.grade}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Field of Study:</p>{" "}
-                  <p className="truncate">{item.fieldOfStudy}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+          </div>
 
           <div className="flex flex-col">
             <div className="flex flex-col w-full gap-y-2">
@@ -330,45 +295,24 @@ const EditResume = () => {
 
         {/* Experience */}
         <EditSection title="Experience">
-          {experience?.length > 0 &&
-            experience.map((item) => (
-              <div
-                key={item.id}
-                className="relative group flex flex-col border p-2 rounded border-neutral-300 text-neutral-600 mb-2 overflow-hidden text-[12px]"
-              >
-                <button
-                  onClick={() => dispatch(deleteExperience({ id: item.id }))}
-                  className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-8 items-center justify-center"
+          <div className="flex flex-wrap items-center gap-x-2">
+            {experience?.length > 0 &&
+              experience.map((item) => (
+                <div
+                  key={item.id}
+                  className="w-fit relative group flex flex-col border-2 p-2 rounded hover:border-red-500 border-blue-500  mb-2 overflow-hidden text-sm"
                 >
-                  {" "}
-                  <Trash2 />{" "}
-                </button>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Position:</p>{" "}
-                  <p className="truncate">{item.position}</p>
+                  <div className="w-fit">{item.position}</div>
+                  <button
+                    onClick={() => dispatch(deleteExperience({ id: item.id }))}
+                    className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
+                  >
+                    {" "}
+                    <Trash2 />{" "}
+                  </button>
                 </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Location:</p>{" "}
-                  <p className="truncate">{item.location}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Company:</p>{" "}
-                  <p className="truncate">{item.company}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Start Date:</p>{" "}
-                  <p className="truncate">{item.startDate}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Last Date:</p>{" "}
-                  <p className="truncate">{item.endDate}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Description:</p>{" "}
-                  <p className="truncate">{item.description}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+          </div>
 
           <div className="flex flex-col">
             <div className="flex flex-col w-full gap-y-2">
@@ -456,41 +400,24 @@ const EditResume = () => {
 
         {/* Projects */}
         <EditSection title="Projects">
-          {projects?.length > 0 &&
-            projects.map((item) => (
-              <div
-                key={item.id}
-                className="relative group flex flex-col border p-2 rounded border-neutral-300 text-neutral-600 mb-2 overflow-hidden text-[12px]"
-              >
-                <button
-                  onClick={() => dispatch(deleteProject({ id: item.id }))}
-                  className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-8 items-center justify-center"
+          <div className="flex flex-wrap items-center gap-x-2">
+            {projects?.length > 0 &&
+              projects.map((item) => (
+                <div
+                  key={item.id}
+                  className="w-fit relative group flex flex-col border-2 p-2 rounded hover:border-red-500 border-blue-500  mb-2 overflow-hidden text-sm"
                 >
-                  {" "}
-                  <Trash2 />{" "}
-                </button>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Name:</p>{" "}
-                  <p className="truncate">{item.name}</p>
+                  <div className="w-fit">{item.name}</div>
+                  <button
+                    onClick={() => dispatch(deleteProject({ id: item.id }))}
+                    className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
+                  >
+                    {" "}
+                    <Trash2 />{" "}
+                  </button>
                 </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Technologies:</p>{" "}
-                  <p className="truncate">{item.technologies}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Link:</p>{" "}
-                  <p className="truncate">{item.link}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Github:</p>{" "}
-                  <p className="truncate">{item.github}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Description:</p>{" "}
-                  <p className="truncate">{item.description}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+          </div>
 
           <div className="flex flex-col">
             <div className="flex flex-col w-full gap-y-2">
@@ -559,7 +486,7 @@ const EditResume = () => {
               value={inputValue}
               placeholder="Add Skills"
               type="text"
-              className="py-2 rounded outline-none border border-neutral-600 px-5 bg-white w-full"
+              className="w-full border-2 mt-1 border-neutral-200 rounded-sm px-3 py-2 bg-white focus-within:bg-blue-50 focus-within:outline-2 focus-within:outline-blue-600"
             />
             <button
               onClick={addSkillHandle}
@@ -571,23 +498,24 @@ const EditResume = () => {
             </button>
           </div>
           {skills && skills.length > 0 && (
-            <div className="mt-2">
-              <div className="flex flex-col gap-y-1 text-[12px] text-neutral-500">
-                {skills.map((item) => (
-                  <div
-                    key={item.id}
-                    className="group hover:text-black relative border px-2 py-1 hover:border-neutral-700   border-neutral-300 rounded overflow-hidden"
-                  >
-                    <p>{item.name}</p>
-                    <button
-                      onClick={() => dispatch(deleteSkill({ id: item.id }))}
-                      className="group-hover:absolute hidden group-hover:flex top-0 right-0 h-full w-8 bg-red-500 text-white cursor-pointer items-center justify-center"
-                    >
-                      <Trash2 size={20} />
-                    </button>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-2">
+              {skills.map((item) => (
+                <div
+                  key={item.id}
+                  className="w-fit relative group flex flex-col border-2 px-2 py-1 rounded hover:border-red-500 border-blue-500 overflow-hidden text-sm"
+                >
+                  <div className="w-fit text-blue-500 font-medium">
+                    {item.name}
                   </div>
-                ))}
-              </div>
+                  <button
+                    onClick={() => dispatch(deleteSkill({ id: item.id }))}
+                    className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
+                  >
+                    {" "}
+                    <Trash2 size={20} />{" "}
+                  </button>
+                </div>
+              ))}
             </div>
           )}
         </EditSection>
@@ -596,7 +524,7 @@ const EditResume = () => {
         <EditSection title="Summary">
           <div>
             <textarea
-              className="w-full h-auto leading-tight border-2 border-neutral-300 outline-none rounded-sm p-4 bg-white"
+              className="w-full h-30 border-2 mt-1 border-neutral-200 rounded-sm px-3 py-2 bg-white focus-within:bg-blue-50  focus-within:outline-2 focus-within:outline-blue-600"
               placeholder="Write your summary here."
               name=""
               id=""
@@ -607,28 +535,26 @@ const EditResume = () => {
         </EditSection>
 
         <EditSection title="Languages">
-          {languages && languages.length > 0 && (
-            <div className="mb-2">
-              <div className="flex flex-col gap-y-1 text-[12px] text-neutral-500">
-                {languages.map((item) => (
-                  <div
-                    key={item.id}
-                    className="group hover:text-black relative border px-2 py-1 hover:border-neutral-700   border-neutral-300 rounded overflow-hidden"
-                  >
-                    <p>
-                      {item.name} - {item.level}
-                    </p>
-                    <button
-                      onClick={() => dispatch(deleteLanguage({ id: item.id }))}
-                      className="group-hover:absolute hidden group-hover:flex top-0 right-0 h-full w-8 bg-red-500 text-white cursor-pointer items-center justify-center"
-                    >
-                      <Trash2 size={20} />
-                    </button>
+          <div className="flex flex-wrap items-center gap-x-2">
+            {languages?.length > 0 &&
+              languages.map((item) => (
+                <div
+                  key={item.id}
+                  className="w-fit relative group flex flex-col border-2 px-2 py-1 rounded hover:border-red-500 border-blue-500 mb-2 overflow-hidden text-sm"
+                >
+                  <div className="w-fit">
+                    {item.name} {item.level}
                   </div>
-                ))}
-              </div>
-            </div>
-          )}
+                  <button
+                    onClick={() => dispatch(deleteLanguage({ id: item.id }))}
+                    className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
+                  >
+                    {" "}
+                    <Trash2 />{" "}
+                  </button>
+                </div>
+              ))}
+          </div>
 
           <div>
             <Input
@@ -667,37 +593,28 @@ const EditResume = () => {
 
         {/* certifications */}
         <EditSection title="Certifications">
-          {certificates?.length > 0 &&
-            certificates.map((item) => (
-              <div
-                key={item.id}
-                className="relative group flex flex-col border p-2 rounded border-neutral-300 text-neutral-600 mb-2 overflow-hidden text-[12px]"
-              >
-                <button
-                  onClick={() => dispatch(deleteCertificates({ id: item.id }))}
-                  className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-8 items-center justify-center"
+          <div className="flex flex-wrap items-center gap-x-2">
+            {certificates?.length > 0 &&
+              certificates.map((item) => (
+                <div
+                  key={item.id}
+                  className="w-fit relative group flex flex-col border-2 px-2 py-1 rounded hover:border-red-500 border-blue-500 mb-2 overflow-hidden text-sm"
                 >
-                  {" "}
-                  <Trash2 />{" "}
-                </button>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Title:</p>{" "}
-                  <p className="truncate">{item.title}</p>
+                  <div className="w-fit">
+                    {item.title} {item.level}
+                  </div>
+                  <button
+                    onClick={() =>
+                      dispatch(deleteCertificates({ id: item.id }))
+                    }
+                    className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
+                  >
+                    {" "}
+                    <Trash2 />{" "}
+                  </button>
                 </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Issuer:</p>{" "}
-                  <p className="truncate">{item.issuer}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Date:</p>{" "}
-                  <p className="truncate">{item.date}</p>
-                </div>
-                <div className="flex w-full gap-1">
-                  <p className="font-semibold ">Link:</p>{" "}
-                  <p className="truncate">{item.link}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+          </div>
 
           <div className="flex flex-col">
             <div className="flex flex-col w-full gap-y-2">

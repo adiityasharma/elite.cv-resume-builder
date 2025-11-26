@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import AllTemplatePreview from "./AllTemplatePreview";
 import Colors from "../common/Colors";
 import Fonts from "../common/Fonts";
+import EditResume from "./EditResume";
 
 export const defaultColor = "#000";
 export const defaultFont = "'Poppins', sans-serif";
@@ -72,7 +73,9 @@ const ResumePreviewSection = () => {
 
           <div className="w-full h-[calc(842px-48px)] flex flex-col gap-2 p-4 overflow-hidden">
             {isEditing ? (
-              ""
+              <div className="w-full h-full ">
+                <EditResume />
+              </div>
             ) : (
               <div className="w-full h-full flex flex-col gap-2  ">
                 <Colors />
