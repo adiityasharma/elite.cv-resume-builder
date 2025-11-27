@@ -44,7 +44,7 @@ const ResumePreviewSection = () => {
             className="px-4 py-1 rounded-md cursor-pointer hover:bg-blue-600 bg-blue-500 text-white font-semibold"
             onClick={() => generatePDF(resumeRef.current, "untitled")}
           >
-            Download as PDF
+            Download
           </button>
         </div>
       </div>

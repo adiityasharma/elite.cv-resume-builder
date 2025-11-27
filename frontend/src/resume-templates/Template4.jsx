@@ -88,15 +88,15 @@ export default function Template4({ data, fontColor, fontSize }) {
                 style={{ fontSize: fontSize.text }}
                 className="flex flex-wrap "
               >
-                {data?.skills.map((skill) => (
+                {data?.tools.map((tool) => (
                   <span
-                    key={skill.id}
+                    key={tool.id}
                     className="pr-2"
                     style={{
                       color: "#374151",
                     }}
                   >
-                    {skill.name}
+                    {tool.name}
                   </span>
                 ))}
               </div>

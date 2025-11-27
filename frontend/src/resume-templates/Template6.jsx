@@ -1,52 +1,35 @@
-export default function Template8({ data }) {
+export default function Template8({ data, fontColor, fontSize }) {
   const colors = {
     bg: "#FFFFFF",
-    primary: "#0B1220",
+    primary: fontColor,
     secondary: "#4B5563",
-    accent: "#2563EB",
+    accent: fontColor,
     border: "#E5E7EB",
     chipBg: "#F3F4F6",
   };
 
   return (
     <div
-      className="w-[595px] h-[842px] mx-auto"
+      className="w-[595px] h-[842px] p-4 mx-auto"
       style={{
         backgroundColor: colors.bg,
-        fontFamily:
-          "Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto",
-        padding: "16px", // compact padding
-        boxSizing: "border-box",
       }}
     >
       {/* HEADER — compact */}
-      <header className="flex items-center gap-3 mb-3">
-        {data?.avatar && (
-          <div
-            className="w-14 h-14 rounded-full overflow-hidden border"
-            style={{ borderColor: colors.border }}
-          >
-            <img
-              src={data.avatar}
-              alt="profile"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        )}
-
+      <header className="flex items-center gap-3 mb-1">
         <div>
           <div
-            className="text-xl font-semibold leading-tight"
-            style={{ color: colors.primary }}
+            className="font-semibold leading-tight"
+            style={{ color: colors.primary, fontSize: fontSize.title }}
           >
             {data.personalInfo.firstName} {data.personalInfo.lastName}
           </div>
 
           <div
-            className="text-sm leading-tight"
-            style={{ color: colors.secondary }}
+            className="leading-tight"
+            style={{ color: colors.secondary, fontSize: fontSize.text }}
           >
-            {data.jobRole}
+            {data?.personalInfo?.title}
           </div>
         </div>
       </header>
@@ -54,20 +37,20 @@ export default function Template8({ data }) {
       {/* Summary */}
       {data.summary && (
         <p
-          className="text-xs mb-3"
-          style={{ color: colors.secondary, lineHeight: "1.25rem" }}
+          className="mb-2"
+          style={{ color: colors.secondary, fontSize: fontSize.text }}
         >
           {data.summary}
         </p>
       )}
 
       {/* CONTACT & SKILLS — Compact 2-column layout */}
-      <section className="grid grid-cols-2 gap-3 mb-4">
+      <section className="grid grid-cols-2 gap-3 mb-2">
         {/* Contact */}
         <div>
           <h3
-            className="text-xs uppercase font-bold mb-1 tracking-wide"
-            style={{ color: colors.accent }}
+            className=" uppercase font-bold mb-1 tracking-wide"
+            style={{ color: colors.accent, fontSize: fontSize.heading }}
           >
             Contact
           </h3>
@@ -93,20 +76,19 @@ export default function Template8({ data }) {
         {/* Skills */}
         <div>
           <h3
-            className="text-xs uppercase font-bold mb-1 tracking-wide"
-            style={{ color: colors.accent }}
+            className="uppercase font-bold mb-1 tracking-wide"
+            style={{ color: colors.accent, fontSize: fontSize.heading }}
           >
             Skills
           </h3>
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap">
             {data?.skills?.map((s) => (
               <span
                 key={s.id}
-                className="text-[10px] px-2 py-[2px] rounded"
+                className="pr-2"
                 style={{
-                  backgroundColor: colors.chipBg,
-                  border: `1px solid ${colors.border}`,
-                  color: colors.primary,
+                  fontSize: fontSize.text,
+                  color: colors.secondary,
                 }}
               >
                 {s.name}
@@ -118,10 +100,10 @@ export default function Template8({ data }) {
 
       {/* EXPERIENCE — compact stacked items */}
       {data?.experience?.length > 0 && (
-        <section className="mb-4">
+        <section className="mb-2">
           <h3
-            className="text-xs uppercase font-bold mb-2 tracking-wide"
-            style={{ color: colors.accent }}
+            className="uppercase font-bold mb-1 tracking-wide"
+            style={{ color: colors.accent, fontSize: fontSize.heading }}
           >
             Experience
           </h3>
@@ -130,22 +112,25 @@ export default function Template8({ data }) {
             {data.experience.map((exp) => (
               <div key={exp.id}>
                 <div
-                  className="text-sm font-semibold leading-tight"
-                  style={{ color: colors.primary }}
+                  className="font-semibold leading-tight mb-1"
+                  style={{
+                    color: colors.primary,
+                    fontSize: fontSize.subHeading,
+                  }}
                 >
                   {exp.position}
                 </div>
 
                 <div
-                  className="text-[11px] leading-tight mb-1"
-                  style={{ color: colors.secondary }}
+                  className=" leading-tight mb-1"
+                  style={{ color: colors.secondary, fontSize: fontSize.text }}
                 >
                   {exp.company} — {exp.startDate} to {exp.endDate || "Present"}
                 </div>
 
                 <p
-                  className="text-xs"
-                  style={{ color: colors.secondary, lineHeight: "1.1rem" }}
+                  className="pl-4 leading-snug"
+                  style={{ color: colors.secondary, fontSize: fontSize.text }}
                 >
                   {exp.description}
                 </p>
@@ -157,10 +142,10 @@ export default function Template8({ data }) {
 
       {/* PROJECTS */}
       {data?.projects?.length > 0 && (
-        <section className="mb-4">
+        <section className="mb-2">
           <h3
-            className="text-xs uppercase font-bold mb-2 tracking-wide"
-            style={{ color: colors.accent }}
+            className="uppercase font-bold mb-1 tracking-wide"
+            style={{ color: colors.accent, fontSize: fontSize.heading }}
           >
             Projects
           </h3>
@@ -169,20 +154,23 @@ export default function Template8({ data }) {
             {data.projects.map((p) => (
               <div key={p.id}>
                 <div
-                  className="text-sm font-semibold"
-                  style={{ color: colors.primary }}
+                  className="font-medium"
+                  style={{
+                    color: colors.primary,
+                    fontSize: fontSize.subHeading,
+                  }}
                 >
                   {p.name}
                 </div>
                 <div
-                  className="text-[11px]"
-                  style={{ color: colors.secondary }}
+                  className=""
+                  style={{ color: colors.secondary, fontSize: fontSize.text }}
                 >
                   {p.technologies}
                 </div>
                 <p
-                  className="text-xs"
-                  style={{ color: colors.secondary, lineHeight: "1.1rem" }}
+                  className="leading-snug"
+                  style={{ color: colors.secondary, fontSize: fontSize.text }}
                 >
                   {p.description}
                 </p>
@@ -194,10 +182,10 @@ export default function Template8({ data }) {
 
       {/* EDUCATION */}
       {data?.education?.length > 0 && (
-        <section className="mb-4">
+        <section className="mb-2">
           <h3
-            className="text-xs uppercase font-bold mb-2 tracking-wide"
-            style={{ color: colors.accent }}
+            className="uppercase font-bold mb-1 tracking-wide"
+            style={{ color: colors.accent, fontSize: fontSize.heading }}
           >
             Education
           </h3>
@@ -205,12 +193,15 @@ export default function Template8({ data }) {
           {data.education.map((ed, index) => (
             <div key={index} className="mb-1">
               <div
-                className="text-sm font-semibold"
-                style={{ color: colors.primary }}
+                className="font-semibold"
+                style={{ color: colors.primary, fontSize: fontSize.subHeading }}
               >
                 {ed.degree}
               </div>
-              <div className="text-xs" style={{ color: colors.secondary }}>
+              <div
+                className=""
+                style={{ color: colors.secondary, fontSize: fontSize.text }}
+              >
                 {ed.school} ({ed.month} {ed.year})
               </div>
             </div>
@@ -223,14 +214,19 @@ export default function Template8({ data }) {
         {data?.certificates?.length > 0 && (
           <div>
             <h3
-              className="text-xs uppercase font-bold mb-1 tracking-wide"
-              style={{ color: colors.accent }}
+              className="uppercase font-bold mb-1 tracking-wide"
+              style={{ color: colors.accent, fontSize: fontSize.heading }}
             >
               Certificates
             </h3>
-            <div className="text-xs" style={{ color: colors.secondary }}>
+            <div
+              className=""
+              style={{ color: colors.secondary, fontSize: fontSize.text }}
+            >
               {data.certificates.map((cert) => (
-                <p key={cert.id}>{cert.title}</p>
+                <p key={cert.id}>
+                  {cert.title} - {cert.issuer}
+                </p>
               ))}
             </div>
           </div>
@@ -239,8 +235,8 @@ export default function Template8({ data }) {
         {data?.interests?.length > 0 && (
           <div>
             <h3
-              className="text-xs uppercase font-bold mb-1 tracking-wide"
-              style={{ color: colors.accent }}
+              className="uppercase font-bold mb-1 tracking-wide"
+              style={{ color: colors.accent, fontSize: fontSize.heading }}
             >
               Interests
             </h3>
@@ -248,10 +244,9 @@ export default function Template8({ data }) {
               {data.interests.map((i, idx) => (
                 <span
                   key={idx}
-                  className="text-[10px] px-2 py-[2px] rounded"
+                  className="pl-2"
                   style={{
-                    backgroundColor: colors.chipBg,
-                    border: `1px solid ${colors.border}`,
+                    fontSize: fontSize.text,
                     color: colors.secondary,
                   }}
                 >
