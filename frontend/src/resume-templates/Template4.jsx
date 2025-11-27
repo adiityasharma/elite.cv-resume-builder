@@ -52,27 +52,54 @@ export default function Template4({ data, fontColor, fontSize }) {
             />
 
             {/* Skills */}
-            <h3
-              className="font-semibold mb-2"
-              style={{ color: fontColor, fontSize: fontSize.heading }}
-            >
-              Skills
-            </h3>
-            <div
-              style={{ fontSize: fontSize.text }}
-              className="flex flex-wrap "
-            >
-              {data?.skills.map((skill) => (
-                <span
-                  key={skill.id}
-                  className="pr-2"
-                  style={{
-                    color: "#374151",
-                  }}
-                >
-                  {skill.name}
-                </span>
-              ))}
+            <div>
+              <h3
+                className="font-semibold mb-2"
+                style={{ color: fontColor, fontSize: fontSize.heading }}
+              >
+                Skills
+              </h3>
+              <div
+                style={{ fontSize: fontSize.text }}
+                className="flex flex-wrap "
+              >
+                {data?.skills.map((skill) => (
+                  <span
+                    key={skill.id}
+                    className="pr-2"
+                    style={{
+                      color: "#374151",
+                    }}
+                  >
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3
+                className="font-semibold my-2"
+                style={{ color: fontColor, fontSize: fontSize.heading }}
+              >
+                Tools
+              </h3>
+              <div
+                style={{ fontSize: fontSize.text }}
+                className="flex flex-wrap "
+              >
+                {data?.skills.map((skill) => (
+                  <span
+                    key={skill.id}
+                    className="pr-2"
+                    style={{
+                      color: "#374151",
+                    }}
+                  >
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
             </div>
 
             <div
@@ -240,6 +267,25 @@ export default function Template4({ data, fontColor, fontSize }) {
                 </div>
               ))}
             </div>
+          </section>
+
+          <section>
+            <h2
+              className="font-bold tracking-wide my-2"
+              style={{ color: fontColor, fontSize: fontSize.heading }}
+            >
+              Certificates
+            </h2>
+            <ul
+              className=" space-y-1"
+              style={{ color: "", fontSize: fontSize.text }}
+            >
+              {data?.certificates?.map((cert) => (
+                <li key={cert.id}>
+                  {cert.title} — {cert.issuer}
+                </li>
+              ))}
+            </ul>
           </section>
         </main>
       </div>

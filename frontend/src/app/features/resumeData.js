@@ -10,6 +10,7 @@ const initialState = {
   experience: [],
   projects: [],
   skills: [],
+  tools: [],
   certificates: [],
   languages: [],
   interests: [],
@@ -58,6 +59,17 @@ export const resumeDataSlice = createSlice({
         state.skills = state.skills.filter(item => item.id !== id)
       }
     },
+    addTools: (state, action) => {
+      state.tools.push({ id: Date.now(), ...action.payload })
+    },
+    deleteTools: (state, action) => {
+      const { id } = action.payload;
+      const index = state.tools.findIndex(item => item.id === id)
+
+      if (index !== -1) {
+        state.tools = state.tools.filter(item => item.id !== id)
+      }
+    },
     addSummary: (state, action) => {
       state.summary = action.payload
     },
@@ -100,5 +112,5 @@ export const resumeDataSlice = createSlice({
   }
 })
 
-export const { updatePersonalInfo, deleteEducation, addEducation, addExperience, deleteExperience, addSkill, deleteSkill, addSummary, addLanguage, deleteLanguage, addProject, deleteProject, addCertificates, deleteCertificates, updateDesign } = resumeDataSlice.actions;
+export const { updatePersonalInfo, deleteEducation, addEducation, addExperience, deleteExperience, addSkill, deleteSkill, addSummary, addLanguage, deleteLanguage, addProject, deleteProject, addCertificates, deleteCertificates, updateDesign, addTools, deleteTools } = resumeDataSlice.actions;
 export default resumeDataSlice.reducer;

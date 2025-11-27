@@ -75,6 +75,12 @@ const resumeSchema = new Schema({
       name: { type: String, required: true },
     },
   ],
+  tools: [
+    {
+      id: { type: String },
+      name: { type: String, required: true },
+    },
+  ],
 
   certificates: [
     {

@@ -20,6 +20,8 @@ import {
   deleteProject,
   addCertificates,
   deleteCertificates,
+  addTools,
+  deleteTools,
 } from "../../app/features/resumeData";
 import {
   certificateInitialState,
@@ -35,6 +37,7 @@ import {
 const EditResume = () => {
   const [inputValue, setInputValue] = useState("");
   const [languageInput, setLanguageInput] = useState({});
+  const [toolInput, setToolInput] = useState({});
 
   const [edState, educationDispatch] = useReducer(
     educationReducer,
@@ -62,6 +65,7 @@ const EditResume = () => {
     languages,
     projects,
     certificates,
+    tools,
   } = useSelector((state) => state.resumeData);
   const dispatch = useDispatch();
 
@@ -71,10 +75,17 @@ const EditResume = () => {
       setInputValue("");
     }
   };
+  const addToolsHandle = () => {
+    if (toolInput) {
+      dispatch(addTools({ name: toolInput }));
+      setToolInput("");
+    }
+  };
 
   const enterToSave = (e) => {
     if (e.key === "Enter") {
       addSkillHandle();
+      addToolsHandle();
     }
   };
 
@@ -82,7 +93,6 @@ const EditResume = () => {
     if (languageInput?.name) {
       dispatch(addLanguage(languageInput));
     }
-    console.log(languageInput);
   };
 
   return (
@@ -509,6 +519,49 @@ const EditResume = () => {
                   </div>
                   <button
                     onClick={() => dispatch(deleteSkill({ id: item.id }))}
+                    className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
+                  >
+                    {" "}
+                    <Trash2 size={20} />{" "}
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </EditSection>
+
+        {/* tools */}
+        <EditSection title="Tools">
+          <div className="flex items-center gap-2">
+            <input
+              onKeyUp={enterToSave}
+              onChange={(e) => setToolInput(e.target.value)}
+              value={toolInput}
+              placeholder="Add Skills"
+              type="text"
+              className="w-full border-2 mt-1 border-neutral-200 rounded-sm px-3 py-2 bg-white focus-within:bg-blue-50 focus-within:outline-2 focus-within:outline-blue-600"
+            />
+            <button
+              onClick={addToolsHandle}
+              className={`px-4 py-2 rounded bg-blue-500 text-white ${
+                toolInput ? "cursor-pointer bg-blue-600" : "cursor-not-allowed"
+              }`}
+            >
+              Add
+            </button>
+          </div>
+          {tools && tools.length > 0 && (
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-2">
+              {tools.map((item) => (
+                <div
+                  key={item.id}
+                  className="w-fit relative group flex flex-col border-2 px-2 py-1 rounded hover:border-red-500 border-blue-500 overflow-hidden text-sm"
+                >
+                  <div className="w-fit text-blue-500 font-medium">
+                    {item.name}
+                  </div>
+                  <button
+                    onClick={() => dispatch(deleteTools({ id: item.id }))}
                     className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
                   >
                     {" "}
