@@ -1,7 +1,7 @@
-export default function Template4({ data }) {
+export default function Template4({ data, fontColor, fontSize }) {
   return (
     <div
-      className="w-[595px] h-[842px] mx-auto my-8 overflow-hidden"
+      className="w-[595px] h-[842px] mx-auto  overflow-hidden"
       style={{ backgroundColor: "#FFFFFF" }}
     >
       {/* Outer container with subtle paper-like background */}
@@ -11,239 +11,234 @@ export default function Template4({ data }) {
       >
         {/* Left column (sidebar) */}
         <aside
-          className="w-[180px] pr-6 border-r"
+          className="w-[180px] pr-3 border-r"
           style={{ borderColor: "#E6E6E6" }}
         >
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start overflow-hidden">
             {/* Contact */}
             <h3
-              className="text-[13px] font-semibold mb-2"
-              style={{ color: "#0F1724" }}
+              className=" font-semibold mb-2"
+              style={{ color: fontColor, fontSize: fontSize.heading }}
             >
               Contact
             </h3>
-            <p
-              className="text-[11px] leading-relaxed mb-2"
-              style={{ color: "#374151" }}
+            <ul
+              style={{ fontSize: fontSize.text }}
+              className="mt-2 pb-2 truncate space-y-1 opacity-90"
             >
-              John Doe
-              <br />
-              johndoe@example.com
-              <br />
-              +1 (555) 555-5555
-              <br />
-              City, Country
-            </p>
+              <li>{data?.personalInfo?.email}</li>
+              <li>{data?.personalInfo?.phone}</li>
+              <li>
+                <a href={data?.personalInfo?.website}>
+                  {data?.personalInfo?.website}
+                </a>
+              </li>
+              <li>
+                <a href={data?.personalInfo?.linkedin}>
+                  {data?.personalInfo?.linkedin}
+                </a>
+              </li>
+              <li>
+                <a href={data?.personalInfo?.github}>
+                  {data?.personalInfo?.github}
+                </a>
+              </li>
+              <li>{data?.personalInfo?.address}</li>
+            </ul>
 
             <div
-              className="w-full h-[1px] my-3"
+              className="w-full h-[1px] mt-2"
               style={{ backgroundColor: "#EEF2F6" }}
             />
 
             {/* Skills */}
             <h3
-              className="text-[13px] font-semibold mb-2"
-              style={{ color: "#0F1724" }}
+              className="font-semibold mb-2"
+              style={{ color: fontColor, fontSize: fontSize.heading }}
             >
               Skills
             </h3>
-            <ul
-              className="text-[11px] leading-snug mb-3"
-              style={{ color: "#374151" }}
+            <div
+              style={{ fontSize: fontSize.text }}
+              className="flex flex-wrap "
             >
-              <li className="mb-1">React</li>
-              <li className="mb-1">TypeScript</li>
-              <li className="mb-1">Tailwind CSS</li>
-              <li className="mb-1">Node.js</li>
-              <li className="mb-1">REST / GraphQL</li>
-            </ul>
+              {data?.skills.map((skill) => (
+                <span
+                  key={skill.id}
+                  className="pr-2"
+                  style={{
+                    color: "#374151",
+                  }}
+                >
+                  {skill.name}
+                </span>
+              ))}
+            </div>
 
             <div
-              className="w-full h-[1px] my-3"
+              className="w-full h-[1px] mt-2"
               style={{ backgroundColor: "#EEF2F6" }}
             />
 
             {/* Languages */}
             <h3
-              className="text-[13px] font-semibold mb-2"
-              style={{ color: "#0F1724" }}
+              className="font-semibold mb-2"
+              style={{ color: fontColor, fontSize: fontSize.heading }}
             >
               Languages
             </h3>
             <ul
-              className="text-[11px] leading-snug"
-              style={{ color: "#374151" }}
+              className=" leading-snug"
+              style={{ color: "#374151", fontSize: fontSize.text }}
             >
-              <li className="mb-1">English — Native</li>
-              <li className="mb-1">Spanish — Professional</li>
+              <li className="">English — Native</li>
+              <li className="">Spanish — Professional</li>
             </ul>
+
+            <section className="mt-4">
+              <h2
+                className="font-semibold mb-1"
+                style={{ color: fontColor, fontSize: fontSize.heading }}
+              >
+                Education
+              </h2>
+              <div
+                style={{ fontSize: fontSize.text }}
+                className="space-y-1 opacity-90"
+              >
+                {data?.education.map((edu) => (
+                  <div key={edu.id}>
+                    <p className="font-medium">{edu.degree}</p>
+                    <p>{edu.school}</p>
+                    <p>
+                      {edu.month} {edu.year}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
           </div>
         </aside>
 
         {/* Right column (main content) */}
-        <main className="flex-1 pl-6">
+        <main className="flex-1 pl-3">
           {/* Header: name, title, summary */}
           <header className="mb-4">
-            <div className="flex items-baseline justify-between">
+            <div className="flex flex-col items-baseline justify-between">
               <div>
                 <h1
                   className="text-[26px] font-bold leading-tight"
-                  style={{ color: "#0B1220" }}
+                  style={{ color: fontColor, fontSize: fontSize.title }}
                 >
-                  John Doe
+                  {data?.personalInfo?.firstName} {data?.personalInfo?.lastName}
                 </h1>
-                <p className="text-[14px] mt-1" style={{ color: "#1F2937" }}>
-                  Senior Frontend Engineer
-                </p>
-              </div>
-              <div className="text-right">
-                <p className="text-[11px]" style={{ color: "#6B7280" }}>
-                  Portfolio: johndoe.dev
-                </p>
-                <p className="text-[11px]" style={{ color: "#6B7280" }}>
-                  LinkedIn: linkedin.com/in/johndoe
-                </p>
+                {data?.personalInfo?.title && (
+                  <p
+                    style={{ fontSize: fontSize.text }}
+                    className=" mt-1 opacity-80"
+                  >
+                    {data.personalInfo.title}
+                  </p>
+                )}
               </div>
             </div>
 
             <p
-              className="mt-4 text-[12px] leading-relaxed"
-              style={{ color: "#374151" }}
+              className="mt-2 leading-snug"
+              style={{ color: "#374151", fontSize: fontSize.text }}
             >
-              Product-minded frontend engineer with 8+ years building
-              accessible, performant web applications. Expert in React,
-              component-driven design systems, and turning product specs into
-              delightful user experiences.
+              {data?.summary}
             </p>
           </header>
 
-          <section className="mb-4">
+          <section className="">
             <h2
               className="text-[15px] font-semibold mb-3"
-              style={{ color: "#0B1220" }}
+              style={{ color: fontColor, fontSize: fontSize.heading }}
             >
               Experience
             </h2>
 
-            <article className="mb-4">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3
-                    className="text-[13px] font-medium"
-                    style={{ color: "#0B1220" }}
-                  >
-                    Senior Frontend Engineer
-                  </h3>
-                  <p className="text-[11px]" style={{ color: "#6B7280" }}>
-                    Acme Corp — Jan 2021 — Present
-                  </p>
-                </div>
-                <div className="text-[11px]" style={{ color: "#6B7280" }}>
-                  Remote
-                </div>
-              </div>
-              <ul
-                className="list-disc ml-5 mt-2 text-[12px]"
-                style={{ color: "#374151" }}
-              >
-                <li className="mb-1">
-                  Led a team of 4 engineers to build a design system of reusable
-                  React components, reducing development time by 30%.
-                </li>
-                <li className="mb-1">
-                  Improved first contentful paint by 40% through code-splitting
-                  and image optimizations.
-                </li>
-              </ul>
-            </article>
+            <article className="mb-2">
+              <div className="space-y-3">
+                {data?.experience.map((job) => (
+                  <div key={job.id}>
+                    <div className="flex justify-between">
+                      <div>
+                        <h3
+                          className="font-medium"
+                          style={{
+                            color: fontColor,
+                            fontSize: fontSize.subHeading,
+                          }}
+                        >
+                          {job.position}
+                        </h3>
+                        <p
+                          className="text-xs"
+                          style={{
+                            color: "#374151",
+                            fontSize: fontSize.text,
+                          }}
+                        >
+                          {job.company} — {job.startDate} –{" "}
+                          {job.endDate || "Present"}
+                        </p>
+                      </div>
+                      <p
+                        className=""
+                        style={{
+                          color: "#374151",
+                          fontSize: fontSize.text,
+                        }}
+                      >
+                        {job.location}
+                      </p>
+                    </div>
 
-            <article className="mb-4">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3
-                    className="text-[13px] font-medium"
-                    style={{ color: "#0B1220" }}
-                  >
-                    Frontend Engineer
-                  </h3>
-                  <p className="text-[11px]" style={{ color: "#6B7280" }}>
-                    Beta Labs — May 2017 — Dec 2020
-                  </p>
-                </div>
-                <div className="text-[11px]" style={{ color: "#6B7280" }}>
-                  New York, NY
-                </div>
-              </div>
-              <ul
-                className="list-disc ml-5 mt-2 text-[12px]"
-                style={{ color: "#374151" }}
-              >
-                <li className="mb-1">
-                  Built multiple high-traffic features in a React + Redux app,
-                  including a real-time dashboard used by 100k+ monthly users.
-                </li>
-                <li className="mb-1">
-                  Introduced automated visual regression testing and component
-                  documentation.
-                </li>
-              </ul>
-            </article>
-          </section>
-
-          <section className="mb-4">
-            <h2
-              className="text-[15px] font-semibold mb-3"
-              style={{ color: "#0B1220" }}
-            >
-              Education
-            </h2>
-            <div className="text-[12px]" style={{ color: "#374151" }}>
-              <div className="flex justify-between">
-                <div>
-                  <strong>B.S. Computer Science</strong>
-                  <div className="text-[11px]" style={{ color: "#6B7280" }}>
-                    State University — 2013 — 2017
+                    <ul
+                      className="ml-5 mt-2 "
+                      style={{
+                        color: "#374151",
+                        fontSize: fontSize.text,
+                      }}
+                    >
+                      {job.description}
+                    </ul>
                   </div>
-                </div>
-                <div className="text-[11px]" style={{ color: "#6B7280" }}>
-                  GPA: 3.8
-                </div>
+                ))}
               </div>
-            </div>
+            </article>
           </section>
 
           <section>
             <h2
-              className="text-[15px] font-semibold mb-3"
-              style={{ color: "#0B1220" }}
+              className=" font-bold tracking-wide mb-2"
+              style={{ color: fontColor, fontSize: fontSize.heading }}
             >
               Projects
             </h2>
 
-            <div className="mb-3">
-              <h3
-                className="text-[13px] font-medium"
-                style={{ color: "#0B1220" }}
-              >
-                Component Library
-              </h3>
-              <p className="text-[12px]" style={{ color: "#374151" }}>
-                Designed and maintained a TypeScript React component library
-                with Storybook and automated releases.
-              </p>
-            </div>
-
-            <div>
-              <h3
-                className="text-[13px] font-medium"
-                style={{ color: "#0B1220" }}
-              >
-                Analytics Dashboard
-              </h3>
-              <p className="text-[12px]" style={{ color: "#374151" }}>
-                Built a customizable analytics dashboard with charts, real-time
-                data, and role-based access.
-              </p>
+            <div className="space-y-2">
+              {data?.projects.map((project) => (
+                <div key={project.id}>
+                  <h4
+                    className="font-medium"
+                    style={{
+                      color: fontColor,
+                      fontSize: fontSize.subHeading,
+                    }}
+                  >
+                    {project.name}
+                  </h4>
+                  <p
+                    className=""
+                    style={{ color: "", fontSize: fontSize.text }}
+                  >
+                    {project.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
         </main>

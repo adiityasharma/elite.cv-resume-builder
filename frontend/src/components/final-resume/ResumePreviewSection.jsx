@@ -49,7 +49,7 @@ const ResumePreviewSection = () => {
         </div>
       </div>
 
-      <div className="w-full grid grid-cols-2 gap-10 px-10 max-h-[842px]">
+      <div className="w-full grid grid-cols-2 gap-10 px-10 min-h-[842px]">
         <div className="border border-[#dcdcdc] w-full flex flex-col gap-2 ">
           <div className="w-full h-12 flex items-center justify-evenly font-medium border-b border-neutral-300 text-lg rounded overflow-hidden">
             <button

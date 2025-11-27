@@ -8,7 +8,7 @@ export const generatePDF = async (element, fileName) => {
 
   const pdf = new jsPDF({
     orientation: "portrait",
-    unit: "px",
+    unit: "mm",
     format: "a4",
   });
 

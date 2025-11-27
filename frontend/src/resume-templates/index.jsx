@@ -9,6 +9,9 @@ import Template8 from "./Template8";
 import Template9 from "./Template9";
 import Template10 from "./Template10";
 import Template11 from "./Template11";
+import Template12 from "./Template12";
+import Template13 from "./Template13";
+import Template14 from "./Template14";
 
 export const ResumeTemplates = [
   {
@@ -75,6 +78,24 @@ export const ResumeTemplates = [
     id: "TP11",
     name: "Template 11",
     component: Template11,
+    image: "/template-1.png",
+  },
+  {
+    id: "TP12",
+    name: "Template 12",
+    component: Template12,
+    image: "/template-1.png",
+  },
+  {
+    id: "TP13",
+    name: "Template 13",
+    component: Template13,
+    image: "/template-1.png",
+  },
+  {
+    id: "TP14",
+    name: "Template 14",
+    component: Template14,
     image: "/template-1.png",
   },
 ];
