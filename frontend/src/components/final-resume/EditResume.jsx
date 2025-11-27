@@ -1,4 +1,4 @@
-import { Trash, Trash2, X } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import Input from "../common/Input";
 import Select from "../common/Select";
 import Option from "../common/Option";
@@ -37,7 +37,7 @@ import {
 const EditResume = () => {
   const [inputValue, setInputValue] = useState("");
   const [languageInput, setLanguageInput] = useState({});
-  const [toolInput, setToolInput] = useState({});
+  const [toolInput, setToolInput] = useState("");
 
   const [edState, educationDispatch] = useReducer(
     educationReducer,
@@ -67,6 +67,8 @@ const EditResume = () => {
     certificates,
     tools,
   } = useSelector((state) => state.resumeData);
+
+  console.log(tools)
   const dispatch = useDispatch();
 
   const addSkillHandle = () => {
@@ -554,7 +556,7 @@ const EditResume = () => {
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-2">
               {tools.map((item) => (
                 <div
-                  key={item.id}
+                  // key={item.id}
                   className="w-fit relative group flex flex-col border-2 px-2 py-1 rounded hover:border-red-500 border-blue-500 overflow-hidden text-sm"
                 >
                   <div className="w-fit text-blue-500 font-medium">
