@@ -2,11 +2,12 @@ import { useRef, useState } from "react";
 import { ResumeTemplates } from "../../resume-templates";
 import { Edit, Paintbrush, Pencil } from "lucide-react";
 import { generatePDF } from "../../utils/generatePDF";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AllTemplatePreview from "./AllTemplatePreview";
 import Colors from "../common/Colors";
 import Fonts from "../common/Fonts";
 import EditResume from "./EditResume";
+import { setTitle } from "../../app/features/resumeData";
 
 export const defaultColor = "#000";
 export const defaultFont = "'Poppins', sans-serif";
@@ -21,8 +22,9 @@ export const defaultFontSize = {
 
 const ResumePreviewSection = () => {
   const resumeRef = useRef();
+  const dispatch = useDispatch();
   const data = useSelector((state) => state.resumeData);
-  const { design } = useSelector((state) => state.resumeData);
+  const { title, design } = useSelector((state) => state.resumeData);
 
   const Temp = ResumeTemplates.filter(
     (temp) => temp.id === (design.template || "TP1")
@@ -31,18 +33,23 @@ const ResumePreviewSection = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
-    <div className="w-full flex flex-col items-center gap-5 rounded overflow-hidden border-2 border-neutral-200 bg-white shadow-lg pb-10">
-      <div className="px-5 w-full h-[50px] bg-white shadow flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <h1>untitled</h1>
-          <button>
-            <Pencil size={15} className="cursor-pointer text-blue-500 " />
-          </button>
+    <div className="w-full flex flex-col items-center gap-5 overflow-hidden border border-neutral-200 bg-white pb-10">
+      <div className="px-5 w-full h-[50px] bg-white border-b border-neutral-200 flex items-center justify-between">
+        <div className="w-fit flex items-center gap-4">
+          <input
+            className="w-fit px-2 py-1 outline-none"
+            type="text"
+            value={title}
+            placeholder="Untitled"
+            onChange={(e) => dispatch(setTitle(e.target.value))}
+          />
         </div>
         <div className="flex items-center justify-center gap-4">
           <button
             className="px-4 py-1 rounded-md cursor-pointer hover:bg-blue-600 bg-blue-500 text-white font-semibold"
-            onClick={() => generatePDF(resumeRef.current, "untitled")}
+            onClick={() =>
+              generatePDF(resumeRef.current, title.trim() || "untitled")
+            }
           >
             Download
           </button>
