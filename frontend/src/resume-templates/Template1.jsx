@@ -82,7 +82,7 @@ export default function Template1({ data, fontColor, fontSize }) {
             >
               Skills
             </h3>
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-col leading-snug">
               {data.skills.map((skill) => (
                 <span
                   key={skill.id}
@@ -97,6 +97,33 @@ export default function Template1({ data, fontColor, fontSize }) {
               ))}
             </div>
           </section>
+
+          {data?.tools?.length > 0 && (
+            <section>
+              <h3
+                className="font-semibold mb-1"
+                style={{ color: fontColor, fontSize: fontSize.heading }}
+              >
+                Tools
+              </h3>
+              <div
+                style={{ fontSize: fontSize.text }}
+                className="flex flex-col leading-snug"
+              >
+                {data?.tools.map((tool) => (
+                  <span
+                    key={tool.id}
+                    className="pr-2"
+                    style={{
+                      color: "#374151",
+                    }}
+                  >
+                    {tool.name}
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* LANGUAGES */}
           <section>

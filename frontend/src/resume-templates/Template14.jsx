@@ -149,6 +149,39 @@ export default function Template14({ data, fontColor, fontSize }) {
             </div>
           </section>
 
+          {data?.tools?.length > 0 && (
+            <section
+              className="p-3 rounded"
+              style={{
+                backgroundColor: color.sectionBg,
+                borderLeft: `4px solid ${color.accent}`,
+              }}
+            >
+              <h3
+                className="font-semibold mb-1"
+                style={{ color: fontColor, fontSize: fontSize.heading }}
+              >
+                Tools
+              </h3>
+              <div
+                style={{ fontSize: fontSize.text }}
+                className="flex flex-col leading-snug"
+              >
+                {data?.tools.map((tool) => (
+                  <span
+                    key={tool.id}
+                    className="pr-2"
+                    style={{
+                      color: "#374151",
+                    }}
+                  >
+                    {tool.name}
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Languages */}
           <section
             className="p-3 rounded"

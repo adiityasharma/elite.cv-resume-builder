@@ -66,7 +66,7 @@ export default function Template5({ data, fontColor, fontSize }) {
               Skills
             </h3>
             <div
-              className="flex flex-wrap gap-x-2"
+              className="flex flex-col leading-snug"
               style={{ fontSize: fontSize.text, color: "#374151" }}
             >
               {data?.skills.map((skill) => (
@@ -84,7 +84,7 @@ export default function Template5({ data, fontColor, fontSize }) {
               Tools
             </h3>
             <div
-              className="flex flex-wrap gap-x-2"
+              className="flex flex-col leading-snug"
               style={{ fontSize: fontSize.text, color: "#374151" }}
             >
               {data?.tools.map((tool) => (
@@ -102,7 +102,7 @@ export default function Template5({ data, fontColor, fontSize }) {
               Languages
             </h3>
             <ul
-              className="space-y-1"
+              className="leading-snug space-y-1"
               style={{ fontSize: fontSize.text, color: "#374151" }}
             >
               <li>English — Native</li>
@@ -140,7 +140,7 @@ export default function Template5({ data, fontColor, fontSize }) {
           {/* EXPERIENCE */}
           <section>
             <h2
-              className="font-semibold mb-2 tracking-wide border-b pb-1"
+              className="font-semibold mb-2 tracking-wide "
               style={{
                 borderColor: "#D1D5DB",
                 color: fontColor,
@@ -182,7 +182,7 @@ export default function Template5({ data, fontColor, fontSize }) {
           {/* PROJECTS */}
           <section>
             <h2
-              className="font-semibold mb-2 tracking-wide border-b pb-1"
+              className="font-semibold mb-2 tracking-wide "
               style={{
                 borderColor: "#D1D5DB",
                 color: fontColor,
@@ -209,7 +209,7 @@ export default function Template5({ data, fontColor, fontSize }) {
           {/* CERTIFICATES */}
           <section>
             <h2
-              className="font-semibold mb-2 tracking-wide border-b pb-1"
+              className="font-semibold mb-2 tracking-wide"
               style={{
                 borderColor: "#D1D5DB",
                 color: fontColor,
