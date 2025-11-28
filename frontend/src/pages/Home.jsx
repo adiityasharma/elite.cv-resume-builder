@@ -8,7 +8,7 @@ import DreamJobSection from "../components/home/DreamJobSection";
 
 const Home = () => {
   return (
-    <main className=" px-15 selection:bg-[#00A7FA] selection:text-white ">
+    <main className=" w-full h-full flex flex-col items-center justify-center mt-15 gap-10 selection:bg-[#00A7FA] selection:text-white ">
       <HeroSection />
       <WhyChooseUsSection />
       <GetHiredSection />

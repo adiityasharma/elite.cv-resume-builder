@@ -17,7 +17,6 @@ import FinalResume from "./pages/FinalResume";
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

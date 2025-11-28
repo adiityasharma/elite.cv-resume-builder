@@ -5,10 +5,10 @@ import Footer from "./components/Footer";
 
 function Layout() {
   return (
-    <div className="flex flex-col justify-between background min-h-screen">
+    <div className=" flex flex-col justify-between background">
       <Navbar />
 
-      <main className="pt-20 w-full container mx-auto ">
+      <main className="container mx-auto">
         <Outlet />
       </main>
 

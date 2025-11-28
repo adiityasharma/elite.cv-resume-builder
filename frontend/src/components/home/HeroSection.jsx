@@ -5,47 +5,54 @@ const HeroSection = () => {
   const Temp = ResumeTemplates;
 
   return (
-    <div className="w-full h-[650px] flex justify-center gap-10 pt-5">
-      <div className="w-[50%] h-full flex items-start flex-col justify-center select-none">
-        <div className="px-5 py-1 text-[13px] rounded-full bg-[#008efa25] text-[#0053fa] font-semibold mb-2">
+    <div className="w-full md:min-h-[700px] flex flex-col-reverse md:flex-row items-center justify-center md:justify-between md:gap-5 lg:gap-10 p-4 py-10 sm:py-15 md:py-12 lg:px-15 ">
+      {/* Left Section (text) */}
+      <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center text-center md:text-left">
+        <div className="px-4 py-1 text-[12px] sm:text-[13px] rounded-full bg-[#008efa37] text-[#0053fa] font-semibold mb-3">
           <p>Your Story. Your Style. Your Resume.</p>
         </div>
-        <div>
-          <h1 className="text-7xl font-bold w-110 bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 bg-clip-text text-transparent leading-17">
-            Build a Professional Resume in Minutes.
-          </h1>
-        </div>
-        <div className="w-100 mt-3">
-          <h1 className="text-md leading-tight text-neutral-500 font-medium">
-            Create a standout resume fast — easy steps, modern designs, real
-            results.
-          </h1>
-        </div>
-        <button className="cursor-pointer px-4 py-2 rounded-lg bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 hover:from-cyan-400 hover:via-violet-600 hover:to-indigo-400 transition-colors duration-400 ease-in-out text-white font-semibold mt-4 shadow-xl  ">
+
+        <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-black md:font-bold bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 bg-clip-text text-transparent leading-tight md:leading-13 lg:leading-17">
+          Create a Professional Resume in Minutes. No cost. No catch.
+        </h1>
+
+        <p className="text-sm text-neutral-500 font-medium mt-3 max-w-xl">
+          Create a standout resume fast — easy steps, modern designs, real
+          results.
+        </p>
+
+        <button className="cursor-pointer px-5 py-3 rounded-lg bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 hover:from-cyan-400 hover:via-violet-600 hover:to-indigo-400 transition-colors duration-400 ease-in-out text-white font-semibold mt-5 shadow-xl">
           Get Started for Free
         </button>
+
         <p className="text-[12px] text-neutral-500 mt-1 font-medium">
           No credit card required.
         </p>
       </div>
-      <div className="w-[50%] h-full relative flex items-center justify-center">
-        <div className="absolute  -rotate-4 hover:rotate-0 scale-90 hover:scale-105 -left-4 transition-all duration-500 bg-white shadow-xl w-[360px] h-[500px] rounded-xl p-6 hover:p-3 overflow-hidden cursor-pointer">
-          <div className="w-full h-full  rounded-xl shadow-xl overflow-hidden">
-            <img
-              src={Temp[2].image}
-              alt=""
-              className="object-center w-full h-full"
-            />
-          </div>
+
+      {/* Right Section (templates) */}
+      <div className="relative md:h-[400px]  lg:h-[500px] w-1/2 hidden md:flex items-center justify-center">
+        <div className="absolute md:w-65 lg:w-80 top-0 right-0 md:hover:w-80 lg:hover:w-90 z-20 transition-all duration-500 bg-white shadow-xl rounded-xl p-4 md:p-6 hover:p-4 cursor-pointer overflow-hidden">
+          <img
+            src={Temp[2].image}
+            alt="resume"
+            className="object-cover w-full h-full rounded-xl"
+          />
         </div>
-        <div className="absolute rotate-4 hover:rotate-0 scale-90 hover:scale-105 -right-4 transition-all duration-500 bg-white shadow-xl w-[360px] h-[500px] rounded-xl p-6 hover:p-3 overflow-hidden cursor-pointer ">
-          <div className="w-full h-full rounded-xl shadow-xl overflow-hidden select-none">
-            <img
-              src={Temp[3].image}
-              alt=""
-              className="object-center w-full h-full"
-            />
-          </div>
+
+        <div className="absolute md:w-65 lg:w-80 top-5 right-5 lg:right-15 md:hover:w-80 lg:hover:w-90 hover:z-100 z-15 transition-all duration-500 bg-white shadow-xl rounded-xl p-4 md:p-6 hover:p-4 cursor-pointer overflow-hidden">
+          <img
+            src={Temp[3].image}
+            alt="resume"
+            className="object-cover w-full h-full rounded-xl"
+          />
+        </div>
+        <div className="absolute md:w-65 lg:w-80 top-10 right-10 lg:right-30 md:hover:w-80 lg:hover:w-90 hover:z-100 z-10 transition-all duration-500 bg-white shadow-xl rounded-xl p-4 md:p-6 hover:p-4 cursor-pointer overflow-hidden">
+          <img
+            src={Temp[4].image}
+            alt="resume"
+            className="object-cover w-full h-full rounded-xl"
+          />
         </div>
       </div>
     </div>

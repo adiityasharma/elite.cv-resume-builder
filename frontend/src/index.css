@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+.gradientText {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(170deg, #9ba4a6, #212426, #858585);
+}
 
 .background {
   inset: calc(var(--spacing) * 0);
