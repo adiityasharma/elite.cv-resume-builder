@@ -22,7 +22,7 @@ const Fonts = () => {
               key={font.id}
               onClick={() => dispatch(updateDesign({ font: font.font }))}
               style={{ fontFamily: font.font }}
-              className={`w-fit px-2 py-1 border border-neutral-300 text-sm rounded cursor-pointer ${
+              className={`w-fit px-2 py-1 border border-neutral-300 text-sm md:text-[12px] rounded cursor-pointer ${
                 (design.font || defaultFont) === font.font
                   ? "bg-blue-500 text-white border-none"
                   : ""

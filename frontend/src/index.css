@@ -39,3 +39,9 @@
 .customScrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #ffffff85;
 }
+.pdf-hidden {
+  position: absolute;
+  top: -20000px;
+  left: -20000px;
+  /* visibility: hidden; */
+}

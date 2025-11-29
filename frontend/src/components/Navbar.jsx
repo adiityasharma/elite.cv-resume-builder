@@ -16,6 +16,15 @@ const Navbar = () => {
 
       {/* Desktop Links */}
       <div className="hidden md:flex items-center justify-center md:gap-3 md:text-sm lg:gap-5 font-semibold ">
+        <Link
+          to="/"
+          className={`hover:text-[#00A7FA] hover:underline underline-offset-5 ${
+            location.pathname === "/" ? "text-[#00A7FA]" : ""
+          }`}
+        >
+          Home
+        </Link>
+
         {links.map((link, index) => (
           <Link
             key={index}

@@ -116,7 +116,7 @@ const resumeSchema = new Schema({
     font: { type: String, default: "'Roboto Variable', sans-serif" },
     fontWeight: { type: String, default: "400" },
     fontSize: { type: String, default: "medium" },
-    template: { type: String, default: "TP1" },
+    template: { type: String, default: "tp1" },
   },
 
 },

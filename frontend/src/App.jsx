@@ -12,6 +12,7 @@ import SkillsInfo from "./components/resume/SkillsInfo";
 import Summary from "./components/resume/Summary";
 import AddSection from "./components/resume/AddSection";
 import FinalResume from "./pages/FinalResume";
+import TemplatePage from "./pages/TemplatePage";
 // import ResumeEditPage from "./pages/ResumeEditPage";
 
 const App = () => {
@@ -28,8 +29,9 @@ const App = () => {
             <Route path="skills" element={<SkillsInfo />} />
             <Route path="summary" element={<Summary />} />
             <Route path="add-section" element={<AddSection />} />
-            <Route path="final-resume" element={<FinalResume />} />
           </Route>
+          <Route path="build/final-resume/:tempId" element={<FinalResume />} />
+          <Route path="templates" element={<TemplatePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

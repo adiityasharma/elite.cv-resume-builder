@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const CreateResume = () => {
   return (
-    <div className="w-full h-[600px] px-15 flex items-center justify-center gap-10 selection:bg-[#00A7FA] selection:text-white">
+    <div className="w-full h-[600px] mt-20 flex items-center justify-center gap-10 selection:bg-[#00A7FA] selection:text-white">
       <div className="w-[40%] h-full flex flex-col items-center justify-center gap-5 py-5">
         <div className="text-7xl font-bold">
           <h1>Just three</h1>
@@ -47,7 +47,10 @@ const CreateResume = () => {
           Next
         </Link>
       </div>
-      {/* <div className="w-[40%] h-full bg-amber-100"></div> */}
+
+      <div className="w-[40%] h-full bg-amber-100">
+        
+      </div>
     </div>
   );
 };

@@ -12,12 +12,12 @@ const Colors = () => {
     <div>
       <h1 className="text-sm font-semibold ">Colors</h1>
       <div>
-        <div className="flex items-center gap-2 mt-2">
+        <div className="flex flex-wrap items-center gap-1 md:gap-2 mt-2">
           {colors.map((color, index) => (
             <button
               onClick={() => dispatch(updateDesign({ color: color.hex }))}
               key={color.hex}
-              className={`w-5 aspect-square rounded-full overflow-hidden cursor-pointer ${
+              className={`w-8 md:w-5 aspect-square rounded-full overflow-hidden cursor-pointer ${
                 (design.color || defaultColor) === color.hex
                   ? "border-2 border-blue-500 p-1"
                   : ""

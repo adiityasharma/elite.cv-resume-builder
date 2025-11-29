@@ -6,20 +6,8 @@ export const links = [
     path: "/resume",
   },
   {
-    name: "Features",
-    path: "/features",
-  },
-  {
     name: "Templates",
     path: "/templates",
-  },
-  {
-    name: "Pricing",
-    path: "/pricing",
-  },
-  {
-    name: "About",
-    path: "/about",
   },
   {
     name: "Login",
