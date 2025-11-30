@@ -36,7 +36,7 @@ const Summary = () => {
         />
       </div>
       <Button
-        onClick={() => navigate(`/build/final-resume/${design.template}`)}
+        onClick={() => navigate(`/build/final-resume/${design.template || "tp1"}`)}
         styles="absolute -bottom-5 right-4"
       >
         Next

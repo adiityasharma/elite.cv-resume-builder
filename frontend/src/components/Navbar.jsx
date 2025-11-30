@@ -8,7 +8,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full flex items-center justify-between p-4 md:px-6 lg:px-15 bg-white z-200 border-b border-neutral-200">
+    <nav className="fixed w-full flex items-center justify-between p-4 md:px-6 lg:px-15 bg-white/40 backdrop-blur z-200 border-b border-neutral-200">
       {/* Logo */}
       <Link to="/">
         <img src="/elitecv.svg" alt="" className="w-25 md:w-30 lg:w-40" />

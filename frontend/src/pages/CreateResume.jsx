@@ -49,7 +49,7 @@ const CreateResume = () => {
         </Link>
       </div>
 
-      <div className="md:w-[40%] h-full  ">
+      <div className="md:w-[40%] h-full pb-5 ">
         <h1 className="md:text-xl lg:text-2xl font-semibold mb-3 text-center">
           Select any Resume Template
         </h1>
@@ -66,7 +66,10 @@ const CreateResume = () => {
               >
                 <button
                   className="bg-indigo-600 text-white font-semibold py-2  hover:bg-indigo-700 transition duration-150 shadow-md  cursor-pointer w-full border-r"
-                  onClick={() => navigate(`/build/final-resume/${temp.id}`)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/build/final-resume/${temp.id}`);
+                  }}
                 >
                   Edit
                 </button>

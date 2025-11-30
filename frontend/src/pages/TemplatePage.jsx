@@ -14,7 +14,6 @@ const TemplateSelectionPage = () => {
   const [filteredTemplates, setFilteredTemplates] = useState([]);
 
   useMemo(() => {
-    console.log("re run");
     if (selectedCategory == "All") {
       setFilteredTemplates(ResumeTemplates);
     } else if (selectedCategory === "Professional") {

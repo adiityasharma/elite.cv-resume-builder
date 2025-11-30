@@ -4,65 +4,18 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="w-full h-70 flex flex-col bg-white/30 backdrop-blur-2xl items-center justify-center px-15 py-8">
-      <div className="w-full h-full grid grid-cols-4 gap-10">
+    <div className="w-full border-t border-neutral-200 flex flex-col bg-white items-center justify-center px-4 md:px-15 py-2">
+      <div className="w-full h-full flex flex-row items-center justify-between">
         <div className="w-full h-full ">
-          <img className="w-50" src="/elitecv.svg" alt="" />
-          <p className="text-sm mt-2 font-semibold text-neutral-500">
+          <img className="w-20 md:w-40" src="/elitecv.svg" alt="" />
+          <p className="text-[8px] leading-tight md:text-[12px] font-medium text-neutral-600">
             Your Story, Your Style, Your Resume
           </p>
         </div>
-
-        <div className="w-full h-full ">
-          <h1 className="text-2xl mb-3 font-semibold">Products</h1>
-          <div className="flex flex-col ">
-            {links.map((link, index) => (
-              <Link
-                key={index}
-                className="text-sm font-medium text-neutral-500 hover:text-[#00A7FA] transition-colors duration-300"
-                to={link.path}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="w-full h-full">
-          <h1 className="text-2xl mb-3 font-semibold">Company</h1>
-          <div className="flex flex-col ">
-            {["About Us", "Blog", "Contact", "Careers"].map((link, index) => (
-              <Link
-                key={index}
-                className="text-sm font-medium text-neutral-500 hover:text-[#00A7FA] transition-colors duration-300"
-                to={"#"}
-              >
-                {link}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="w-full h-full">
-          <h1 className="text-2xl mb-3 font-semibold">Legal</h1>
-          <div className="flex flex-col ">
-            {["Terms of Service", "Privacy Policy", "Cookie Policy"].map(
-              (link, index) => (
-                <Link
-                  key={index}
-                  className="text-sm font-medium text-neutral-500 hover:text-[#00A7FA] transition-colors duration-300"
-                  to={"#"}
-                >
-                  {link}
-                </Link>
-              )
-            )}
-          </div>
-        </div>
+        <h1 className="text-[8px] md:text-[12px] w-full text-right text-neutral-400">
+          © 2025 EliteCV. All rights reserved.
+        </h1>
       </div>
-      <h1 className="text-sm text-neutral-600">
-        © 2025 EliteCV. All rights reserved.
-      </h1>
     </div>
   );
 };

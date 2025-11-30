@@ -9,7 +9,6 @@ export default function Template2({ data, fontColor, fontSize }) {
     chip: "#F3F4F6",
   };
 
-  console.log(fontSize);
 
   return (
     <div

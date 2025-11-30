@@ -1,4 +1,4 @@
-import { Trash2 } from "lucide-react";
+import { Trash, Trash2 } from "lucide-react";
 import Input from "../common/Input";
 import Select from "../common/Select";
 import Option from "../common/Option";
@@ -68,7 +68,6 @@ const EditResume = () => {
     tools,
   } = useSelector((state) => state.resumeData);
 
-  console.log(tools)
   const dispatch = useDispatch();
 
   const addSkillHandle = () => {
@@ -187,19 +186,25 @@ const EditResume = () => {
 
         {/*education details */}
         <EditSection title="Education">
-          <div className="flex flex-wrap items-center gap-x-2">
+          <div className="flex flex-col md:flex-wrap gap-x-2">
             {education?.length > 0 &&
               education.map((item, index) => (
                 <div
                   key={item.id}
-                  className="w-fit relative group flex flex-col border-2 p-2 rounded hover:border-red-500 border-blue-500  mb-2 overflow-hidden text-sm"
+                  className="w-full md:w-fit relative group flex md:flex-col justify-between border-1 rounded hover:border-red-500 border-blue-200  mb-2 overflow-hidden text-sm"
                 >
-                  <div className="w-fit">{item.degree}</div>
+                  <div className="w-fit p-2">{item.degree}</div>
                   <button
                     onClick={() => dispatch(deleteEducation({ id: item.id }))}
                     className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
                   >
                     {" "}
+                    <Trash2 />{" "}
+                  </button>
+                  <button
+                    onClick={() => dispatch(deleteEducation({ id: item.id }))}
+                    className="md:hidden text-white bg-red-500/80 backdrop-blur-sm h-full p-2 items-center justify-center"
+                  >
                     <Trash2 />{" "}
                   </button>
                 </div>
@@ -312,14 +317,20 @@ const EditResume = () => {
               experience.map((item) => (
                 <div
                   key={item.id}
-                  className="w-fit relative group flex flex-col border-2 p-2 rounded hover:border-red-500 border-blue-500  mb-2 overflow-hidden text-sm"
+                  className="w-full md:w-fit relative group flex md:flex-col justify-between border rounded hover:border-red-500 border-blue-200  mb-2 overflow-hidden text-sm"
                 >
-                  <div className="w-fit">{item.position}</div>
+                  <div className="w-fit p-2">{item.position}</div>
                   <button
                     onClick={() => dispatch(deleteExperience({ id: item.id }))}
                     className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
                   >
                     {" "}
+                    <Trash2 />{" "}
+                  </button>
+                  <button
+                    onClick={() => dispatch(deleteExperience({ id: item.id }))}
+                    className="md:hidden text-white bg-red-500/80 backdrop-blur-sm h-full p-2 items-center justify-center"
+                  >
                     <Trash2 />{" "}
                   </button>
                 </div>
@@ -417,14 +428,20 @@ const EditResume = () => {
               projects.map((item) => (
                 <div
                   key={item.id}
-                  className="w-fit relative group flex flex-col border-2 p-2 rounded hover:border-red-500 border-blue-500  mb-2 overflow-hidden text-sm"
+                  className="w-full md:w-fit relative group flex md:flex-col justify-between border rounded hover:border-red-500 border-blue-200  mb-2 overflow-hidden text-sm"
                 >
-                  <div className="w-fit">{item.name}</div>
+                  <div className="w-fit p-2">{item.name}</div>
                   <button
                     onClick={() => dispatch(deleteProject({ id: item.id }))}
                     className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
                   >
                     {" "}
+                    <Trash2 />{" "}
+                  </button>
+                  <button
+                    onClick={() => dispatch(deleteProject({ id: item.id }))}
+                    className="md:hidden text-white bg-red-500/80 backdrop-blur-sm h-full p-2 items-center justify-center"
+                  >
                     <Trash2 />{" "}
                   </button>
                 </div>
@@ -514,17 +531,20 @@ const EditResume = () => {
               {skills.map((item) => (
                 <div
                   key={item.id}
-                  className="w-fit relative group flex flex-col border-2 px-2 py-1 rounded hover:border-red-500 border-blue-500 overflow-hidden text-sm"
+                  className="relative flex h-full items-center justify-between gap-1 group shadow w-fit rounded bg-white overflow-hidden"
                 >
-                  <div className="w-fit text-blue-500 font-medium">
-                    {item.name}
-                  </div>
+                  <h1 className="px-2 text-sm py-1">{item.name}</h1>
                   <button
                     onClick={() => dispatch(deleteSkill({ id: item.id }))}
-                    className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
+                    className="hidden absolute top-0 w-full h-full group-hover:flex items-center justify-center text-white bg-red-500 cursor-pointer"
                   >
-                    {" "}
-                    <Trash2 size={20} />{" "}
+                    <Trash size={18} />
+                  </button>
+                  <button
+                    onClick={() => dispatch(deleteSkill({ id: item.id }))}
+                    className="flex lg:hidden w-fit px-2 py-1 h-full bg-red-400 text-white "
+                  >
+                    <Trash size={18} />
                   </button>
                 </div>
               ))}
@@ -556,18 +576,21 @@ const EditResume = () => {
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-2">
               {tools.map((item) => (
                 <div
-                  // key={item.id}
-                  className="w-fit relative group flex flex-col border-2 px-2 py-1 rounded hover:border-red-500 border-blue-500 overflow-hidden text-sm"
+                  key={item.id}
+                  className="relative flex h-full items-center justify-between gap-1 group shadow w-fit rounded bg-white overflow-hidden"
                 >
-                  <div className="w-fit text-blue-500 font-medium">
-                    {item.name}
-                  </div>
+                  <h1 className="px-2 text-sm py-1">{item.name}</h1>
                   <button
                     onClick={() => dispatch(deleteTools({ id: item.id }))}
-                    className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
+                    className="hidden absolute top-0 w-full h-full group-hover:flex items-center justify-center text-white bg-red-500 cursor-pointer"
                   >
-                    {" "}
-                    <Trash2 size={20} />{" "}
+                    <Trash size={18} />
+                  </button>
+                  <button
+                    onClick={() => dispatch(deleteTools({ id: item.id }))}
+                    className="flex lg:hidden w-fit px-2 py-1 h-full bg-red-400 text-white "
+                  >
+                    <Trash size={18} />
                   </button>
                 </div>
               ))}
@@ -595,16 +618,20 @@ const EditResume = () => {
               languages.map((item) => (
                 <div
                   key={item.id}
-                  className="w-fit relative group flex flex-col border-2 px-2 py-1 rounded hover:border-red-500 border-blue-500 mb-2 overflow-hidden text-sm"
+                  className="w-full md:w-fit relative group flex md:flex-col justify-between border rounded hover:border-red-500 border-blue-200  mb-2 overflow-hidden text-sm"
                 >
-                  <div className="w-fit">
-                    {item.name} {item.level}
-                  </div>
+                  <div className="w-fit p-2">{item.name}</div>
                   <button
                     onClick={() => dispatch(deleteLanguage({ id: item.id }))}
                     className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
                   >
                     {" "}
+                    <Trash2 />{" "}
+                  </button>
+                  <button
+                    onClick={() => dispatch(deleteLanguage({ id: item.id }))}
+                    className="md:hidden text-white bg-red-500/80 backdrop-blur-sm h-full p-2 items-center justify-center"
+                  >
                     <Trash2 />{" "}
                   </button>
                 </div>
@@ -653,11 +680,9 @@ const EditResume = () => {
               certificates.map((item) => (
                 <div
                   key={item.id}
-                  className="w-fit relative group flex flex-col border-2 px-2 py-1 rounded hover:border-red-500 border-blue-500 mb-2 overflow-hidden text-sm"
+                  className="w-full md:w-fit relative group flex md:flex-col justify-between border rounded hover:border-red-500 border-blue-200  mb-2 overflow-hidden text-sm"
                 >
-                  <div className="w-fit">
-                    {item.title} {item.level}
-                  </div>
+                  <div className="w-fit p-2">{item.title}</div>
                   <button
                     onClick={() =>
                       dispatch(deleteCertificates({ id: item.id }))
@@ -665,6 +690,14 @@ const EditResume = () => {
                     className="group-hover:absolute hidden group-hover:flex top-0 right-0 text-white bg-red-500/80 backdrop-blur-sm hover:bg-red-500 cursor-pointer h-full w-full items-center justify-center"
                   >
                     {" "}
+                    <Trash2 />{" "}
+                  </button>
+                  <button
+                    onClick={() =>
+                      dispatch(deleteCertificates({ id: item.id }))
+                    }
+                    className="md:hidden text-white bg-red-500/80 backdrop-blur-sm h-full p-2 items-center justify-center"
+                  >
                     <Trash2 />{" "}
                   </button>
                 </div>
