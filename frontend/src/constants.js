@@ -9,10 +9,6 @@ export const links = [
     name: "Templates",
     path: "/templates",
   },
-  {
-    name: "Login",
-    path: "/login",
-  },
 ];
 
 

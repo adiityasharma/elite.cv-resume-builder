@@ -10,27 +10,26 @@ const PersonalInfoPage = () => {
   const dispatch = useDispatch();
   const { personalInfo } = useSelector((state) => state.resumeData);
 
-  console.log(personalInfo);
-
   const clickHandler = () => {
     // dispatch(updatePersonalInfo(personalInfoState));
     navigate("/resume/sections/education");
   };
 
   return (
-    <div className="w-full py-15 relative">
+    <div className="w-full py-10 lg:py-15 p-4 mt-10 relative">
       <div className="w-full">
-        <h1 className="w-4xl text-5xl font-bold ">
+        <h1 className="lg:w-4xl text-2xl leading-tight md:text-3xl lg:text-5xl font-bold ">
           What’s the best way for employers to contact you?
         </h1>
-        <p className="text-xl mt-5 font-medium">
+        <p className="text-sm md:text-xl mt-2 font-medium">
           We suggest including an email and phone number.
         </p>
-        <p className="mt-10 font-semibold text-sm">
+        <p className="text-[12px] md:mt-2 font-semibold text-sm">
           * indicates a required field
         </p>
       </div>
-      <div className="w-4xl grid grid-cols-2 gap-5 mt-8">
+
+      <div className="lg:w-4xl grid md:grid-cols-2 gap-2 md:gap-5 mt-4 md:mt-8">
         <Input
           placeholder="First Name"
           type="text"
@@ -111,7 +110,7 @@ const PersonalInfoPage = () => {
         />
       </div>
 
-      <Button onClick={clickHandler} styles="absolute bottom-0 right-0 ">
+      <Button onClick={clickHandler} styles="absolute -bottom-5 right-4 md:right-0">
         Next: Education
       </Button>
     </div>

@@ -2,7 +2,7 @@ import { features } from "../../constants";
 
 const WhyChooseUsSection = () => {
   return (
-    <div className="w-full">
+    <div id="features" className="w-full">
       <section className="py-16 md:py-20">
         <div className="container mx-auto max-w-8xl px-4 sm:px-6 lg:px-15">
           <div className="text-center mb-12 md:mb-16">

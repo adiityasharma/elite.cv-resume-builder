@@ -16,7 +16,6 @@ const initialState = {
   interests: [],
   customSections: [],
   design: {},
-
 }
 
 export const resumeDataSlice = createSlice({

@@ -59,6 +59,14 @@ const Navbar = () => {
         ${open ? "translate-x-0" : "translate-x-full"}
       `}
       >
+        <Link
+          to="/"
+          className={`hover:text-[#00A7FA] hover:underline underline-offset-5 ${
+            location.pathname === "/" ? "text-[#00A7FA]" : ""
+          }`}
+        >
+          Home
+        </Link>
         {links.map((link, index) => (
           <Link
             key={index}

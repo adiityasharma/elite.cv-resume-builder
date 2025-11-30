@@ -1,13 +1,18 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const DreamJobSection = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full h-[200px] md:h-[350px] flex items-center justify-center p-4 md:px-15">
       <div className="w-[900px] flex flex-col justify-center items-center ">
         <h1 className="text-3xl md:text-7xl font-bold text-center bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 bg-clip-text text-transparent">
           Let’s Land Your Dream Job ToGether
         </h1>
-        <button className="mt-5 md:mt-10 cursor-pointer px-4 py-2 rounded-lg bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 hover:from-cyan-400 hover:via-violet-600 hover:to-indigo-400 transition-colors duration-400 ease-in-out text-white font-semibold shadow-xl  ">
+        <button
+          className="mt-5 md:mt-10 cursor-pointer px-4 py-2 rounded-lg bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 hover:from-cyan-400 hover:via-violet-600 hover:to-indigo-400 transition-colors duration-400 ease-in-out text-white font-semibold shadow-xl  "
+          onClick={() => navigate(`/build/final-resume/tp1`)}
+        >
           Get Started for Free
         </button>
         <p className="text-[12px] text-neutral-500 mt-1 font-medium">
@@ -16,6 +21,6 @@ const DreamJobSection = () => {
       </div>
     </div>
   );
-}
+};
 
-export default DreamJobSection
+export default DreamJobSection;

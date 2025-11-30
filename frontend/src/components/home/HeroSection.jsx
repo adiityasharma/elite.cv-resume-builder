@@ -1,11 +1,13 @@
 import React from "react";
 import { ResumeTemplates } from "../../resume-templates";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   const Temp = ResumeTemplates;
+  const navigate = useNavigate();
 
   return (
-    <div className="w-full md:min-h-[700px] flex flex-col-reverse md:flex-row items-center justify-center md:justify-between md:gap-5 lg:gap-10 p-4 py-10 sm:py-15 md:py-12 lg:px-15 ">
+    <div id="home" className="w-full md:min-h-[700px] flex flex-col-reverse md:flex-row items-center justify-center md:justify-between md:gap-5 lg:gap-10 p-4 py-10 sm:py-15 md:py-12 lg:px-15 ">
       {/* Left Section (text) */}
       <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center text-center md:text-left">
         <div className="px-4 py-1 text-[12px] sm:text-[13px] rounded-full bg-[#008efa37] text-[#0053fa] font-semibold mb-3">
@@ -21,7 +23,10 @@ const HeroSection = () => {
           results.
         </p>
 
-        <button className="cursor-pointer px-5 py-3 rounded-lg bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 hover:from-cyan-400 hover:via-violet-600 hover:to-indigo-400 transition-colors duration-400 ease-in-out text-white font-semibold mt-5 shadow-xl">
+        <button
+          className="cursor-pointer px-5 py-3 rounded-lg bg-linear-to-tl from-indigo-400 via-violet-600 to-cyan-400 hover:from-cyan-400 hover:via-violet-600 hover:to-indigo-400 transition-colors duration-400 ease-in-out text-white font-semibold mt-5 shadow-xl"
+          onClick={() => navigate(`/build/final-resume/${Temp[0].id}`)}
+        >
           Get Started for Free
         </button>
 
@@ -32,7 +37,10 @@ const HeroSection = () => {
 
       {/* Right Section (templates) */}
       <div className="relative md:h-[400px]  lg:h-[500px] w-1/2 hidden md:flex items-center justify-center">
-        <div className="absolute md:w-65 lg:w-80 top-0 right-0 md:hover:w-80 lg:hover:w-90 z-20 transition-all duration-500 bg-white shadow-xl rounded-xl p-4 md:p-6 hover:p-4 cursor-pointer overflow-hidden">
+        <div
+          className="absolute md:w-65 lg:w-80 top-0 right-0 md:hover:w-80 lg:hover:w-90 z-20 transition-all duration-500 bg-white shadow-xl rounded-xl p-4 md:p-6 hover:p-4 cursor-pointer overflow-hidden"
+          onClick={() => navigate(`/build/final-resume/${Temp[2].id}`)}
+        >
           <img
             src={Temp[2].image}
             alt="resume"
@@ -40,14 +48,20 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="absolute md:w-65 lg:w-80 top-5 right-5 lg:right-15 md:hover:w-80 lg:hover:w-90 hover:z-100 z-15 transition-all duration-500 bg-white shadow-xl rounded-xl p-4 md:p-6 hover:p-4 cursor-pointer overflow-hidden">
+        <div
+          className="absolute md:w-65 lg:w-80 top-5 right-5 lg:right-15 md:hover:w-80 lg:hover:w-90 hover:z-100 z-15 transition-all duration-500 bg-white shadow-xl rounded-xl p-4 md:p-6 hover:p-4 cursor-pointer overflow-hidden"
+          onClick={() => navigate(`/build/final-resume/${Temp[3].id}`)}
+        >
           <img
             src={Temp[3].image}
             alt="resume"
             className="object-cover w-full h-full rounded-xl"
           />
         </div>
-        <div className="absolute md:w-65 lg:w-80 top-10 right-10 lg:right-30 md:hover:w-80 lg:hover:w-90 hover:z-100 z-10 transition-all duration-500 bg-white shadow-xl rounded-xl p-4 md:p-6 hover:p-4 cursor-pointer overflow-hidden">
+        <div
+          className="absolute md:w-65 lg:w-80 top-10 right-10 lg:right-30 md:hover:w-80 lg:hover:w-90 hover:z-100 z-10 transition-all duration-500 bg-white shadow-xl rounded-xl p-4 md:p-6 hover:p-4 cursor-pointer overflow-hidden"
+          onClick={() => navigate(`/build/final-resume/${Temp[4].id}`)}
+        >
           <img
             src={Temp[4].image}
             alt="resume"

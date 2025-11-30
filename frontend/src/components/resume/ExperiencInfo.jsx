@@ -24,21 +24,21 @@ const ExperiencInfo = () => {
   };
 
   return (
-    <div className="w-full py-15 relative">
-      <GoBackBtn styles="absolute top-3 left-0">Go Back</GoBackBtn>
+    <div className="w-full p-4 py-10 md:py-15 mt-20 relative">
+      <GoBackBtn styles="absolute top-0  md:top-3 md:left-0">Go Back</GoBackBtn>
       <div className="w-full">
-        <h1 className="w-4xl text-5xl font-bold ">
+        <h1 className="w-full lg:w-4xl text-2xl md:text-3xl lg:text-5xl font-bold ">
           Tell us about your experience
         </h1>
-        <h1 className="text-xl mt-5 ">
+        <h1 className="text-sm md:text-xl mt-2 md:mt-5 ">
           Think volunteer work or impactful projects—start with your most
           recent. Everything counts!
         </h1>
-        <p className="mt-10 font-semibold text-sm">
+        <p className="mt-2 md:mt-10 font-semibold text-sm">
           * indicates a required field
         </p>
       </div>
-      <div className="w-4xl grid grid-cols-2 gap-5 mt-8">
+      <div className="w-full lg:w-4xl grid grid-cols-1 md:grid-cols-2 gap-5 mt-4 md:mt-8">
         <Input
           placeholder="Software Engineer"
           type="text"
@@ -91,7 +91,7 @@ const ExperiencInfo = () => {
         </label>
         <textarea
           placeholder="Type here..."
-          className="p-2 w-[440px] text-sm border border-neutral-500 rounded bg-white outline-none min-h-20"
+          className="p-2 w-full md:w-[440px] text-sm border border-neutral-500 rounded bg-white outline-none min-h-20"
           onChange={(e) =>
             experienceDispatch({ type: "description", value: e.target.value })
           }
@@ -102,7 +102,7 @@ const ExperiencInfo = () => {
       </Button>
       <Button
         onClick={() => navigate("/resume/sections/skills")}
-        styles="absolute bottom-3 right-0"
+        styles="absolute bottom-3 right-4"
       >
         Next
       </Button>

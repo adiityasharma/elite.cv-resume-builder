@@ -29,17 +29,19 @@ const SkillsInfo = () => {
   };
 
   return (
-    <div className="w-full py-15 relative">
-      <GoBackBtn styles="absolute top-3 left-0">Go Back</GoBackBtn>
+    <div className="w-full p-4 py-10 md:py-15 mt-20 relative">
+      <GoBackBtn styles="absolute top-0 md:top-3 md:left-0">Go Back</GoBackBtn>
       <div className="w-full">
-        <h1 className="w-4xl text-5xl font-bold ">
+        <h1 className="lg:w-4xl text-2xl md:text-3xl lg:text-5xl font-bold ">
           What skills would you like to highlight?
         </h1>
-        <h1 className="text-xl mt-5 ">
+        <h1 className="text-sm md:text-xl mt-2 md:mt-5 ">
           Employers scan skills for relevant keywords. We’ll help you choose the
           best ones.
         </h1>
-        <p className="mt-10 font-semibold text-sm">* Select atleast 4 skills</p>
+        <p className="mt-2 md:mt-10 font-semibold text-sm">
+          * Select atleast 4 skills
+        </p>
       </div>
       <div>
         <div className="flex items-center gap-2 mt-8">
@@ -62,7 +64,7 @@ const SkillsInfo = () => {
         </div>
         <div className=" mt-3 text-lg font-medium ">
           <h1 className="">Some relevant skills:</h1>
-          <div className="flex w-4xl gap-2 items-center flex-wrap mt-2">
+          <div className="flex lg:w-4xl gap-2 items-center flex-wrap mt-2">
             {skillsSuggestions.map((skill) => (
               <button
                 key={skill.id}
@@ -79,14 +81,23 @@ const SkillsInfo = () => {
       {skills && skills.length > 0 && (
         <div className="mt-5">
           <h1 className="text-lg font-medium">Skills:</h1>
-          <div className="mt-2 ml-10">
-            <ul className="list-disc grid grid-cols-2 w-xl gap-x-2">
+          <div className="mt-2 ">
+            <ul className="flex text-sm flex-wrap lg:w-xl gap-2">
               {skills.map((skill) => (
-                <li key={skill.id} className="relative group ">
-                  {skill.name}
+                <li
+                  key={skill.id}
+                  className="relative flex items-center justify-between gap-1 group shadow w-fit rounded bg-white overflow-hidden"
+                >
+                  <h1 className="px-4 py-1">{skill.name}</h1>
                   <button
                     onClick={() => dispatch(deleteSkill({ id: skill.id }))}
-                    className="hidden absolute top-0 right-5 text-blue-500 group-hover:block cursor-pointer"
+                    className="hidden absolute top-0 w-full h-full group-hover:flex items-center justify-center text-white bg-red-500 cursor-pointer"
+                  >
+                    <Trash size={18} />
+                  </button>
+                  <button
+                    onClick={() => dispatch(deleteSkill({ id: skill.id }))}
+                    className="block lg:hidden w-fit px-2 h-full bg-red-400 text-white "
                   >
                     <Trash size={18} />
                   </button>
@@ -99,7 +110,7 @@ const SkillsInfo = () => {
 
       <Button
         onClick={() => navigate("/resume/sections/summary")}
-        styles="absolute bottom-0 right-0"
+        styles="absolute -bottom-5 right-4"
       >
         Next
       </Button>

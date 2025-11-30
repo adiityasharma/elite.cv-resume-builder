@@ -11,7 +11,6 @@ import { addEducation } from "../../app/features/resumeData";
 
 const EducationInfo = () => {
   const navigate = useNavigate();
-
   const [state, dispatch] = useReducer(educationReducer, educationInitialState);
 
   const clickHandler = () => {
@@ -20,18 +19,18 @@ const EducationInfo = () => {
   console.log(state);
 
   return (
-    <div className="w-full py-15 relative">
-      <GoBackBtn styles="absolute top-3 left-0">Go Back</GoBackBtn>
+    <div className="w-full p-4 py-10 md:py-15 mt-20 relative">
+      <GoBackBtn styles="absolute top-0  md:top-3 md:left-0">Go Back</GoBackBtn>
       <div>
-        <h1 className="text-5xl font-bold">Share your education journey</h1>
-        <p className="mt-5 text-lg font-medium ">
+        <h1 className="text-2xl md:text-5xl font-bold">Share your education journey</h1>
+        <p className="mt-2 md:mt-5 text-sm md:text-lg font-medium ">
           Include your higher education details-degree, courses, or institution.
         </p>
-        <p className="mt-10 font-semibold text-sm">
+        <p className="mt-2 md:mt-10 font-semibold text-sm">
           * indicates a required field
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-5 justify-between w-4xl my-8">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5 justify-between lg:w-4xl my-4 md:my-8">
         <Input
           placeholder="School Name"
           type="text"
@@ -112,7 +111,7 @@ const EducationInfo = () => {
 
       <Button
         onClick={() => navigate("/resume/sections/experience")}
-        styles="absolute bottom-0 right-0 "
+        styles="absolute bottom-0 right-4 "
       >
         Next
       </Button>

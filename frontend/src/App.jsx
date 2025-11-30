@@ -28,7 +28,6 @@ const App = () => {
             <Route path="experience" element={<ExperiencInfo />} />
             <Route path="skills" element={<SkillsInfo />} />
             <Route path="summary" element={<Summary />} />
-            <Route path="add-section" element={<AddSection />} />
           </Route>
           <Route path="build/final-resume/:tempId" element={<FinalResume />} />
           <Route path="templates" element={<TemplatePage />} />

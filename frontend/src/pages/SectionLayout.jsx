@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 const SectionLayout = () => {
   return (
-    <section className="w-full px-15">
+    <section className="w-full mx-auto lg:px-15">
       <Outlet />
     </section>
   );
