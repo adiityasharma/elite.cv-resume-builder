@@ -1,9 +1,14 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import TemplateCard from "../components/template-page/TemplateCard";
 import { ResumeTemplates } from "../resume-templates";
 
 // Main Page Component
 const TemplateSelectionPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "EliteCV | Templates";
+  }, []);
+
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedTemp, setSelectedTemp] = useState(null);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ResumeTemplates } from "../resume-templates";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,11 @@ import { updateDesign } from "../app/features/resumeData";
 const CreateResume = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "EliteCV | Create Resume";
+  }, []);
 
   const clickHandler = (id) => {
     navigate("/resume/sections/personal-info");
