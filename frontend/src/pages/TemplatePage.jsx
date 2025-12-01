@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import TemplateCard from "../components/template-page/TemplateCard";
 import { ResumeTemplates } from "../resume-templates";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Main Page Component
 const TemplateSelectionPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -10,27 +10,33 @@ const TemplateSelectionPage = () => {
   }, []);
 
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedTemp, setSelectedTemp] = useState(null);
+  const [filteredTemplates, setFilteredTemplates] = useState([]);
 
   const filteredCategories = [
     ...new Set(ResumeTemplates.map((item) => item.category)),
   ];
 
-  const [filteredTemplates, setFilteredTemplates] = useState([]);
-
   useMemo(() => {
-    if (selectedCategory == "All") {
+    if (selectedCategory === "All") {
       setFilteredTemplates(ResumeTemplates);
-    } else if (selectedCategory === "Professional") {
-      setFilteredTemplates(
-        ResumeTemplates.filter((item) => item.category == "Professional")
-      );
     } else {
       setFilteredTemplates(
-        ResumeTemplates.filter((item) => item.category == "Creative")
+        ResumeTemplates.filter((item) => item.category === selectedCategory)
       );
     }
   }, [selectedCategory]);
+
+  // Framer Motion Variants
+  const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1 } },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+    exit: { opacity: 0, scale: 0.8, transition: { duration: 0.2 } },
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 sm:p-8 mt-20">
@@ -45,9 +51,8 @@ const TemplateSelectionPage = () => {
           </p>
         </header>
 
-        {/* Filter and Sort Bar */}
+        {/* Filter Bar */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 p-4 bg-white rounded-lg shadow-md">
-          {/* Style Filter */}
           <div className="flex items-center sm:mb-0">
             <label
               htmlFor="style-filter"
@@ -71,11 +76,26 @@ const TemplateSelectionPage = () => {
         </div>
 
         {/* Templates Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-8">
-          {filteredTemplates.map((template) => (
-            <TemplateCard key={template.id} template={template} />
-          ))}
-        </div>
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <AnimatePresence>
+            {filteredTemplates.map((template) => (
+              <motion.div
+                key={template.id}
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <TemplateCard template={template} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </div>
   );

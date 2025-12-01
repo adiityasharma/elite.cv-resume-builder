@@ -110,7 +110,10 @@ const PersonalInfoPage = () => {
         />
       </div>
 
-      <Button onClick={clickHandler} styles="absolute -bottom-5 right-4 md:right-0">
+      <Button
+        onClick={clickHandler}
+        styles="absolute -bottom-5 right-4 md:right-0"
+      >
         Next: Education
       </Button>
     </div>
